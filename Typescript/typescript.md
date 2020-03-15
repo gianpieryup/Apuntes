@@ -1,4 +1,4 @@
-<img src="C:\Users\HP\Desktop\Mis Apuntes\Typescript\ts logo.png" alt="ts logo" style="zoom:80%;" />
+<img src="C:\Users\HP\Desktop\Apuntes\Typescript\ts logo.png" alt="ts logo" style="zoom:80%;" />
 
 
 
@@ -45,6 +45,60 @@ Si tengo un archivo `.ts` y lo quiero convertir a `.js`
 ````shell
 $ tsc archivo.js
 ````
+
+> TIP: (tsc) t : type, s : script, c : compilar // Ósea compilar typescript
+
+
+
+### El archivo tsconfig
+
+Es obvio que no voy a tener que compilar todo cada vez que haya un cambio, para eso existe `tsconfig.json` que contiene: **configuraciones** del compilador y Gestiona que **archivos se van a compilar** y cuales no.
+
+````shell
+//Como lo creo??
+$ tsc -init
+````
+
+Que tiene de interesante, yo te diré que :kissing_smiling_eyes:
+
+````javascript
+{
+  "compilerOptions": {
+    "target": "es5",   //Version de ECMA Script
+  }
+}
+````
+
+No te olvides la consola que te permitirá cambiar el código `.ts` y automáticamente actualizara los `.js` que los corresponde.
+
+````shell
+$ tsc -w
+Nota : Hacerlo en la carpeta raiz de tu proyecto
+Dejar esta terminal corriendo
+````
+
+<span style=" background:yellow;">Que compilar y que no</span> : Tenemos control sobre que transpilar a código `.js` y que no
+
+````javascript
+{
+  "compilerOptions": {
+    "target": "es5",...
+  }
+    "include":{//Los que si
+        "src/*.ts","src/**/*.ts"
+    }
+    "exclude":{//Los que no
+        "src/test.ts","src/*-test.ts"
+    }
+}
+    
+Tranquilo con estas notaciones, ahi va!!
+````
+
+- `"src/test.ts"`  : El archivo `test.ts` 
+- `"src/*-test.ts"` : Todos los archivos que terminen en `-test.ts`
+- `"src/*.ts"` : Todos los archivos `.ts` que estén en la carpeta `src`
+- `"src/**/*.ts"` : Todos los archivos `.ts` que estén en una carpeta, dentro de la carpeta `src`
 
 
 
