@@ -1,4 +1,4 @@
-<img src="C:\Users\HP\Desktop\Apuntes\Express\express logo.jpg" alt="express logo" style="zoom:40%;" />
+<img src="express logo.jpg" alt="express logo" style="zoom:40%;" />
 
 ## Introducción
 

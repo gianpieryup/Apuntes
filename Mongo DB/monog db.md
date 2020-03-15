@@ -1,4 +1,4 @@
-<img src="C:\Users\HP\Desktop\Apuntes\Mongo DB\mongo logo.jpg" alt="mongo logo" style="zoom:30%;" />
+<img src="mongo logo.jpg" alt="mongo logo" style="zoom:30%;" />
 
 # Introducción a Mongo DB 
 
@@ -22,7 +22,7 @@ Se descargara un *ejecutable mongodb-win32-x86_64-2012plus-4.2.3-signed* darle s
 
 Luego de instalado entro por consola `cmd`  a la ruta `C:\Program Files\MongoDB\Server\4.2\bin` y escribo `mongod --version`
 
-![mongo 01](C:\Users\HP\Desktop\\Apuntes\Mongo DB\mongo 01.png)
+![mongo 01](mongo 01.png)
 
 Pero estaría bueno tener este comando desde cualquier lugar de la consola y no estar buscando la ruta a cada rato, para esto hay que agregarlo al `path` así lo tenemos disponible en cualquier lugar de la `cmd`
 
@@ -322,11 +322,11 @@ Venimos usando la consola `cmd` *mongo* ahora usaremos compas una GUI para usarl
 1. Dejar corriendo en el `cmd` mongod.
 2. Abrir Compas e ingresar *Fill in connection ...*
 
-![compas 001](C:\Users\HP\Desktop\Apuntes\Mongo DB\compas 001.png)
+![compas 001](compas 001.png)
 
 Darle a **connect**
 
-![compas 002](C:\Users\HP\Desktop\\Apuntes\Mongo DB\compas 002.png)
+![compas 002](compas 002.png)
 
 > Si hay algún error dale enter a *mongod*, para aceptar la conexión, cuando lo hice no fue necesario
 

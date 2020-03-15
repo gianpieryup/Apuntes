@@ -1,4 +1,4 @@
-<img src="C:\Users\HP\Desktop\Apuntes\NodeJS\node-logo.png" alt="node-logo" style="zoom:50%;" />
+<img src="node-logo.png" alt="node-logo" style="zoom:50%;" />
 
 
 
@@ -166,7 +166,7 @@ Me olvidaba no subes `node-modules `pesa mucho , con `package.json` tenemos la l
 
 Como recuperamos la carpeta  `node-modules` a partir del  `package.json` fácil con el comando `npm install`, lo que hace es leer el `package.json` e instalar las dependencias que aparecen acá.
 
-![package](C:\Users\HP\Desktop\Apuntes\NodeJS\package.png)
+![package](package.png)
 
 Vemos en la imagen (package.json ) que   "scripts" :{ "start" : "node index.js"} esto es muy importante si en la consola escribo `npm start` se ejecuta `node index.js`  que es la forma que usábamos para ejecutar un archivo en JavaScript
 

@@ -1,4 +1,4 @@
-<img src="C:\Users\HP\Desktop\Apuntes\Typescript\ts logo.png" alt="ts logo" style="zoom:80%;" />
+<img src="ts logo.png" alt="ts logo" style="zoom:80%;" />
 
 
 
@@ -92,7 +92,7 @@ Dejar esta terminal corriendo
     }
 }
     
-Tranquilo con estas notaciones, ahi va!!
+//Al ejecutar ´tsc -init´ todos los archivos (.ts) esten donde esten, tendran una version (.js) al lado. Esto es por (defecto) ya que no nesecito escribir "include"
 ````
 
 - `"src/test.ts"`  : El archivo `test.ts` 
@@ -100,6 +100,28 @@ Tranquilo con estas notaciones, ahi va!!
 - `"src/*.ts"` : Todos los archivos `.ts` que estén en la carpeta `src`
 - `"src/**/*.ts"` : Todos los archivos `.ts` que estén en una carpeta, dentro de la carpeta `src`
 
+### El Compilador
+
+Podemos redirigir las compilaciones 
+````typescript
+/---AHORA---/
+src :{ 	a1.ts,
+		a1.js,
+		a2.ts,
+		a2.js};
+
+/---Despues---/
+src : {			|	carp : {
+    a1.ts,		|		a1.js,
+    a2.ts		|		a2.js
+}				|	}
+
+//Como hacemos esto RPTA: en 'tsconfig.json' en el atributo "outDir" que por defecto apunta a la raiz del proyecto.
+
+"outDir" : "./"    =>     "outDir" : "./carp"
+// Si la carpeta 'carp' no existe, lo crea
+// Puedo probar lo siguiente borro todos los (.js), borro la carpeta (carp) y en la terminal 'tsc -w' y crean los (.js) y la carpeta 'carp'
+````
 
 
 ## Tipos de datos
