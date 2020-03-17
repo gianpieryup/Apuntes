@@ -139,15 +139,141 @@ resto(%), potencia(**) , cociente (//)
 
 (and, or, not)
 
-#
-is is not
+#para comparar objetos: 'is'
+var1 = [1,3]
+var2 = [1,3]
+var1 is var2
+true
+
+#'is not' la negacion de 'is'
+
+# operadores de Pertenecia
+lista is elemento
+lista is not elemento
 ````
 
 
 
+### Colección de datos
 
+#### Listas
 
+````python
+x = ["hola",2020]
+x[0] = "hola"
+numberlist = list((1,2,3,4)) #list() solo recibe un argumento
 
+x.append("naranja")
+> ["hola",2020,"naranja"]
 
+x.remove("hola")
+> [2020,"naranja"]
 
+x = list(range(1,10)) => x = [1,2,3,4,5,6,7,8,9]
+
+#Recorrer una lista con (for in)
+for color in colores
+	print(color)
+    
+#Borrar todos los elementos
+x.clear()
+
+#existen mas funciones
+````
+
+#### Tuplas
+
+Una colección de elementos que no se pueden alterar.
+
+````python
+x = (1,2,3)
+x[0] = 1
+````
+
+#### Conjuntos
+
+Una colección de elementos desordenados(sin índices)
+
+````python
+conj_color = {"rojo","verde","azul"}
+conj_color[0] #Error
+conj_color.add("negro")
+````
+
+#### Diccionario
+
+````python
+#como un json (clave:valor)
+dic = {'color':'rojo', 'tipo':'toyotas'}
+dic['color'] = 'rojo'
+dic['black'] = 'negro' #Agregar elementos
+dic.pop['tipo'] #Borra este elemento y devuelve su valor 'toyotas'
+del(dic['tipo']) #alternatica de borrar
+
+for clave in dic
+	print(clave)
+    
+for clave,valor in dic.items()
+	print(clave,valor)
+````
+
+### Bucles y Condiciones
+
+#### if-else
+
+````python
+if(3 > 4):
+    print("3 es mayor que 4")
+
+if (a > b) and (b < d):
+    print("hola")
+    
+if 'condicion' :
+    |#codigo
+else
+	print("en el else")
+    
+if 'condicion' :			|	if (){
+    #codigo					|	#cofigo
+elif (a == b)				|	}else{
+	print("son iguales")	|		if(a == b){
+else						|		print("son iguales") 
+	print("ninguna")		|		}else{
+    						|		print("ninguna")
+							|		}
+							|	}		
+````
+
+#### Bucles
+
+````python
+# FOR
+for elemento in lista:
+    print(elemento)
+
+# Funcionan el break y el continue  
+
+# WHILE
+while (condicion):
+    print("aun estoy en el while")
+````
+
+#### BONUS
+
+````python
+# La funcion 'range'
+range(valorinicial,valorfinal,intervalo?opcional)
+range(3,8,2)
+3
+5
+7
+````
+
+### Clases objetos y Funciones
+
+````python
+class Clasesilla:
+	color = 'blanco'
+	precio = 100
+````
 
