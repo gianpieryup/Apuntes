@@ -1,3 +1,5 @@
+<img src="Python-logo.png" alt="Python-logo" style="zoom:25%;"/>
+
 # Introducción a Python
 
 ### Ejecutar un programa en Python
