@@ -271,9 +271,66 @@ range(3,8,2)
 
 ### Clases objetos y Funciones
 
+#### Clases
+
 ````python
 class Clasesilla:
 	color = 'blanco'
 	precio = 100
+    
+obj = Clasesilla() #instanciar un objeto
+obj.color #funciona como 'get' y 'set'
+
+class Persona:
+    #Constructor
+    def __init__(self,nombre,edad):
+        self.nombre = nombre
+        self.edad = edad
+    #Metodo
+    def saludar(self):	#NO OLVIDAR el 'self'
+        print("Hola me llamo",self.nombre)
+        
+persona1 = Persona('Juan',37)  
+persona1.saludar()     
+````
+
+#### Funciones
+
+````python
+def saludar():
+	print('BUenas dias')
+    
+def saludar(nombre):
+	print('BUenas dias' + nombre)   
+#No admiten Sobrecarga admitida, se toma la ultima definicion
+
+#USO del Return
+def sumar(num1, num2):
+    suma = num1 + num2
+    return suma
+print("Operacion 4 + 5 = ",sumar(4,5))
+
+------------------------------------
+#Paso por valor , Paso por referencia
+colores = ["rojo", "verde", "azul"]
+def incluir_color(colores,color):
+    colores.append(color)
+    
+color = "negro"
+incluir_color(colores,color)
+colores
+#Se modifico la lista
+````
+
+> TIP : Como en la guía de C# los objetos y los Arrays siempre se pasan por referencia OJO
+
+##### Función Lambda
+
+````python
+resultado = lambda numero : numero + 30
+resultado(10)
+
+resultado2 = lambda nume1, num2 : num1 + num2
+resultado2(10,20)
 ````
 
