@@ -105,6 +105,8 @@ cadena2.split(',')
 # Osea no se pueden alterar
 nombre = "Marianito"
 nombre[8] = 'x'
+#para modificar habria que setear el valor la variable 'nombre'
+
 # Esto no funciona, para arreglarlo transformarlo a 'list'
 nombre = "Marianito"
 milista = list(nombre)
@@ -159,12 +161,6 @@ var1 = [1,3]
 var2 = [1,3]
 var1 is var2
 true
-
-#'is not' la negacion de 'is'
-
-# operadores de Pertenecia
-lista is elemento
-lista is not elemento
 ````
 
 
@@ -193,7 +189,10 @@ for color in colores
 #Borrar todos los elementos
 x.clear()
 
-#existen mas funciones
+#Existen mas funciones
+#  Pertenece
+>>> elemento in conjunto
+true
 ````
 
 #### Pilas

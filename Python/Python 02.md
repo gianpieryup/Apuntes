@@ -149,3 +149,61 @@ finally:
 ````
 
 ## Sección 13: Expr Reg, JSON, fecha y hora
+
+### Expresiones Regulares
+
+Como en JavaScript con la librería 're', ``ver apunte de E.R. en javascript`
+
+````python
+import re
+texto = "Hola , mi nombre es antonio"
+resultado = re.search("nombre",texto)
+if (resultado):
+    print("cadena encontrada")
+else
+	print("cadena no encontrada")
+    
+# ---
+re.search("antonio%",texto)
+re.search("^Hola",texto)
+
+# el caracter (.) es cualquiera, el (*) es una o mas repeticiones
+re.search("mi.*es",texto)
+
+----
+# findall : busca todas las ocurrencias que halla, y las muestra en un array
+texto = """
+El coche de Luis es rojo,
+el coche de antonio es blanco,
+y el coche de maria es rojo
+"""
+
+re.findall("coche.*rojo",texto)
+
+# split: cortar bajo un separador
+re.split("\n",texto)
+
+# sub : sustituye todas las coincidencias
+re.sub("la palabra que queremos cambiar","el nuevo valor",texto)
+````
+
+### JSON
+
+Convertir datos de un diccionario a JSON
+
+````python
+# Diccionario
+products = { "nombre" : "silla" , "color" : "rojo" , "precio" : 80}
+
+# comvierte un diccionario en formato JSON
+import json
+estructura_JSON = json.dump(products)
+estructura_JSON[0]
+
+# JSON => Diccionario
+products2 = json.loads(estructura_json)
+products2["nombre"]
+````
+
+
+
