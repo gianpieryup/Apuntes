@@ -99,6 +99,16 @@ cadena.split()
 
 cadena2 = "hola,mundo"
 cadena2.split(',')
+
+
+# Si bien los strings son casi como listas, son inmutables
+# Osea no se pueden alterar
+nombre = "Marianito"
+nombre[8] = 'x'
+# Esto no funciona, para arreglarlo transformarlo a 'list'
+nombre = "Marianito"
+milista = list(nombre)
+milista[8] = 'x'
 ````
 
 ### Imprimir variables de cadena de texto
@@ -125,6 +135,11 @@ print(f"Hola {nombre} como esta la familia")
 print("Introduce tu nombre")
 entrada = input()
 print(entrada)
+
+# Forma mas culera
+nombre = input("Nombre: ")
+edad = int(input("Edad: "))
+print(nombre, "tiene",edad,"años")
 ````
 
 ### Operadores
@@ -179,6 +194,14 @@ for color in colores
 x.clear()
 
 #existen mas funciones
+````
+
+#### Pilas
+
+````python
+Como una estructura de datos una Pila - LIFO
+.append() # añadir al final de pila
+.pop() # quitar el ultimo que fue añadido
 ````
 
 #### Tuplas
