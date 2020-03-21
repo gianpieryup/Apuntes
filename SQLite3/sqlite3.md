@@ -1,0 +1,62 @@
+<img src="SQLite370.svg.png" alt="SQLite370.svg" style="zoom:30%;" />
+
+Una base de datos minimalista , o sea  `una base de datos es un arhivo` .
+
+Muy usado cuando quiero almacenar datos en SQL pero no cuento con mucho espacio como para descargarme SQL server, Oracle o MySQL . Muy usado en dispositivos móviles
+
+## Instalación
+
+Ir a la pagina de SQLite en `descargas` y buscar un archivo parecido a este `sqlite-tools-win32-x86-3310100.zip` , lo descomprimes y listo.
+
+Una vez descargado vamos a moverlo a la carpeta `C:` y agregarlo al `path` como en la instalación de `mongodb`
+
+> TIP : si no sabes a que me refiero ver los apuntes de mongodb para la instalación
+
+Yo lo deje así en `C:` y lo agregue al `PATH` `C:\SQLite\sqlite-tools-win32-x86-3310100` para comprobar que tenemos `sqlite3` correctamente abrimos una consola y tipeamos `sqlite3 --version`, no importa en que dirección ya que debería estar en el `PATH`
+
+## Primeros Pasos
+
+Para iniciar tipear `sqlite3` o mejor `sqlite3 mydatabase.db` esto creara o accederá a la base `mydatabase.db`  . **OJO** : la ruta donde estoy.
+
+#### Comandos Básicos
+
+Cuando estoy dentro de una base
+
+````sqlite
+Informacion de la base donde estoy
+sqlite3> .databases
+
+Crear una tabla
+sqlite3> create table products(id INT primary key);
+
+Mostrar las tablas de la base
+sqlite3> .tables 
+
+Para salir
+sqlite3> .exit
+````
+
+### No podía faltar un GUI
+
+Como en `mongodb:compas atlas` o en `python:spyder,jupyter,anaconda`tenemos una interfaz grafica llamada `SQLite Browser` descargan un archivo `.msi` parecido a este *DB.Browser.for.SQLite-3.11.2-win64.msi* seria como el estándar
+
+> TIP : En la pantalla de instalación, en la sección **Shortcuts**  en la parte (DB Browser SQLite) marcar la palomita [Desktop]
+
+### En Python
+
+Python tiene incorporado un modulo para trabajar con esta **base de datos**, ósea no se necesita instalar módulos externos ya viene de fabrica
+
+````python
+import sqlite3
+# Nombre de la base de datos si existe de lo contrario lo crea
+conexion = sqlite3.connect("mydatabase.db")
+
+#Para ejecutar sentencias sql
+cursor = conexion.cursor()
+cursor.execute("CREATE TABLE personas(nombre TEXT,apellido TEXT,edad INTEGER)")
+
+#Para comitear los cambios
+conexion.commit()
+conexion.close()
+````
+

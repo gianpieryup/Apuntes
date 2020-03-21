@@ -158,6 +158,8 @@ Como en JavaScript con la librería 're', ``ver apunte de E.R. en javascript`
 import re
 texto = "Hola , mi nombre es antonio"
 resultado = re.search("nombre",texto)
+# 'resultado' es un objeto con informacion de la busqueda
+# resultado.start() / resultado.end()
 if (resultado):
     print("cadena encontrada")
 else
@@ -205,5 +207,44 @@ products2 = json.loads(estructura_json)
 products2["nombre"]
 ````
 
+### fecha y hora
 
+````python
+from datetime import datetime
+fechaHoy = datetime.now()
+print(fechaHoy)
+
+# Los metodos
+.year		.hour
+.month		.minute
+.day		.second			.microsecond
+````
+
+## Sección 14: Base de datos
+
+````python
+# SQlite : sistema de gestion de base de datos
+import sqlite3
+# Nombre de la base de datos si existe de lo contrario lo crea
+conexion = sqlite3.connect("mydatabase.db")
+
+#Para ejecutar sentencias sql con `execute`: SELECT, INSERT,UPDATE,DELETE
+cursor = conexion.cursor()
+cursor.execute("CREATE TABLE personas(nombre TEXT,apellido TEXT,edad INTEGER)")
+
+#Para comitear los cambios
+conexion.commit()
+conexion.close()
+````
+
+#### Insertar varias filas a la vez
+
+````python
+cursor = conexion.cursor()
+lista = [('Pedro','Rodrigez',26),('Maria','Lopez',45)]
+
+cursor.executemany("INSERT INTO PERSONAS VALUES (?,?,?,?)",lista)
+conexion.commit()
+conexion.close()
+````
 
