@@ -199,3 +199,95 @@ server.listen(3000, function () => {
 });
 ````
 
+### Apéndice
+
+Presentamos unos módulos que pueden ser te útiles.
+
+#### Lodash
+
+Para trabajar con JSON
+
+````javascript
+const _ = require('lodash');
+
+let x = { "nombre" : "Juan"}
+let y = { "apodo" : "Mitocode"}
+let z = [
+	{ nombre : "Jaime",apellido: "Medina", edad: 26},
+	{ nombre : "Mito", apellido: "Code" , edad: 26}
+]
+
+//Crea un JSON juntando las dos variables, sin este modulo habria que usar funciones(.parse() ó .stringify()) y concatenar.
+let resultado = _.assign(x,y);
+console.log(resultado)
+
+//Repetir cosas sin for o while [Chekaesta]
+_.times(3, () => console.log('Suscribete'))
+
+//Buscar en un JSON
+let resultado = _.find(z,{nombre :"Jaime"})
+let resultado = _.find(z,{nombre :"Jaime", apellido :"Mendez"})
+console.log(resultado)
+````
+
+#### Yargs
+
+Te ayuda a crear herramientas interactivas de línea de comandos, analizando argumentos y generando una elegante interfaz de usuario.
+
+Primero recordemos como en C# o en otro lenguaje puedo pasar argumentos antes de iniciar la aplicación. Generalmente es en la `función main(argv[])` donde el `argv[]` es la lista de argumentos. Para resumir en C# si ejecutábamos esto.
+
+````shell
+$ miPrograma.exe Juan 25
+````
+
+En el código teníamos lo siguiente
+
+````c#
+public static main(argv[]){
+	// Aca entonces
+    // argv[0] == "Juan"
+    // argv[1] == 25    
+}
+````
+
+Bueno en NodeJS podemos hacer algo parecido, solamente que es opcional no obligatorio
+
+````javascript
+let comando = process.argv[2];
+console.log(comando);
+````
+
+Ejecutamos en consola
+
+````shell
+$ node miPrograma.js Juan 25
+````
+
+En el código JavaScript
+
+````javascript
+// process.argv[0] y process.argv[1] ya estan usados por defecto
+// process.argv[2] == "Juan"
+// process.argv[3] == 25
+
+/Esto no lo sabia, en la consola puedes mandar variables con informacion, con el siguiente formato en consola/
+$ node miPrograma.js --usuario=Mitocode
+//La consola no sabe como interpretarlo
+
+
+//Por eso viene la libreria Yargs, instalarla npm
+const argv = require('yargs');
+console.log(argv)//Tiene muchos atributos, el que me interesa es el ultimo 'argv', entonces mejoramos esta notacion
+
+const argv = require('yargs').argv
+console.log(argv)
+if(argv.usuario === 'Mitocode'){
+    console.log("mandaste clave valor 'usuario' = 'Mitocode' ")
+}
+````
+
+### Debugear en NodeJS
+
+Primero comprobar que nodeJs tenga una versión > 8.0 . En la consola `node inspect app.js`
+
+Te la debo
