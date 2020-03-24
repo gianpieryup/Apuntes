@@ -2,6 +2,14 @@
 
 # Introducción a Python
 
+Que es Python, su nombre viene de un comediante. De propósito general, **multiparadigma** ,de **tipado dinámico** , open source
+
+*Lenguaje compilado* : Es aquel que requiere de un `compilador` ósea transforma mi `.h` a `.exe` el cual mi computadora entiende. Ejemplos `Java, C, C++, C#,..`
+
+*Lenguaje interpretado* : Toma el archivo y traduce línea por línea a lenguaje maquina. Ejemplos `PHP, Ruby, Python`
+
+`Python` usa ambos , pero eso depende de que procesos
+
 ### Ejecutar un programa en Python
 
 1. Si tienes Python instalado, como lo se ? . En la terminal poner   `python --version`
@@ -19,7 +27,22 @@
 
 3. Usando **Anaconda** / Júpiter Notebook
 
+#### Buenas Practicas
 
+En Python existe los PEP's, Mejoras de propuestas de Python, de los cuales
+al momento de codificar nos interesa PEP8.
+PEP8 Es una guía de codificación, la cual nos permite escribir código
+Python de una manera, mucho más legible y de forma consistente, a
+través de ciertas "reglas" y recomendaciones. Por ejemplo, en la guía
+podemos encontrar
+
+- utilizar espacios sobre tabs.
+- utilizar la nomenclatura de **snake case** para nombrar variables.
+- utilizar palabras en mayúsculas para las constantes.
+
+ **snake case** : una_palabra_muy_larga
+
+Para las clases : MiClaseConNombreMuyLargo
 
 ## Variables y Números
 
@@ -45,6 +68,13 @@ float
 > a + b  # Como en C# convierte implicitamente (a) de (int -> float)
 float
 ```
+
+**BONUS**
+
+````python
+#ASIGNACION MULTIPLE
+a , b, c = 10, "Juan", "Pedro"
+````
 
 
 
@@ -81,6 +111,8 @@ cadena = "Hola Mundo"
 'la Mu'
 > cadena[2:] # Todo a partir de la posicion 2
 'la Mundo'
+> cadena[:5] # Todos los elementos hasta la posicion 5 no inclusive
+'Hola'
 ````
 
 ### Funciones de cadenas
@@ -190,10 +222,29 @@ for color in colores
 x.clear()
 
 #Existen mas funciones
-#  Pertenece
+#  Pertenece (in)
 >>> elemento in conjunto
 true
+
+
+# SUBLISTAS
+cursos = ["a","b","c","d","e"]
+sub = cursos[0:3] # como en los strings 
+sub = cursos[:7] # equivale a cursos[0:7]
+sub = cursos[1:7:2] # desde / hasta / saltos
+sub = cursos[::-1] # INVERTIR LISTA
 ````
+
+#### Matriz
+
+````python
+fila1 = [10,20]
+fila2 = [30,40]
+matriz = [fila1, fila2]
+matriz[1][0] == 30
+````
+
+
 
 #### Pilas
 
@@ -205,11 +256,35 @@ Como una estructura de datos una Pila - LIFO
 
 #### Tuplas
 
-Una colección de elementos que no se pueden alterar.
+Una colección de elementos que <span style="background:yellow;">**no se pueden alterar**</span>. Son mas rápidas para la búsqueda de elementos
 
 ````python
-x = (1,2,3)
-x[0] = 1
+x = (1,2,3,4,5,6,7,8,9)
+x[0] == 1
+sub = x[:9:2] #los primeros 9 elementos de a 2 por 2
+
+#TIP
+tupla = (1,2,3,4)
+# Para que esta asignacion funcione deben tener igual cantidad de variables
+a, b, c, d = tupla # la tupla tiene 4 elementos
+
+tupla = (1,2,3,4,5,6)
+a, b, c, *d = tupla
+# a=1,b=2,c=3,d=[4,5,6]
+
+a, *b, c, d = tupla
+# a=1,b=[2,3,4],c=5,d=6 /python es inteligente
+
+
+- tuple() convierte una lista de elementos en una tupla
+tupla = tuple([1,2,3])
+# tupla == (1,2,3)
+
+- list() convierete una tupla a una nueva lista
+
+# BONUS
+Los strings pueden convertirse tanto en tuplas como en listas
+- zip(arr1,arr2) #devuelve una concatenacion, cortando la de mayor longitud
 ````
 
 #### Conjuntos
@@ -224,22 +299,73 @@ conj_color.add("negro")
 
 #### Diccionario
 
+Una estructura de datos distinta a tuplas o listas (dado que no esta indexado por números) sino (llave: valor) . Básicamente es un objeto JSON
+
 ````python
 #como un json (clave:valor)
 dic = {'color':'rojo', 'tipo':'toyotas'}
-dic['color'] = 'rojo'
-dic['black'] = 'negro' #Agregar elementos
-dic.pop['tipo'] #Borra este elemento y devuelve su valor 'toyotas'
-del(dic['tipo']) #alternatica de borrar
+#dic['color'] == 'rojo'
 
-for clave in dic
+#Agregar elementos, si no existe la key la agrega
+dic['black'] = 'negro'
+
+dic.pop['tipo'] #Borra este elemento y devuelve su valor 'toyotas'
+del dic['tipo'] #Alternativa de borrado
+dic.clear() ó dic = {} # Borrar todo el diccionario
+----
+
+diccionario = {"a":1,"b":2,"a":3}
+# NO hay error pero no pueden haber llaves duplicadas, en caso yo defina esto, automaticamente queda el ultimo valor
+
+"z" in diccionario #Toma como buscador las claves, en este caso la res='false'
+
+res = diccionario["z"] #Error, usar el de abajo
+#Igual al anteiror pero si hay error nos devuelve 'None'
+res = diccionario.get("z")
+#Ademas tiene un parametro opcional a devolver si no lo encuentra
+res = diccionario.get("z",0)
+
+# Si existe la clave 'z' cambia su valor. Si no lo agrega
+res = diccionario.setdefault("z",{})
+---
+
+
+# Keys
+dic.keys()
+
+# Values
+dic.values()
+
+# Items
+res = list(dic.items())
+res == [('a',1),('b',2),('c',3)]
+
+# Recorrer un diccionario, por clave
+for clave in dic:
 	print(clave)
-    
-for clave,valor in dic.items()
+
+# Recorrer de cada elemento (key:values) 
+for clave,valor in dic.items():
 	print(clave,valor)
+
+------------
+# Si ya no quiero trabajar con esta estructura pueso convertirla en lista o en tupla, Osea primero saco las keys o bien los values y apartir de ai
 ````
 
 ### Bucles y Condiciones
+
+#### None
+
+````python
+variable = None
+print(variable)
+#Python lo toma como un valor falso {None,0,[]}
+if(None):
+else
+	print("aca")
+````
+
+
 
 #### if-else
 
@@ -263,8 +389,16 @@ else						|		print("son iguales")
 	print("ninguna")		|		}else{
     						|		print("ninguna")
 							|		}
-							|	}		
+							|	}	
 ````
+
+#### No podía faltar el if ternario
+
+````python
+resultado = valor_si if condicion else valor_no
+````
+
+
 
 #### Bucles
 
@@ -273,6 +407,14 @@ else						|		print("son iguales")
 for elemento in lista:
     print(elemento)
 
+# Aca el 'num' seria un numero entero = 0, en cada iteracion aumenta en 1, automaticamente, podemos especificar num
+for num , letra in enumerate ( palabra ):
+	print (num , letra )
+
+#Especificar el valor inicial de 'num' aca empieza en '7'
+for num , letra in enumerate ( palabra,7 ):
+	print (num , letra )
+    
 # Funcionan el break y el continue  
 
 # WHILE
@@ -284,6 +426,7 @@ while (condicion):
 
 ````python
 # La funcion 'range'
+range(10) # == range(0,10,1)
 range(valorinicial,valorfinal,intervalo?opcional)
 range(3,8,2)
 3
@@ -291,18 +434,45 @@ range(3,8,2)
 7
 ````
 
-### Clases objetos y Funciones
+## Clases objetos y Funciones
 
-#### Clases
+### Clases
 
 ````python
 class Clasesilla:
-	color = 'blanco'
+	color = 'blanco' #es una variable de clase y pueden ser usada por cualquier instancia
 	precio = 100
     
 obj = Clasesilla() #instanciar un objeto
 obj.color #funciona como 'get' y 'set'
 
+--------------------------------------------
+--#Aca los atributos son estaticos,creo
+print(Clasesilla.color) # devuelve 'blanco'
+
+
+#METODOS ESTATICOS
+# TIP: no podemos usar variables creadas en la instancia
+# Si podemos utilizar variables de clase(Por que es estatico,crep)
+# Fijate que no uso 'self', osea es una metodo de la clase
+numero = 2
+@staticmethod
+def area(base,altura)
+	return (base - altura)/Triangulo.numero
+
+#METODOS de CLASE
+# [cls: hace referencia a la clase
+# [self: hace referencia a la instancia]
+class Circulo:
+    pi = 3.14159265
+    @classmethod
+    def area(cls,radio):
+        return cls.pi * radio**2
+
+
+--------------------------------------------
+#OBLIFATORIO:Todos los metodos deben recibir el paramtero self
+#Notar que no debo declarar como atributos 'nombre' ó 'edad'
 class Persona:
     #Constructor
     def __init__(self,nombre,edad):
@@ -313,10 +483,86 @@ class Persona:
         print("Hola me llamo",self.nombre)
         
 persona1 = Persona('Juan',37)  
-persona1.saludar()     
+persona1.saludar()#Notar que no se le pasa parametros
+
+-----#Algunas funcionalidades
+print(type(persona1))
+
+#Se puede generar atributos fuera de la clase como en PHP :v
+class Usuario:
+    def saludar(self):
+        print("Hola")
+	def mostrar_nombre(self):
+        print(self.nombre)
+        
+codi = Usuario()
+codi.nombre = 'codi'
+codi.mostrar_nombre()
+
+----
+#Constructor con valores por default
+    def __init__(self,nombre='',edad=''):
+        self.nombre = nombre
+        self.edad = edad
 ````
 
-#### Funciones
+#### Herencia
+
+````python
+class Animal:
+
+class Perro(Animal): #Poner entre parentesis la "clase Padre"
+    
+#HERENCIA MULTIPLE
+class Animal:
+class Mascota:
+
+class Perro(Animal,Mascota):
+# SUPERTIP : Las clases padres deben ser definidas antes que Perro
+# TIP2 : Si ambas clases padres tienen el mismo metodo, busca de izquierda a derecha. Pero si la define Perro se queda aca
+````
+
+#### Sobre escritura de métodos
+
+````python
+class Animal:
+	def dormir(self):
+        print("Dormir Animal")
+
+#Se trata como metodos estaticos cuando estan heredando     
+class Perro(Animal):
+	def dormir(self):
+        Animal.dormir(self)#Si hay parametros ,,,,
+        print("que eres un Perro")
+````
+
+> El verdadero constructor no es `__init__` tenerlo en cuenta
+
+#### La clase Object
+
+Cuando defines una clase esta se hereda de una clase común llamada 'Object'
+
+````python
+class Gato:
+    def ...
+    def __str__(self):
+        return self.nombre
+    
+#El str te mostraba el lugar en la memoria donde esta almacenado
+En este caso lo seteamos por el nombre
+    
+#Existe una segunda forma para crear clases
+class Pato(object): #Basicamente hereda de 'object'
+	def ...
+    
+# dict
+pato = Pato("Lucas")
+print(pato.__dict__) #Me muestra los atributos
+````
+
+
+
+### Funciones
 
 ````python
 def saludar():
@@ -331,6 +577,16 @@ def sumar(num1, num2):
     suma = num1 + num2
     return suma
 print("Operacion 4 + 5 = ",sumar(4,5))
+-------
+#Parametros Opcionales con valores por defecto
+def crear(nom,apell='Ninguno',edad=10):
+    return nom + apell + str(edad)
+crear("Codi","Facilito ")
+"CodiFacilito 10"
+#El orden es de derecha a izquierda
+
+#OJO : Se puede especificar que paramatro llevara valor
+crear(edad=7,nombre="Codi")
 
 ------------------------------------
 #Paso por valor , Paso por referencia
@@ -346,13 +602,176 @@ colores
 
 > TIP : Como en la guía de C# los objetos y los Arrays siempre se pasan por referencia OJO
 
+#### Cantidad indefinida de Parámetros
+
+````python
+#El asterisco agrupara todos los parametros en una tupla
+def suma(*args)
+	print(args)
+	total = 0
+	for valor in args:
+		total+=valor
+	return total
+	
+resultado = suma(10,20,30,40)
+print(resultado)
+
+# El uso de los asteristicos no me restringe tener solo un parametro, solamente debe cumplir que este al final
+def suma(param_req,*args):
+    return ...
+resultado = suma("algo",10,20,30)
+
+#Como Convencion en Python usar la palabra (args)
+
+# Convencion (**kwargs) podemos pasar un diccionario
+def users(**kwargs):
+    print(kwargs)
+users(cod=True,facilito=False)
+# {'cod': True, 'facilito':False}
+
+# TAmbien podemos combinar el (*) con el (**)
+````
+
+#### Como terminar una función
+
+Obviamente la identacion es las llaves ,pero veamos algunas excepciones
+
+````python
+def f():
+    print('hola')
+
+res = f() # Por defecto si la funcion 'f' no tiene return,se le asigna 'None'
+print(res)
+
+#Todo lo que va despues del return no se mira
+````
+
+##### Alcance de las variables
+
+````python
+animal = "Leon" #Variable global
+
+def f():
+	print(animal) #valor de halla arriba
+	animal = 'Ballena' #Variable loval
+    print(animal)
+    
+-----
+#Si quiero modificar el dato usamos la palabra 'global'
+animal = "Leon"
+
+def f():
+    global animal
+	animal = 'Ballena' 
+    print(animal)
+
+print(animal)
+def()
+````
+
 ##### Función Lambda
 
 ````python
+# lambda losParametros : 'valor del return'
 resultado = lambda numero : numero + 30
 resultado(10)
 
 resultado2 = lambda nume1, num2 : num1 + num2
 resultado2(10,20)
+````
+
+#### Funciones Anidadas
+
+````python
+def comenzar(lista):
+    
+    def reproducir():
+        """
+        Si quiero modificar lista uso la palabra clave nonlocal
+        nonlocal lista
+        lista = [1,2,3]
+        
+        """
+        for val in lista:
+            print(val)
+    print(lista)        
+    reproducir() #NO olvidar esta linea si no no se muestra nada        
+            
+lista = ['a','b','ooo']
+comenzar(lista)
+````
+
+#### Closures
+
+Cuando una función retorne otra función
+
+````python
+def f(mesaje):
+    mesaje = mensaje.title() #Imprime variable local
+    def m()
+    	print(mesaje)
+    return m
+
+#Como aprendimos anteriormente podemos guardar una funcion en una variable
+nf = f("Hola")
+nf()
+````
+
+#### Decoradores
+
+Sirve para reutilizar código
+
+````python
+#a, b, c
+#a(b) -> c
+
+def decorador(f):
+    def nuevaf():
+        print("Podemos agragar codigo antes")
+    	f()
+        print("Podemos agragar codigo despues")
+	return nuevaf
+
+@decorador #Ojo aca el nombre es igual a la otra funcion
+def funcion_a_decorar():
+    print("Esta es una funcion a decorar")
+    
+funcion_a_decorar()
+
+#Vamos por partes Gianpier me mareo , okey yo tambien estoy mareado
+1. Se ejecuta funcion_a_decorar() es un funcion que esta decorada por otra funcion pero esta es la principal
+2. Entonces como sera decorada, se ejecutara el decorador y se pasara como argumeto la funcion. Asi que basicamente miralo como que solo se ejecuta el decorador y que el parametro f es la funcion a decorar
+````
+
+### Generadores
+
+````python
+def tabla(numero,maximo=10):
+    for posicion in range(1,maximo+1)
+    	yield numero * posicion
+# yield seria como un return pero sin terminar la funcion
+        
+for resultado in tabla(9):
+    print(resultado)
+    
+---
+#OSea como retornan una lista
+def gen_basico():
+    yield "uno"   
+    yield "dos"
+    yield "tres"
+   
+for valor in gen_basico():
+    print(valor)  # uno, dos, tres
+    
+````
+
+Bonus
+
+````python
+Podemos trabajar con la documentación a través de su atributo __doc__
+
+print(mi_funcion.__doc__)
+
 ````
 

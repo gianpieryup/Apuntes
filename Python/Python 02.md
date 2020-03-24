@@ -21,6 +21,11 @@ usuarioP = modulo.Persona("Pedro")
 # Importar solo una funcion o clase del fichero 'modulo'
 from modulo import saludar
 saludar("Jorge")
+#Puedo simplificar, si quiero multiples
+from modulo import (suma,resta,mul)
+
+--#Puedo importar todos con la misma forma
+from modulo import *
 
 #opcional renombrar la funcion
 from modulo import saludar as quehay
@@ -56,6 +61,92 @@ Podemos desinstalarlo si ya no queremos el modulo
 ````shell
 $ pip uninstall camelcase
 ````
+
+#### Archivos py
+
+Cuando importamos un modulo en otro archivo se creara una carpeta llamada `__pycahe__`  que seria el modulo compilado a código binario. Esto facilita ya que no estará compilando a código maquina a cada rato, si no leera el archivo ejecutable
+
+Este archivo se crea cuando ha sido importado por primera vez o cuando el modulo a sido modificado.
+
+#### Atributo `__name__`
+
+A diferencia de `C` no tenemos una función principal `main` ,podemos reconocer cual es el archivo que se esta ejecutando
+
+````python
+if __name__ == '__main__':
+    print("Yo soy el archivo principal")
+else:
+    print("Esto como modulo")
+````
+
+#### Paquetes
+
+Es un folder o carpeta que tiene muchos módulos. Empecemos, debemos crear un archivo llamado `__init.py` junto con todos los módulos(`aves.py` e `felinos.py`) en la misma ubicación. Todos estos archivos los guardo en una carpeta ,ejem `animales`
+
+En el archivo principal importo la carpeta animales
+
+````python
+# from elPaquete.elarchivo
+from animales.aves import Pinguino
+pinguino = Pinguino()
+````
+
+Y que pasa con el archivo `__init.py` esta en blanco?? . Lo podemos rellenar
+
+````python
+# En __init.py
+print("Este es un mensaje de init")
+#Osea esto siempre se ejecutara siempre que se importe el `paquete` animales
+# Podemos poner todos los imports en este archivo 
+# Podemos poner la conexion a la base de datos asi no tengo que hacerlo en cada modulo
+# Podemos definir funciones
+````
+
+#### Anotaciones
+
+Las anotaciones son **únicamente de carácter informativo**
+
+````python
+def saludo(nombre : str )-> None:
+	print("Hola" + nombre)
+    
+#Informamos que es 'str' un string
+#Podemos especificar los siguientes: str,int,float y bool
+#Informamos el tipo de dato que retorna (->)
+#None : como void
+def suma(num1 : int,num2 : int = 100)-> int:
+    return num1+num2
+print(suma(56.8)) #Puede recibir cualquier tipo
+````
+
+#### comprehension
+
+````python
+lista = []
+
+for x in range(0,101):
+    lista.append(x)
+print(lista)
+
+#PODEMOS obtener el mismo resultado en menos lineas
+# Dependiendo puede ser [],() o {}
+# ['valor a almacenar' | 'ciclo']
+estructura = [x for x in range(0,101)]
+print(estructura)
+
+# Tuplas
+# ['valor'|'ciclo' |'condicion']
+estructura = tuple((x for x in range(0,101) if x % 2 == 0 ))
+print(estructura)
+
+#Utiliza esta forma cuando es simple el algoritmo
+# Diccionario
+dic = {indice:valor for indice,valor in enumerate(estructura)}
+````
+
+
+
+
 
 ## Sección 10 : Ficheros de texto
 
@@ -248,3 +339,4 @@ conexion.commit()
 conexion.close()
 ````
 
+Algunos ejemplos
