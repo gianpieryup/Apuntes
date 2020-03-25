@@ -340,3 +340,18 @@ conexion.close()
 ````
 
 Algunos ejemplos
+
+
+
+## Sección 15: Interfaz gráfica con el módulo tkinter
+
+Vendría a ser como el `Windos form de C#`
+
+````python
+import tkinter
+raiz = tkinter.Tk()
+raiz.title("Mi programa") #Este es el titulo del cuadro,no en el contenido
+
+raiz.mainloop()
+````
+
