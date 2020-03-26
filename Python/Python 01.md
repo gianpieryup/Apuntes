@@ -226,6 +226,8 @@ x.clear()
 >>> elemento in conjunto
 true
 
+# quitar el ultimo, esto altera la lista original
+.pop() #devuelve el ultimo
 
 # SUBLISTAS
 cursos = ["a","b","c","d","e"]
@@ -749,13 +751,22 @@ funcion_a_decorar()
 def tabla(numero,maximo=10):
     for posicion in range(1,maximo+1)
     	yield numero * posicion
-# yield seria como un return pero sin terminar la funcion
-        
+# yield seria como un return pero sin terminar la funcion, es como retornar una lista de elementos
+"""
+Equivale a:
+def tabla(numero,maximo=10):
+	res = []
+    for posicion in range(1,maximo+1)
+    	res = res.append(numero * posicion)
+    return res	
+"""
+ 
+    
 for resultado in tabla(9):
     print(resultado)
     
 ---
-#OSea como retornan una lista
+#Osea como retornan una lista
 def gen_basico():
     yield "uno"   
     yield "dos"
@@ -772,6 +783,5 @@ Bonus
 Podemos trabajar con la documentación a través de su atributo __doc__
 
 print(mi_funcion.__doc__)
-
 ````
 

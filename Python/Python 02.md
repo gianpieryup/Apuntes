@@ -355,3 +355,138 @@ raiz.title("Mi programa") #Este es el titulo del cuadro,no en el contenido
 raiz.mainloop()
 ````
 
+## Sección 16: Generar documentación automáticamente
+
+#### Docstrings
+
+````python
+def saludar(nombre):
+    """
+    Este texto de ayuda aparecera si ejecuto(**)
+    """
+    print("Hola", nombre)
+
+(**) help(saludar)
+
+class Saludos:
+    """
+    Texto sobre la clase
+    """
+    def m(self,nombre):
+        """Sobre la funcion"""
+        print(nombre)
+        
+(**) help(Saludos)        
+````
+
+#### pydoc
+
+Generar documentación automática desde la consola o terminal
+
+````shell
+Sale en la terminal
+$ pydoc ruta_del_fichero
+
+Se genera un archivo .html con la documentacion
+$ pydoc -w ruta_del_fichero
+
+Para salir Crtl + z  ó q
+````
+
+## Sección 17 - Pruebas Automáticas
+
+#### Doctest
+
+Generar pruebas dentro de la documentación, se ponen en el operador `>>>`
+
+````python
+def sumar(num1,num2):
+	"""
+	Esta es la documentacion de la funcion
+	Recibe dos parametros y devuelve la suma
+	
+	>>> sumar(4,3)
+	7
+	
+	>>> sumar(5,4)
+	9
+	
+	>>> sumar(1,3)
+	7
+	
+	"""
+    return num1+num2
+
+resultado = sumar(2,4)
+print(resultado)
+
+#Para que se ejecute las pruebas
+import doctest
+doctest.testmod()
+
+-----------------------------------------
+#En la terminal, no olvidar (-v) para ejecutar las pruebas
+$ python sumar.py -v
+````
+
+#### Unittest
+
+Sirve para crear pruebas dentro del propio código
+
+````python
+def multiplicar(num1,num2):
+	return num1*num2
+
+import unittest
+class pruebas(unittest,TestCase):
+    def test(self):
+        self.assertEqual(sumar(2,4,8))
+        
+if __name__ == '__main__':
+    unittest.main()
+````
+
+
+
+## 18 - Funciones Avanzadas
+
+#### Funciones Generadoras
+
+````
+range(4) //empieza de 0
+
+range(0,4) //de 0 a 4
+
+ramge(0,9,2) // de 0 a 9 , saltando de a 2s
+````
+
+#### Filter
+
+````python
+# La 'funcion' retorna un booleano
+lista_filtrada = filter(funcion,lista)
+resultado = list(lista_filtrada)
+````
+
+#### Map
+
+````python
+# La 'fucion' debe retornar algo
+lista_mapeada = map(funcion,lista)
+resultado = list(lista_mapeada)
+````
+
+> TIP : Al contrario de crear una `def funcion: ...`  Usamos una función lambda
+
+````python
+lista_res = list(map(lambda num : num *2),lista)
+````
+
+
+
+
+
+
+
+
+
