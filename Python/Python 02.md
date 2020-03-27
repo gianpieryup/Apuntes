@@ -339,7 +339,7 @@ conexion.commit()
 conexion.close()
 ````
 
-Algunos ejemplos
+Algunos ejemplos (Pendiente**NO olvidar screenshots del select**)
 
 
 
@@ -350,7 +350,99 @@ Vendría a ser como el `Windos form de C#`
 ````python
 import tkinter
 raiz = tkinter.Tk()
-raiz.title("Mi programa") #Este es el titulo del cuadro,no en el contenido
+raiz.title("Mi programa") #Como en html
+#Esto de arriba siempre debe estar
+-----------------------
+
+# creamos el componente FRAME [body en HTML]
+frame = tkinter.Frame(raiz)
+frame.config(bg="blue",width=400,height=300)#Fondo y tamaño
+frame.pack() #mostrar por pantalla
+#Es como una caja centrada de color azul,
+
+# creamos el componente LABEL (etiqueta) [span en HTML]
+texto = "Hola Mundo"
+etiqueta = tkinter.label(raiz,text:texto) #texto
+#Color/fondo/tipografia,tamaño
+etiqueta.config(fg="green",bg="lightgrey",font=("Cortana",30))
+etiqueta.pack() #mostrar por pantalla
+
+# creamos el componente ENTRY [input en HTML]
+# Entrada de datos por teclado
+entrada = tkinter.Entry(raiz)
+#justificacion/tipo(show:"*")
+entrada.config(justify="center",show="*")
+entrada.pack()
+
+# creamos un componente TEXT [texArea en HTML]
+entrada = tkinter.Text(raiz)
+# Ancho/Alto/padx y pady : Padding/selectbackdroom: color al seleccionar
+entrada.config(width=20, heigth=10,font=("Verdana",15),padx=10,pady=10, selectbackground="lightgrey")
+entrada.pack()
+
+# Componente Butom [Butom en HTML]
+def accion():
+    print("Hola mundo")
+# command: funcion que se ejecutara
+botom = tkinter.Button(raiz,text="Ejecutar",command=accion)
+botom.config(fg="green")
+botom.pack()
+
+# Componente RadioButom[igual que HTML]
+def seleccionar():
+    print(opcion.get())
+#Se guarda en la variable 'opcion'
+opcion = tkinter.IntVar()
+
+radiobutton1 = tkinter.Radiobutton(raiz,text="Opcion 1",variable=opcion,value=1,command=seleccionar)
+radiobutton1.pack()
+
+radiobutton2 = tkinter.Radiobutton(raiz,text="Opcion 2",variable=opcion,value=2,command=seleccionar)
+radiobutton2.pack()
+
+# Componente ChekButton[igual que HTML]
+def verificar():
+    valor = check1.get()
+    if (valor == 1):
+        print("El check esta activado")
+    else:
+        print("El check esta desactivado")
+
+check1 = tkinter.IntVar()
+# onvalue: valor si esta asignado /offvalue : lo contrario
+boton1 = tkinter.Checkbutton(raiz, text="Opcion 1",variable=check1,onvalue=1,offvalue=0,command=verificar)
+boton1.pack() #empaqueta el tag en un div, ponele!!
+
+# Componente MessageBox[igual que HTML]
+from tkinter import messagebox
+def avisar():
+    tkinter.messagebox.showinfo("Titulo","Mensaje con la info")
+
+boton = tkinter.Button(raiz,text="Pulsar para aviso",command=avisar)
+boton.pack() #empaqueta el tag en un div, ponele!!
+
+# Componente MessageBox para una desicion[igual que HTML]
+from tkinter import messagebox
+def avisar():
+    #Se crea el Messagebox
+    resultado = tkinter.messagebox.askquestion("Advertencia PAPU","¿Quieres borrar este fichero?")
+    if resultado == "yes":
+        print("Se, borro ")
+    else:
+        print("No, no quiero borrar")
+
+#Botom ya echo anteriormente    
+boton = tkinter.Button(raiz,text="Pulsar para aviso",command=avisar)
+boton.pack() #empaqueta el tag en un div, ponele!!
+
+
+# Componente Filedialog para abrir un fichero [input=file]
+from tkinter import filedialog
+def abrirfichero:
+    rutafichero = filedialog.askopenfilename(title="Abrir un fichero")
+    print(rutafichero)
+boton = tkinter.Button(raiz,text="Seleccionar",command=abrirfichero)
+boton.pack()
 
 raiz.mainloop()
 ````
@@ -482,9 +574,142 @@ resultado = list(lista_mapeada)
 lista_res = list(map(lambda num : num *2),lista)
 ````
 
+## 19 - Módulo numpy
 
+Modulo de `arrays/matrices` , nada más :slightly_smiling_face: :slightly_smiling_face:
 
+#### Creando arrays
 
+Los <span style="background:yellow;">Arrays </span> que traducido al español seria <span style="background:yellow;">Matrices</span> ,muchas veces se trata a los `arrays` de `1xn` igual que una `lista` pero ten presente que es una <span style="background:yellow;">Matriz de  1xn</span>  , solo eso :smiley:
+
+````python
+import numpy as np
+np.zeros(4) # Un array de 4 ceros,ojo es decimal
+np.ones(4) # Un array de 4 1'nos
+np.arange(5) # [0..4]
+np.arange(2,20,3) # [2,5,8,11,14,17]
+
+#APA la PAPA un 'ARRAY' != !LISTA
+lista1 = [1,2,3,4]
+array1 = np.array(lista1)
+print(type(lista1))
+print(type(array1))
+
+#Array doble
+lista1 = [1,2,3,4]
+lista2 = [5,6,7,8]
+lista_doble = (lista1,lista2)
+array_doble = np.array(lista_doble)
+print(array_doble)
+
+#Informacion del array
+print(array_doble.shape)
+(2,4) #info: 2 filas y 4 columnas
+
+#Tipo de dato que contiene el array
+array_doble.dtype
+````
+
+#### Operaciones
+
+````python
+# Operaciones con arrays
+import numpy as np
+#Ya estaras contento transformaste mi lista en un array de 1x4
+array1 = np.array([1,2,3,4])
+
+#Que ganamos con esto? Pues trata de duplicar si un for
+array1*2 #Multiplica a cada elemento por 2
+#TOMALA mas intuitivo y mejor
+
+array1+4 #+4 a cada elemento
+#TIP: estas operaciones no persisten en el array
+array1 = array1 +4 #SOl
+
+lista1 = [1,2,3,4]
+lista2 = [5,6,7,8]
+lista_doble = (lista1,lista2)
+array_doble = np.array(lista_doble)
+
+array_doble + 5 # (+5) a todos los elementos de la matriz
+array_doble ** 2 # al cuadrado todos
+````
+
+#### Indexación
+
+````python
+import numpy as np
+array = np.arange(0,11)
+
+#cortar arrays
+array[0:3] # [0,1,2]
+array[:] # ==array
+
+array_copia = array.copy() # Sin el copy es igual
+#TIP : la copia no guarda ninguna relacion con el original, osea que los cambios de la copia no persisten en el original
+
+array2 = np.array(([1,2,3],[4,5,6],[7,8,9]))
+array2[1] # [4,5,6]
+array2[1][2] # 6
+````
+
+#### Matrices traspuestas
+
+````python
+array = np.arange(15).reshape((3,5))
+"""
+Del [0..14] ordenalos en 3:filas y 5:columnas
+array==	[[ 0  1  2  3  4]
+ 		 [ 5  6  7  8  9]
+ 		 [10 11 12 13 14]]
+"""
+array_tras = array.T #La transpuesta
+````
+
+#### Entrada y salida con arrays
+
+````python
+array1 = np.arange(6) 
+
+np.save('array1s',array1)
+np.load('array1s.npy') #recuperar el valor del array
+
+array1 = np.arange(6) 
+array2 = np.arange(8)
+np.savez('arrays',x=array1,y=array2) #Guardamos 2 arrays
+
+array_recuperado = np.load('arrays.npz') #Recuperamos los arrays
+print(array_recuperado['x'])
+
+#Tambien podemos guardarlo en un fichero de texto
+np.savetxt('mificheroarray.txt',array2,delimiter=',')
+res = np.loadtxt('mificheroarray.txt',delimiter=',')
+print(res)
+````
+
+#### Funciones con arrays
+
+````python
+import numpy as np
+array = np.arange(5)
+res = np.sqrt(array)#Raiz cuadrada a cada elemento
+print(res)
+
+# rand(d) d: la dimension del array
+ran = np.random.rand(5)#Numeros random entre [0, 1)
+print(ran)
+
+lista = [5,6,7,8,9]
+array2 = np.array(lista)
+
+#Suma cada elemento de ambos arrays por posicion
+suma = np.add(array,array2)
+print(suma)
+
+#El maximo entre dos, toma cada elemento para compararlos
+maximo = np.maximum(array,array2)
+print(maximo)
+````
 
 
 
