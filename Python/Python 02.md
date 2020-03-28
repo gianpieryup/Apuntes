@@ -62,6 +62,9 @@ Podemos desinstalarlo si ya no queremos el modulo
 $ pip uninstall camelcase
 ````
 
+Como en `NodeJS` en la carpeta : Se encuentran todos los módulos que están disponibles a usar en cualquier ubicación desde consola
+> C:\Users\HP\AppData\Local\Programs\Python\Python38-32\Lib\site-packages
+
 #### Archivos py
 
 Cuando importamos un modulo en otro archivo se creara una carpeta llamada `__pycahe__`  que seria el modulo compilado a código binario. Esto facilita ya que no estará compilando a código maquina a cada rato, si no leera el archivo ejecutable
@@ -710,8 +713,4 @@ print(suma)
 maximo = np.maximum(array,array2)
 print(maximo)
 ````
-
-
-
-
 
