@@ -472,3 +472,51 @@ np.random.randint(1,10,3)
 array([6, 3, 7])
 ````
 
+## 21 - HTML y EXCEL
+
+#### HTML
+
+````python
+import pandas as pd
+url = 'https://es.wikipedia.org/wiki/Anexo:Finales_de_la_Copa_Mundial_de_F%C3%BAtbol'
+
+# ME devuleve una lista de todos los DataFrames que hay en la pagina
+dataframes = pd.io.html.read_html(url)
+
+# Elegimos el que nesecitamos
+dataframes_futbol = dataframes[0]
+
+# En el video original los nombres de las columnas eran 0 1 2 3 .. Y la primera fila tenia los verdaderos nombres de las columnas para arreglar esto se hicieron los siguientes pasos 
+
+#La primera fila
+dataframes_futbol.loc[0]
+
+# Se convierten a diccionario
+dict(dataframes_futbol.loc[0])
+
+#Renombrar las columnas
+#dataframes_futbol = dataframes_futbol.rename(dict(dataframes_futbol.loc[0]))
+
+#Tendriamos duplicado con la primera fila
+# Borrar una fila
+#dataframes_futbol = dataframes_futbol.drop(0)
+
+# Borrar una columna
+dataframes_futbol = dataframes_futbol.drop('Notas',axis=1)
+````
+
+#### EXCEL
+
+````python
+# Leer un Excel (.xlsx)
+import pandas as pd
+
+# En Terminal,me salia un error que no tenia la libreria 'xldr'
+# pip install xlrd
+# Y todo ok
+dataset = pd.read_excel("data.xlsx")
+
+print(dataset)
+````
+
+## 22 - Tratamiento de datos
