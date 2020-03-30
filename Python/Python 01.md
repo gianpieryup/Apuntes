@@ -1,4 +1,4 @@
-<img src="Python-logo.png" alt="Python-logo" style="zoom:25%;"/>
+<img src="Python-logo.png" alt="Python-logo" style="zoom:18%;"/>
 
 # Introducción a Python
 

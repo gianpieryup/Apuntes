@@ -520,3 +520,237 @@ print(dataset)
 ````
 
 ## 22 - Tratamiento de datos
+
+#### Unión de dataframes
+
+````python
+import pandas as pd
+
+dataframe1 = pd.DataFrame({'c1': ['1','2','3'] ,'clave':['a','b','c'] })
+
+dataframe2 = pd.DataFrame({'c2': ['4','5','6'] ,'clave':['c','b','e'] })
+
+# Es como un INNER JOIN de dos tablas,con la condicion de que tengan el mismo valor en la columna (*), 'on = (*)'
+dataframe3 = pd.DataFrame.merge(dataframe1,dataframe2,on='clave')
+
+# LEFT JOIN, how :left
+dataframe4 = pd.DataFrame.merge(dataframe1,dataframe2,on='clave',how='left')
+# how [left/rigth/outer] cuando no hay coincidencias lo rellena con NaN
+````
+
+#### Concatenación de datos
+
+Como en las listas con `+`
+
+````python
+import pandas as pd
+import numpy as np
+
+array1 = np.arange(9).reshape(3,3)
+np.concatenate([array1,array1])
+
+# Concatenacion en el eje x
+np.concatenate([array1,array1], axis=1)
+
+serie1 = pd.Series([1,2,3],index=['a','b','c'])
+serie2 = pd.Series([4,5,6],index=['d','e','f'])
+pd.concat([serie1,serie2])
+
+#Podemos añadir una clave de mayor nivel
+pd.concat([serie1,serie2], keys=['serie1','serie2'])
+
+#Dataframes
+dataframe1 = pd.DataFrame(np.random.rand(3,3),columns=['a','b','c'])
+dataframe2 = pd.DataFrame(np.random.rand(2,3),columns=['a','b','c'])
+
+dataframe_concat = pd.concat([dataframe1,dataframe2])
+
+# Podemos ignorar los indices de los elementos iniciales y solo enumerar el nuevo dataframe
+dataframe_concat_i = pd.concat([dataframe1,dataframe2], ignore_index=True)
+````
+
+#### Combinar Series y DataFrames
+
+````python
+import pandas as pd
+import numpy as np
+
+serie1 = pd.Series([1,2,np.nan])
+serie2 = pd.Series([4,5,6])
+
+# a una serie la concatenas con otra , Si tiene coincidencias en los indices se queda con la primera(obio es un metodo que se le hace ala primera serie), si tiene valores 'NaN' los reemplaza por el segundo
+serie3 = serie1.combine_first(serie2)
+
+# Con dataFrames
+lista_valores = [1,2,np.nan]
+dataframe1 = pd.DataFrame(lista_valores)
+lista_valores_2 = [4,5,6]
+dataframe2 = pd.DataFrame(lista_valores_2)
+
+# Convinar el primero con el segundo(importa el orden)
+condataframe = dataframe1.combine_first(dataframe2)
+````
+
+
+
+#### Duplicados en DataFrames
+
+````python
+import pandas as pd
+lista_valores = [[1,2],[1,2],[5,6],[5,8]]
+
+lista_indices = list('mnop')
+lista_columnas = ['valor1','valor2']
+dataframe = pd.DataFrame(lista_valores,index=lista_indices,columns= lista_columnas)
+
+#eliminar las filas que tengan valores duplicados, dejando solo una
+dataframe.drop_duplicates()
+
+# Si no quiero repetidos en la columna 'valor1', Borra las filas cuyo valor en la 'column1' se repita.Se queda con el primer elemento en no repetirse
+dataframe.drop_duplicates(['valor1'])
+
+# Si queremos mantener no el primero si no el ultimo
+dataframe.drop_duplicates(['valor1'],keep='last')
+````
+
+#### Reemplazar datos en Series
+
+````python
+import pandas as pd
+serie = pd.Series([1,2,3,4,5],index=list('abcde'))
+
+# Reeemplaza el elemento 1 por el 6
+# No persiste en el original
+serie.replace(1,6)
+
+# Podemos reemplazar multiples valores de la lista,con un diccionario
+serie.replace({2:8,3:9})
+````
+
+#### Renombrar índices
+
+````python
+import pandas as pd
+import numpy as np
+
+lista_valores = np.arange(9).reshape(3,3)
+lista_indices = list('abc')
+
+dataframe = pd.DataFrame(lista_valores,index=lista_indices)
+
+#1forma, los cambios en los indices persisten
+nuevos_indices = dataframe.index.map(str.upper)
+dataframe.index = nuevos_indices
+
+#2 forma con la funcion rename
+dataframe = dataframe.rename(index=str.lower)
+
+# pero y valores distintos??, atraves de un diccionario se definira la relacion de los cambios, No persiste los cambios
+nuevos_indices = {'a':'f','b':'g','c':'h'}
+dataframe = dataframe.rename(index = nuevos_indices)
+
+# solo uno con el diccionario
+# SI persiste el cambio
+nuevos_indices = {'f':'j'}
+dataframe.rename(index=nuevos_indices, inplace=True)
+````
+
+#### Agrupar datos en categorías
+
+````python
+import pandas as pd
+import numpy as np
+
+precios = [42,55,48,23,5,21,88,34,26]
+rango = [0,10,20,30,40,50,60,70,80,90,100]
+
+# Nos dice en que rango esta cada elemento
+precios_con_rango = pd.cut(precios, rango)
+
+#Informacion de la cantidad de elementos que hay en cada RANGO
+pd.value_counts(precios_con_rango)
+````
+
+#### Filtrar datos en DataFrames
+
+````python
+import pandas as pd
+import numpy as np
+
+# crea una lista de numeros aleatorios en (0,1] , con 10 filas y 3 columnas 
+lista_valores = np.random.rand(10,3)
+
+dataframe = pd.DataFrame(lista_valores)
+
+#Seleccionar una columnas del dataframe
+columna = dataframe[0] 
+
+# Filtrar los valores de la columna(seria como una serie)
+columna[columna > 0.70]
+
+# tambien a nivel de datframe, los que no cumplan seran reemplazadas por 'NaN'
+dataframe[dataframe > 0.70]
+````
+
+#### Combinación de elementos
+
+````python
+import pandas as pd
+import numpy as np
+
+# crea una lista de numeros aleatorios en (0,1] , con 10 filas y 3 columnas 
+lista_valores = np.arange(25).reshape(5,5)
+
+dataframe = pd.DataFrame(lista_valores)
+
+# Una permutacio aleatoria de la lista [0,1,2,3,4]
+combinacion_aleatoria = np.random.permutation(5)
+
+# Reordenar segun una permutacion de indices las filas del dataframe
+dataframe.take(combinacion_aleatoria)
+````
+
+#### Agrupación en DataFrames
+
+````python
+#Agrupacion o en SQL (GROUP BY)
+import pandas as pd
+import numpy as np
+
+lista_valores = {'clave1':['x','x','y','y','z'], 
+                 'clave2':['a','b','a','b','a'],
+                'datos1':np.random.rand(5),
+                'datos2':np.random.rand(5)}
+
+# Podemos crear un Dataframe a partir de un diccionario
+dataframe = pd.DataFrame(lista_valores)
+# Los indices se asignan por defecto 0,1,2
+
+# Esto seria en SQL: "SELECT datos1 GROUP BY clave1"
+grupo1 = dataframe['datos1'].groupby(dataframe['clave1'])
+
+# Como a lo de arriba le falta una funcion de agregacion, en el SELECT se corrige asi:
+# SELECT AVG(datos1) GROUP BY clave1
+grupo1.mean()
+````
+
+
+
+#### Agregación en DataFrames
+
+````python
+# Osea como un group by de cada columna, no como el anterior que habia que especificar el SELECT
+import pandas as pd
+import numpy as np
+
+lista_valores = [[1,2,3],[4,5,6],[7,8,9],[np.nan,np.nan,np.nan]]
+lista_columnas = list('abc')
+dataframe = pd.DataFrame(lista_valores,columns=lista_columnas)
+
+# Agrupa por columnas con una funcion de agregacion,(obvia los valores nulos)
+dataframe.agg(['sum','min'])
+
+# Agrupa por filas,(los valores nulos,los entiende como 0)
+dataframe.agg('sum',axis=1)
+````
+
