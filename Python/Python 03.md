@@ -463,10 +463,9 @@ dataframe = series.unstack()
 dataframe.stack()
 ````
 
-**BONUS**
+<span style="background:yellow;">**BONUS** : Numeros random enteros </span>
 
 ````python
-#Numeros random enteros
 # randint(num_minimo,num_max,cantidad_numeros)
 np.random.randint(1,10,3)
 array([6, 3, 7])
@@ -754,3 +753,190 @@ dataframe.agg(['sum','min'])
 dataframe.agg('sum',axis=1)
 ````
 
+
+
+## 23 - Módulos seaborn y matplotlib
+
+**seaborn** : Es una librería o un modulo python para hacer gráficos estadísticos en python. Esta construida sobre el modulo de `matplotlib` y esta integrada con la estructura de datos `Pandas` 
+
+#### Instalaciones de seaborn y matplotlib
+
+````shell
+En mi compu en consola
+$ pip install seaborn
+
+Para usarlo en anaconda
+$ conda install seborn
+````
+
+#### Histogramas
+
+Un histograma es una representación grafica de una variable o de unos datos en forma de barra, donde la superficie de cada barra es proporcional a la frecuencia de los valores representados
+
+````python
+import pandas as pd
+import numpy as np
+
+import matplotlib as mpl
+import seaborn as sns
+
+#Para ver los graficos, esto es en notbook
+%matplotlib inline
+
+datos1 = np.random.randn(100)
+
+# Ver el 'histograma' del array 'datos1'
+# El eje y : es la cantidad de valores
+# El eje x : valores
+mpl.pyplot.hist(datos1)
+
+# Con sns
+sns.distplot(datos1)
+# Podemos especificar el color
+sns.distplot(datos1, color="green")
+# alpha varia de 0 a 1 es el brillo
+mpl.pyplot.hist(datos1, color ="grey",alpha=0.5)
+
+datos2 = np.random.randn(80)
+mpl.pyplot.hist(datos2,color="yellow",alpha=0.4)
+
+# Poner los dos graficos superpuestas
+# bins : la cantidad de barras
+mpl.pyplot.hist(datos1, color="green",alpha=0.3, bins=20)
+mpl.pyplot.hist(datos2, color="blue",alpha=0.3, bins=20)
+
+# Con 'seaborn'
+datos3 = np.random.randn(1000)
+datos4 = np.random.randn(1000)
+# Datos 3 arriba
+# Datos 4 deracha
+# los puntos azules son las coincidencias
+sns.jointplot(datos3,datos4)
+
+# Las coincidencias se ven mejor con colores
+sns.jointplot(datos3,datos4,kind='hex')
+````
+
+#### Distribuciones
+
+````python
+# combincacion de estilos
+import pandas as pd
+import numpy as np
+import matplotlib as mpl
+import seaborn as sns
+%matplotlib inline
+
+datos = np.random.randn(100)
+#Curva con los limites maximos de cada area
+sns.distplot(datos)
+
+# Quitar las barras y dejar la curva
+sns.distplot(datos,rug=False, hist=False)
+
+# barras y curva de distinto color yh mas propiedades
+argumentos_curva = {'color':'black', 'label':'Curva'}
+argumentos_histograma = {'color':'grey', 'label':'Histograma'}
+sns.distplot(datos, bins=25,kde_kws=argumentos_curva,hist_kws=argumentos_histograma)
+
+# Con series es igual
+serie = pd.Series(datos)
+sns.distplot(serie, bins=25, color="green")
+````
+
+#### Gráficos de caja
+
+**Diagrama de caja**: Sirve para representar gráficamente una serie de datos numéricos a través de sus cuartiles
+
+````python
+import pandas as pd
+import numpy as np
+import matplotlib as mpl
+import seaborn as sns
+%matplotlib inline
+
+datos = np.random.randn(100)
+sns.boxplot(datos)
+
+# Mirar en wikipedia 
+# La caja azul representa el 50% de los datos y la linea negra del medio donde esta la "media"
+# Vemos entonces rapidamente el 25% - 50% - 75% -100% de los datos , Entre que valores estan
+````
+
+#### Regresiones lineales :fire: :fire: 
+
+ En estadística el análisis de regresión es un proceso estadístico  para estimar las relaciones entre variables
+
+ Es decir : entender como varia el valor de una variable en función del valor de otras variables
+
+````python
+#Regresion lineal o Ajuste lineal
+import pandas as pd
+import numpy as np
+import matplotlib as mpl
+import seaborn as sns
+%matplotlib inline
+
+#Este es un dataset que viene precargado en el modulo
+propinas = sns.load_dataset('tips')
+propinas.head()
+
+# EJe X, Eje Y , DataSet
+sns.lmplot('total_bill','tip',propinas)
+
+# Podemos coloresar la recta y/o los puntos
+# Con diccionarios , como en la seccion anterior
+sns.lmplot('total_bill','tip',propinas,scatter_kws={'marker':'o','color':'green'}, line_kws= {'color':'blue'})
+
+# Quitar la linea, solo los puntos
+sns.lmplot('total_bill','tip',propinas,fit_reg=False)
+
+# creamos una nueva columna con los porcentajes
+# Seria el porcentaje de la propina con respecto a la compra realizada
+propinas['porcentaje'] = 100 * propinas['tip']/ propinas['total_bill']
+propinas.head()
+
+sns.lmplot('size','porcentaje',propinas)
+
+# Los datos los separa por 'sex' => x y o
+sns.lmplot('total_bill','porcentaje',propinas,hue='sex',markers=['x','o'])
+
+# Por dia de la semana
+sns.lmplot('total_bill','porcentaje',propinas,hue='day')
+````
+
+#### Mapas de calor
+
+Mapa de calor (en ingles : heatmap). Es una representación grafica de datos, por colores específicamente
+
+````python
+import pandas as pd
+import numpy as np
+import matplotlib as mpl
+import seaborn as sns
+%matplotlib inline
+
+vuelos = sns.load_dataset('flights')
+vuelos.head()
+
+# Para hacer el mapa de calor nesecitamos una matriz
+# La tabla ordenado de esta forma , solo con numeros, me sirve
+vuelos = vuelos.pivot('month','year','passengers')
+
+sns.heatmap(vuelos)
+
+# Podemos ver los valores en el mapa de calor
+sns.heatmap(vuelos,annot=True,fmt='d')
+
+# Podemos definir el valor central del mapa de calor
+valor_central = vuelos.loc['May'][1956]
+
+sns.heatmap(vuelos,center=valor_central,annot=True,fmt='d')
+
+# Podemos cambiar el sentidon de la barra de colores que esta pegada a la deracha
+sns.heatmap(vuelos,center=valor_central,annot=True,fmt='d',cbar_kws={'orientation':'horizontal'})
+````
+
+> BONUS : Consultar la documentación en **seaborn.heatmap**
+
+`np.random.randn(1000)` : Significa 1000 valores que sigan una distribución normal

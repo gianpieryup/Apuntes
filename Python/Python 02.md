@@ -322,7 +322,7 @@ import sqlite3
 # Nombre de la base de datos si existe de lo contrario lo crea
 conexion = sqlite3.connect("mydatabase.db")
 
-#Para ejecutar sentencias sql con `execute`: SELECT, INSERT,UPDATE,DELETE
+#Para ejecutar sentencias sql con `execute`: SELECT, INSERT,UPDATE,DELETE, WHERE , ORDERBY
 cursor = conexion.cursor()
 cursor.execute("CREATE TABLE personas(nombre TEXT,apellido TEXT,edad INTEGER)")
 
@@ -342,7 +342,21 @@ conexion.commit()
 conexion.close()
 ````
 
-Algunos ejemplos (Pendiente**NO olvidar screenshots del select**)
+Algunos ejemplos
+
+````python
+import sqlite3
+conexion = sqlite3.connect("mydatabase.db")
+cursor = conexion.cursor()
+cursor.execute("SELECT * FROM PERSONAS")
+personas = cursor.fetchall()
+
+for pe in personas:
+    print(pe)
+
+# No hay commit pues estoy seleccionando, si fuera delete/Insert/update y quiero persistir los cambios, nesesariamete nesecitamos el "commit"
+conexion.close()
+````
 
 
 
@@ -699,7 +713,7 @@ res = np.sqrt(array)#Raiz cuadrada a cada elemento
 print(res)
 
 # rand(d) d: la dimension del array
-ran = np.random.rand(5)#Numeros random entre [0, 1)
+ran = np.random.rand(5)#5 Numeros random entre [0, 1)
 print(ran)
 
 lista = [5,6,7,8,9]
