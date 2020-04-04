@@ -291,19 +291,36 @@ Los strings pueden convertirse tanto en tuplas como en listas
 
 #### Conjuntos
 
-Una colección de elementos desordenados(sin índices)
+Una colección de elementos desordenados (sin índices) y <span style="background:yellow;">sin elementos repetidos</span> .La palabra “**set**” significa “**conjunto**” en inglés. Es **mutable** como *las listas y los diccionarios* que permite agregar y quitar elementos cumpliendo los requisitos de unicidad y <span style="background:yellow;">búsqueda en tiempo constante.</span>
 
 ````python
 conj_color = {"rojo","verde","azul"}
 conj_color[0] #Error
-conj_color.add("negro")
+conj_color.add("negro")#ADD
+conj_color.remove("rojo")#DELETE
+
+#Además es posible hacer operaciones entre sets como unión, intersección y diferencia
+s1.union(s2)
+s1.intersection(s2)
+s1.difference(s2)
 ````
+
+**NO OLVIDAR**
+
+Notar que la **sintaxis para crear un conjunto** es muy similar a la de creación de diccionarios.
+El caso especial es cuando queremos crear un conjunto vacío: la sintaxis {} no funcionará, ya
+que eso crea un diccionario vacío. Podemos crear un conjunto vacío con: `set()`
+
+
 
 #### Diccionario
 
 Una estructura de datos distinta a tuplas o listas (dado que no esta indexado por números) sino (llave: valor) . Básicamente es un objeto JSON
 
 ````python
+# Si quiero declarar una variable vacio del tipo diccionario
+dicc = {}
+
 #como un json (clave:valor)
 dic = {'color':'rojo', 'tipo':'toyotas'}
 #dic['color'] == 'rojo'
