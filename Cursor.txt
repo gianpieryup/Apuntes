@@ -1,2 +1,0 @@
-Mi teclado
-[fn] + [ins| imp print]

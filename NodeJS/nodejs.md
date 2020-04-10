@@ -162,6 +162,12 @@ Enter a lo que quieras por defecto si no modificar a tu gusto
 Fijate en las dependencias
 ````
 
+#### BUG 2020
+
+Me salía un error al ejecutar el `npm init` me pedía el nombre del proyecto, no es problema pero hay una <span style="background:yellow;">solución mas rápida</span> ,es ejecutando `npm init --yes` es igual al anterior pero le da todos los valores por defecto inclusive el nombre del proyecto y automáticamente se crea el `package.json`
+
+
+
 Me olvidaba no subes `node-modules `pesa mucho , con `package.json` tenemos la lista de dependencias y se descarga en cada computador
 
 Como recuperamos la carpeta  `node-modules` a partir del  `package.json` fácil con el comando `npm install`, lo que hace es leer el `package.json` e instalar las dependencias que aparecen acá.

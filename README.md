@@ -10,3 +10,19 @@ Si cuando puesheas te sale error de permiso usa
 
 El **cmder** esta originalmente en transparente pero no me gusta. Lo puedes cambiar en `Features` -> `Transparency`  Le pones el máximo a la barra para que sea Opaco
 
+#### Mi teclado cambio a cursor barra
+
+````
+[fn] + [ins| imp print]
+````
+
+### Tu computadora
+
+Habrás notado que en tu carpeta `C/` existen dos carpetas
+
+1. Archivos de Programa ó Program Files :: Acá están todos tus programas que sean en (64 bits)
+2. Archivos de Programa (x86) ó Program Files (x86) :: Acá están todos tus programas que sean en (30 bits)
+
+Sucede mucho algunos programas te piden que sean de `64 o de 32` ,una forma de saberlo es fijándose en que carpeta de las 2 antes mencionadas esta instalada
+
+Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te saldrá información de la App, como versión , tipo , arquitectura ,etc
