@@ -3,8 +3,7 @@
 Es un fichero que tiene funciones que luego las importo en mi archivo original.
 
 ````python
-# Modulo
-## modulo.py
+# modulo.py
 def saludar(nombre):
 	print("Hola " + nombre)
 
@@ -601,10 +600,14 @@ Los <span style="background:yellow;">Arrays </span> que traducido al español se
 
 ````python
 import numpy as np
-np.zeros(4) # Un array de 4 ceros,ojo es decimal
-np.ones(4) # Un array de 4 1'nos
-np.arange(5) # [0..4]
+np.zeros(4) 	  # Un array de 4 ceros,ojo es decimal
+np.ones(4) 		  # Un array de 4 1'nos
+np.ones((2,2))    # matriz de 2x2 llena de unos
+np.full((2,2),value)  # funciona igual a np.ones pero llena la matriz con el valor value.
+
+np.arange(5)      # [0..4]
 np.arange(2,20,3) # [2,5,8,11,14,17]
+np.arange(8,1,-1) # [8,7,6,5,4,3,2]
 
 #APA la PAPA un 'ARRAY' != !LISTA
 lista1 = [1,2,3,4]
@@ -670,7 +673,7 @@ array2[1] # [4,5,6]
 array2[1][2] # 6
 ````
 
-#### Matrices traspuestas
+#### Matrices
 
 ````python
 array = np.arange(15).reshape((3,5))
@@ -681,6 +684,14 @@ array==	[[ 0  1  2  3  4]
  		 [10 11 12 13 14]]
 """
 array_tras = array.T #La transpuesta
+
+
+#SUTIL DIFERENCIA
+[[1,2][2,5]] # esto es una lista(esto queda plano)
+np.array([[1,2][2,5]])  #Esto un array(lo dota de dimension)
+	[[1,2],
+     [2,5]]
+
 ````
 
 #### Entrada y salida con arrays
@@ -726,5 +737,55 @@ print(suma)
 #El maximo entre dos, toma cada elemento para compararlos
 maximo = np.maximum(array,array2)
 print(maximo)
+````
+
+## Matemática
+
+````python
+#Algunas cuestiones
+5e-10    #Esto equivale 5*10^-3 == 0.005
+````
+
+
+
+#### Arrays en mate
+
+````python
+import numpy as np
+
+np.log(x)		#Logaritmo natural
+np.cos(np.pi)	#Coseno
+np.sin(np.pi/2)	#Seno
+np.sqrt(4)
+
+# La ventaja de trabajar con arrays son las funciones a cada elemento que se hacen
+array_l = [2,4,6]
+np.log(array_l)
+
+# Producto interno
+x = np.array([1,2,0])
+y = np.array([0,4,5])
+np.dot(x,y)
+
+#MATRICES
+A = np.array([1,0,0]) #array de 1x3
+B = np.array([[1,2,0],[0,1,0],[1,0,0]]) #array de 3x3
+        [[1 2 0]
+         [0 1 0]
+         [1 0 0]]
+
+#Acceder a los valores matriz
+B[0][1] ó B[(0,1)]  # fila 0 , columna 1
+
+#debe respetar el orden de las dimensiones    
+np.dot(A,B)      #Producto de Matrices
+np.shape(B)      #Informacion de la matriz (#filas,#columnas)
+A*B			     #Multiplica cada elemento de igual posicion	
+A.T              #Transpuesta ó np.transpose(A)
+np.identity(n)   #Matriz identidad de tama~no n.
+
+
+# Intervalos
+np.linspace(1,8,10) # [1,8] dividivo en 10 segmentos de igual longitud
 ````
 

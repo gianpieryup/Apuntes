@@ -199,14 +199,39 @@ true
 
 ### Colección de datos
 
-#### Listas
+#### Listas: 
+
+Es *mutable* (puedo agregar y quitar elementos)
 
 ````python
 x = ["hola",2020]
-x[0] = "hola"
+x[0]
+"hola"
+
+"""
+MUTABLE:
+		x[0] = 7
+		x
+		[7,2020]
+"""
+
+#LONGITUD
+len(x)
+2
+
+#LIST : como palabra reservada
 numberlist = list((1,2,3,4)) #list() solo recibe un argumento
 
-x.append("naranja")
+"""
+TIP: En python, cuando asignamos una lista a una variable, esta variable hace referencia      al lugar de la memoria en la que se encuentra la lista, y no a su contenido.
+
+	 l = [1,2,3]
+	 w = l  #Se igualaron los punteros,estos apuntan a la misma direccion en memoria
+	 l[0] = 666
+	 print(w)
+     [666,2,3]
+"""
+x.append("naranja") 
 > ["hola",2020,"naranja"]
 
 x.remove("hola")
@@ -231,13 +256,34 @@ true
 
 # SUBLISTAS
 cursos = ["a","b","c","d","e"]
-sub = cursos[0:3] # como en los strings 
+sub = cursos[0:3] # "abc" no incluye la posicion cursos[3]
 sub = cursos[:7] # equivale a cursos[0:7]
 sub = cursos[1:7:2] # desde / hasta / saltos
 sub = cursos[::-1] # INVERTIR LISTA
+
+# BONUS
+x = [3, 4, 7, 11]
+y = [1, 5, 6]
+[x,y]
+[[3, 4, 7, 11], [1, 5, 6]]
+
+#Concatenar
+x+y
+[3, 4, 7, 11, 1, 5, 6]
+
+#Multiplicar
+y*2      # Sera distinto con un array, lista != array
+[1, 5, 6, 1, 5, 6]
+
+#El ultimo elemento
+x[-1] #Igual que las cadenas de cadenas de texto
+11
+
 ````
 
 #### Matriz
+
+Mas adelante en *Matemáticas* usaremos el modulo `numpy`
 
 ````python
 fila1 = [10,20]
@@ -258,7 +304,7 @@ Como una estructura de datos una Pila - LIFO
 
 #### Tuplas
 
-Una colección de elementos que <span style="background:yellow;">**no se pueden alterar**</span>. Son mas rápidas para la búsqueda de elementos
+Una colección de elementos *inmutables* (<span style="background:yellow;">**no se pueden alterar**</span>) .Son mas rápidas para la búsqueda de elementos
 
 ````python
 x = (1,2,3,4,5,6,7,8,9)

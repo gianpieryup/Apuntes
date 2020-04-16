@@ -26,3 +26,12 @@ Habrás notado que en tu carpeta `C/` existen dos carpetas
 Sucede mucho algunos programas te piden que sean de `64 o de 32` ,una forma de saberlo es fijándose en que carpeta de las 2 antes mencionadas esta instalada
 
 Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te saldrá información de la App, como versión , tipo , arquitectura ,etc
+
+
+
+#### Acceso Rápido
+
+Para tomar captura de pantalla :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp</kbd> 
+
+
+
