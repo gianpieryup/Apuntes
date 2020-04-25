@@ -1,5 +1,3 @@
-<img src="Python-logo.png" alt="Python-logo" style="zoom:9%;"/>
-
 # Introducción a Python
 
 Que es Python, su nombre viene de un comediante. De propósito general, **multiparadigma** ,de **tipado dinámico** , open source

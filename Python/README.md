@@ -1,3 +1,5 @@
+<p align="center"><img src="Python-logo.png" alt="Python-logo" style="zoom:9%;"/></p>
+
 ## Configuraciones
 
 Para tu computadora, abre la terminal
