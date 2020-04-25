@@ -1,4 +1,4 @@
-<p align="center"><img src="Python-logo.png" alt="Python-logo" style="zoom:9%;"/></p>
+<p align="center"><img src="Python-logo.png" alt="Python-logo" width="200px"/></p>
 
 ## Configuraciones
 
