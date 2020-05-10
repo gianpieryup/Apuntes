@@ -756,7 +756,8 @@ import numpy as np
 np.log(x)		#Logaritmo natural
 np.cos(np.pi)	#Coseno
 np.sin(np.pi/2)	#Seno
-np.sqrt(4)
+np.sqrt(4)		#2.0
+np.e            #2.718281828459045
 
 # La ventaja de trabajar con arrays son las funciones a cada elemento que se hacen
 array_l = [2,4,6]
@@ -786,6 +787,6 @@ np.identity(n)   #Matriz identidad de tama~no n.
 
 
 # Intervalos
-np.linspace(1,8,10) # [1,8] dividivo en 10 segmentos de igual longitud
+np.linspace(1,8,10) # Devuelve un array de 10 elementos equispaciados
 ````
 

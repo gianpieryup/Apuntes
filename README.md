@@ -35,3 +35,13 @@ Para tomar captura de pantalla :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp
 
 
 
+### Convención del lenguaje de Programación
+
+Como recuerdo que `true = 0` y que  `false = 1` .La **mnemotecnia** papa
+
+````javascript
+/Solo debo recordar los Naturales:
+1 es Natural => True
+0 es Natural => False
+````
+
