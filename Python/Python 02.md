@@ -763,6 +763,17 @@ np.e            #2.718281828459045
 array_l = [2,4,6]
 np.log(array_l)
 
+# POSICION DEL ELEMENTO MAXIMO de un array(Si hay muchas, la primera)
+v = [7,8,9,3]
+np.argmax(v)
+2
+
+# ELEMENTO MAXIMO de un array de cualquier dimension
+M = np.array([[1,2,3],[4,5,6],[9,0,7]])
+V = [4,5,6]
+np.max(M)
+np.max(V)  
+
 # Producto interno
 x = np.array([1,2,0])
 y = np.array([0,4,5])
