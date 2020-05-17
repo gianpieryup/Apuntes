@@ -1,3 +1,11 @@
+# C / C++
+
+### Diferencias entre C y C++
+
+C es un subconjunto de C++ , dado que C++ tiene mas cosas como (herencia,objetos,..) que C no tiene implementado
+
+
+
 ### Espacio de nombres (namespace)
 
 Los espacios de nombres se utilizan para organizar el código en grupos lógicos y para evitar colisiones de nombres que pueden ocurrir especialmente cuando su base de código incluye varias bibliotecas.
