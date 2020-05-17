@@ -796,7 +796,6 @@ A*B			     #Multiplica cada elemento de igual posicion
 A.T              #Transpuesta ó np.transpose(A)
 np.identity(n)   #Matriz identidad de tama~no n.
 
-
 # Intervalos
 np.linspace(1,8,10) # Devuelve un array de 10 elementos equispaciados
 ````
