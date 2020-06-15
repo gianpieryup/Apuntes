@@ -5,3 +5,5 @@ Se creara una :file_folder: llamada `Build` con el resultado de la compilación 
 Cada ves que hagas un cambio y lo guardes automaticamente se volvera a compilar, ver linea 1
 
 Si lo deseas puedes tener un archivo `.gitignore` y dentro `/build/` 
+
+Agregue el PDF de la instalación `NO olvidar instalar Perl`
