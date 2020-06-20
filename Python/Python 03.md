@@ -34,7 +34,7 @@ serie_notas_daniel
 serie_notas_daniel["fisica"]
 6
 
-# Acceder a los Datos(values) de una "Serie"
+# Acceder a los Datos(values) de una "Serie", sin los indices
 serie_notas_daniel.values
 array([8, 7, 6, 9], dtype=int64)
 
@@ -106,9 +106,11 @@ serie_notas_clase
 	dtype: float64
 ````
 
-#### DataFrames
+### DataFrames
 
-Es como un tabla de **Excel** , con filas y columnas. La primera fila que tiene el nombre de las columnas, no se cuenta como fila del DataFrame
+Es como un tabla de **Excel** , con filas y columnas. <span style="background:yellow;">La primera fila que tiene el nombre de las columnas</span>, no se cuenta como fila del DataFrame
+
+
 
 ````python
 import pandas as pd
@@ -131,7 +133,7 @@ dataframe_nba.columns
 dataframe_nba['Campeón del Oeste']
 
 #Devolver la fila 5
-dataframe_nba.loc[5]
+dataframe_nba.loc[5]  # dataset[5:6] pero lo anterior queda mejor
 
 #Las primeras 3 filas
 dataframe_nba.head(3)
@@ -258,7 +260,9 @@ serie[serie > 3]
 serie[serie > 3] = 6
 ````
 
-#### Seleccionar datos en dataframes
+### Seleccionar datos en dataframes
+
+Como selecciono las filas y columnas que quiero
 
 ````python
 import pandas as pd
@@ -273,21 +277,28 @@ lista_indices = ['i1','i2','i3',"i4","i5"]
 lista_columnas = ['c1','c2','c3','c4','c5']
 dataframe = pd.DataFrame(lista_valores,index=lista_indices,columns=lista_columnas)
 
-#Tomar datos de una columna
-dataframe['c2']
+dataframe
+		 c1  c2  c3  c4  c5
+    i1    0   1   2   3   4
+    i2    5   6   7   8   9
+    i3   10  11  12  13  14
+    i4   15  16  17  18  19
+    i5   20  21  22  23  24
+
+/*--------- Elejir columnas --------*/
+#Tomar datos de una columna.OBS no son las filas como en las matrices
+dataframe['c2']  # Agregando .values quita los indices quedando un array
     i1     1
     i2     6
     i3    11
     i4    16
     i5    21
-
-#Cuando tomas un columna, tienes una SERIE
+# Cuando tomas un columna, tienes una SERIE    
 dataframe['c2']['i2']
-6
-#TIP no funciona alreves
-
+6    
 #Podemos elegir las columnas
 dataframe[['c3','c1']]
+
 
 #Selecionar por valor
 #Del dataFrame los valores(filas) que cumplan una condicion, en este caso que el valor de cuya pocicion en la columna 'c2' sea mayor a 15
@@ -296,14 +307,17 @@ dataframe[dataframe['c2'] > 15]
 #Para condicionales: Devuelve una tabla de 'true'/ 'false'
 dataframe > 20
 
+/*--------- Elejir Filas --------*/
 #Seleccionar por indice(OJO el loc no olvidar)
-dataframe.loc['i3']
+dataframe.loc['i3'] # Agregando .values quita los indices quedando un array
     c1    10
     c2    11
     c3    12
     c4    13
     c5    14
 dataframe.loc['i3']['c4']
+
+# La ventaja de iloc es que puedo usar numeros, para identificar los indices. Como los indices pueden ser alfanumericos, facilita la escritura de codigo
 ````
 
 #### Operaciones
