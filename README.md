@@ -16,6 +16,12 @@ El **cmder** esta originalmente en transparente pero no me gusta. Lo puedes camb
 [fn] + [ins| imp print]
 ````
 
+### XAMPP
+
+http://localhost/phpmyadmin/
+
+
+
 ### Tu computadora
 
 Habrás notado que en tu carpeta `C/` existen dos carpetas

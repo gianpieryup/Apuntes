@@ -51,6 +51,14 @@ git push
 
 
 
+####  Me arrepiento de hacer un `git add`
+
+````shell
+git reset
+````
+
+
+
 ### La vendita terminal VIM
 
 Cuando hay conflictos hay que pasar por esta pantalla, veamos como salimos de esta

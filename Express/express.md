@@ -345,6 +345,12 @@ Por ejemplo en la vista 'index.hbs'
 <p>Estamos en {{title}}</p>
 ````
 
+### VIEWS
+
+**Estilos**
+
+El `layout.hbs` fijarte el link del **style** *que depende del que le pase por parámetro en la ruta a la hora de renderizar*
+
 
 
 #### ¿Que onda con los parámetros?
