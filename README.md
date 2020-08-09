@@ -51,3 +51,9 @@ Como recuerdo que `true = 0` y que  `false = 1` .La **mnemotecnia** papa
 0 es Natural => False
 ````
 
+Abrir Extensiones
+
+````
+.tif -> Visualizador de fotos de Windox el antiguo
+````
+
