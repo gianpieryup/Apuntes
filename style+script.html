@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pruebas Rapidas</h1>
+    <ul>
+        <li><a href="#tag">Estilo embebido</a></li>
+        <li><a href="#js">Javascript en Tag</a></li>
+        <li><a href="#sty">Estilo en Tag</a></li>
+    </ul>
+
+    <!-- <tagname style="property:value;" > 
+        tagname: h1,p,..
+        property: color,font-size,background-color,..
+        value: red,50px
+    -->
+    <h3 id="tag">Estilo embebido</h3>
+    <p style="color:red;">I am red</p>
+    <p style="color:blue;">I am blue</p>
+    <p style="font-size:20px;">I am big</p>
+    <hr>   
+
+    <h3 id="js" >Javascript en Tag</h3>
+    <button>De rosa</button>
+    <hr>
+
+    <h3 id="sty" >Estilo en Tag</h3>
+    <p class="text">Texto de prueba</p>
+    <hr>
+
+
+
+    <!--Aca lo que halla entre estos <script> sera en javascript  --> 
+    <script>
+        var tituloJS = document.querySelector('#js');
+        var butom = document.querySelector('button'); 
+        butom.onclick = function() {
+            tituloJS.style.backgroundColor = "pink";
+            tituloJS.style.width = "200px";
+        }
+    </script>
+
+    <!--Aca lo que halla entre estos <style> sera CSS  --> 
+    <style>
+        .text {color:rgb(0, 225, 255);}
+        .text {background-color:rgb(0, 0, 0);}
+        .text {width:200px;}
+    </style>
+</body>
+</html>
