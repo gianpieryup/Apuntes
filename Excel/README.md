@@ -55,3 +55,11 @@ Ademas, la diferencia con BUSCARV es que puedo devolver mas de un dato de la fil
 En este caso devolvi "Nombre de empleado" y "Departamento"
 ````
 
+
+
+### CAMBIAR
+
+````
+=CAMBIAR(Valor que debe cambiarse, Valor con el que coincidirá)
+````
+
