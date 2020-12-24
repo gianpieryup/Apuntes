@@ -1,0 +1,15 @@
+const setColorHeaderElements = () => {
+  const dataContainer = document.getElementById('article-header-data')
+
+  if (dataContainer) {
+    const getColorHeader = () => {
+      const colorArray = ['first-color', 'second-color', 'third-color', 'accent-color', 'border-color']
+      const random = Math.round(Math.random() * (colorArray.length - 1))
+      return colorArray[random]
+    }
+    dataContainer.classList.add(getColorHeader())
+  }
+}
+
+window.removeEventListener('DOMContentLoaded', setColorHeaderElements)
+window.addEventListener('DOMContentLoaded', setColorHeaderElements)
