@@ -54,7 +54,7 @@ db.usuarios.insert([
 	  "estado" : 0,
 	  "fechaRegistro" : new Date(2020,1,15)
     }
-]) 
+])
 
 
 //Ejercicios Resueltos
