@@ -4,7 +4,7 @@ Lo primero de todo es instalar XAMPP que contiene PHP y mas
 
 ### Rutas mas Usadas
 
-![Apache y MySQL](Apache y MySQL.png)
+![Apache y MySQL](Apache-MySQL.png)
 
 
 
