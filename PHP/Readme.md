@@ -48,3 +48,40 @@ Listo ya tenemos tanto **XAMPP** con PHP y el gestor de dependencias **Composer*
 
 
 
+<h2 align="center">LARAVEL</h2>
+
+Para instalar las dependencias del proyecto
+
+````
+composer install
+````
+
+Para saber la **versión de LARAVEL**
+
+````
+php artisan --version
+````
+
+Como el código era antiguo me boto este error, como lo solucione :smile:? Siempre hay problemas con las versiones la solución es actualizar todas las herramientas, en este caso actualizar **Laravel**
+
+````
+composer update laravel/framework
+````
+
+![problema-versiones](C:\Users\HP\Desktop\Apuntes\PHP\problema-versiones.png)
+
+Esto actualizo y arreglo el problema permitiéndome ver la versión de Laravel, además la podemos ver en `composer.json` 
+
+````json
+"require": {
+        "php": "^7.1.3",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.8.*",
+        "laravel/tinker": "^1.0"
+},
+````
+
+Para ejecutar el servidor
+
+
+
