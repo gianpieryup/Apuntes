@@ -6,6 +6,32 @@ C es un subconjunto de C++ , dado que C++ tiene mas cosas como (herencia,objetos
 
 
 
+#### Compilación
+
+````shell
+gcc pepe.c -o hello
+````
+
+Esto se traduce en compilar el archivo `pepe.c` para generar un ejecutable `hello`
+
+El resultado de esta compilación es un **código binario**
+
+Para ejecutar el `hello` poner en consola
+
+````shell
+./hello
+````
+
+
+
+### MakeFile
+
+NANI? Que pasa si tengo varios `.c` ,varios `.h` , **es un archivo que es una suerte de script orientado a la compilación**
+
+
+
+
+
 ### Espacio de nombres (namespace)
 
 Los espacios de nombres se utilizan para organizar el código en grupos lógicos y para evitar colisiones de nombres que pueden ocurrir especialmente cuando su base de código incluye varias bibliotecas.

@@ -1,0 +1,6 @@
+Material Icon Theme (Dibujito al Icono)
+Peacock (Color a las Ventanas de VS)
+
+ctrl + p : para buscar archivos
+Luego si pongo (>) luego (peacock change to favority color)
+(peacock reset color)

@@ -83,5 +83,34 @@ Esto actualizo y arreglo el problema permitiéndome ver la versión de Laravel, 
 
 Para ejecutar el servidor
 
+````
+php artisan serve
+````
 
 
+
+### Seed
+
+Cuando quise corren el seed me salió el siguiente error, según `stack overflow` se soluciona actualizando en `FAKER`
+
+![update-faker](update-faker.png)
+
+Con el comando
+
+````shell
+composer update fzaninotto/faker
+````
+
+Luego volví a correr, todo **OK**
+
+````
+php artisan db:seed
+````
+
+#### [ACTUALIZACION]
+
+Según internet y la consola se dejara de usar `fzaninotto/faker` y se pasara a usar 
+
+https://github.com/fakerphp/faker
+
+Así que ojo
