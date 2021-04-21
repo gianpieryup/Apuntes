@@ -1,4 +1,4 @@
-<img src="gitlogo.jpg" alt="gitlogo" style="zoom:40%;" />
+<p align="center"><img src="gitlogo.jpg" width="200px"/></p>
 
 ## Comandos Básicos
 
