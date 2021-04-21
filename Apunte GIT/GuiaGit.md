@@ -59,6 +59,65 @@ git reset
 
 
 
+#### Orden Tradicional
+
+````shell
+git add .
+git commit -m ""
+git pull (MUY IMPORTANTE)
+git push
+````
+
+<span style='color:red'>**NO HACER**</span>
+
+````shell
+git commit   y luego un git push 
+/ puede incluso salir error diciendo falta hacer un git pull
+/ es para estar actualizado si nadie comiteo dara lo mismo hacer el pull 
+````
+
+<span style='color:blue'>**MERGE**</span>
+
+````shell
+git commit -m ""
+git pull
+/ Si se realizo cambios en el mismo archivo
+/ aparece un "conflito", me aparecera en vs
+
+>> Mis cambios
+<< Los otros cambios
+Decidir "aceptar mis cambios","aceptar los otros cambios","aceptar ambos"
+Luego de elegir cual, en VScode
+
+En la terminal
+git status -> me sale que realice un cambio
+git add .
+git commit -m "arregle merge conflic"
+git push
+````
+
+### Revertir un PUSH
+
+````shell
+git add .
+git commit -m ""
+git push
+--- "huy este cambio no lo quise subir" ---
+git log  // Eso me muestra los hash(id) de cada commit
+# Estam ordena por fecha, identificar el ultimo o con el nombre
+# El hash es un alfanumerico enorme
+git revert poner_el_hash
+
+# Me saldra la terminal (podemos editar el txt del commit pero yo se lo dejo)
+# Ctrl + X
+git status
+git push
+````
+
+
+
+
+
 ### La vendita terminal VIM
 
 Cuando hay conflictos hay que pasar por esta pantalla, veamos como salimos de esta
