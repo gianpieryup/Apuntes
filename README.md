@@ -10,11 +10,19 @@ Si cuando puesheas te sale error de permiso usa
 
 El **cmder** esta originalmente en transparente pero no me gusta. Lo puedes cambiar en `Features` -> `Transparency`  Le pones el máximo a la barra para que sea Opaco
 
-#### Mi teclado cambio a cursor barra
+### Mi teclado 
+
+#### Cambio a cursor barra
 
 ````
 [fn] + [ins| imp print]
 ````
+
+#### Sacar carácter (`)
+
+<kbd>Alt Gr</kbd> + <kbd>}</kbd>
+
+
 
 ### XAMPP
 
@@ -60,12 +68,12 @@ Abrir Extensiones
 
 
 ## Cosas Utiles
-1. Abrir la terminal cmd desded una carpeta.
+1. #### Abrir la terminal cmd desde una carpeta.
 - escribe `cmd` en la ruta donde estas parado y presiona enter
 2. Comandos de Angular y NodeJS
 - Iniciar Angular: `ng serve` 
 - Iniciar NodeJs: `nodemon npm start`
-3. Visual Studio
+3. #### Visual Studio
 - Tener mas de una carpeta en el mismo visual, Ir a `Inicio` -> Agregar carpeta de trabajo
 - Comentar lineas: `Crtl` + k + c
 - Decomentar lineas: `Crtl` + k + u
