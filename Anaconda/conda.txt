@@ -1,0 +1,21 @@
+1. SI quieres usar python pero tambien spyder
+Lo que debes hacer es instalar conda que incluye pyhton
+Asi que no instales pyhton (de lo contrario tendras 2 versiones, que pueden llegar a generarte conflicto)
+
+******
+EL proceso de instalacion
+Lo mas importante es que lo instales para todos los usuarios/
+que sea en la carpeta C no en la C:/Users/Name_user
+Basicamente es mas facil que tus cosas esten directamente en C:
+Y te ayuda un poco con el path
+******
+
+Una vez instalado el anaconda
+Ahora tenemos python tambien pero si quiero tenerlo en el PATH
+Solo lo agregas esta ubicado en ./anaconda3
+
+2.
+C:\Users\GIANPIER\anaconda3
+C:\Users\GIANPIER\anaconda3\Scripts
+C:\Users\GIANPIER\anaconda3\Library\bin
+C:\Users\GIANPIER\anaconda3\Library\usr\bin

@@ -43,6 +43,11 @@ Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te s
 
 
 
+**16Z90P Series**
+Ese era la serie del lg gram 16
+
+
+
 #### Acceso Rápido
 
 Para tomar captura de pantalla :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp</kbd> 
