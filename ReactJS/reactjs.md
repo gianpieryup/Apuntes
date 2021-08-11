@@ -1,0 +1,1 @@
+create-react-app es el CLI análogo de Angular

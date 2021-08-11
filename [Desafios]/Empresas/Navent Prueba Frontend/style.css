@@ -1,0 +1,154 @@
+/* Reset General*/
+*{
+  box-sizing: border-box;
+}
+ul, ol{
+  padding: 0;
+}
+li{
+  list-style-type: none;
+}
+a{
+  color: #000;
+  text-decoration: none;
+}
+/*----------------------*/
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.container{
+  min-width: 320px;
+  max-width: 414px;
+  padding: 0;
+  box-shadow: 0 0 20px #454;
+}
+.div-imagen{
+  position: relative;
+}
+.carousel-item{
+  width: 100%;
+}
+.tag{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background-color: rgb(170, 31, 219);
+  color: white;
+  padding: 5px;
+}
+.fa-heart{
+  font-size: 40px;
+  position: absolute;
+  top: 10px;
+  right: 2px;
+  color: white;
+  background-color: black;
+  z-index: 100;
+}
+/*---------------------*/
+.div-contenido{
+  text-align: left;
+  padding:0 15px 4px 15px;
+}
+.precio{
+  font-size: 30px;
+  font-weight: bold;
+}
+.titulo{
+  margin-top: 10px;
+  font-size: 18px;
+}
+.direccion{
+  color: rgba(0, 0, 0, 0.32);
+  font-size: 14px;
+}
+.descripcion{
+  font-size: 13px;
+}
+.precio-detalle-movile{
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  color: white;
+}
+.precio-detalle-grande{
+  display: none;
+}
+.texto-detalle{
+  font-weight: bold;
+  font-size: 13px;
+}
+.caja-botom-grande{
+  display: none;
+}
+.botom, .botom-modal{
+  text-align: right;
+  margin: 15px 7px;
+  color: rgba(0, 117, 255, 0.59);
+}
+.titulo-modal{
+  color: rgba(0, 117, 255, 0.59);
+}
+.invalido-numero{
+  display: none;
+}
+.botom-enviar{
+  background-color: white;
+  color: rgba(0, 117, 255, 0.59);
+  border: 0;
+}
+#input-email, #input-precio{
+  display: block;
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+.modal-footer{
+  border-top: 0;
+}
+@media(min-width:734px){
+  .container{
+    min-width: 734px;
+    max-width: 875px;
+    display: flex;
+    flex-direction: row;
+  }
+  .div-imagen{
+    width: 414px;
+  }
+  img{
+      width: 365px;
+      height: 100%;
+  }
+  .detalles{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .div-contenido{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .info-contenido{
+    padding:0 15px 0 15px;
+
+  }
+  .precio-detalle-movile{
+    display: none;
+  }
+  .precio-detalle-grande{
+    display: block;
+  }
+  .caja-botom-movile{
+    display: none;
+  }
+  .caja-botom-grande{
+    display: block;
+  }
+}

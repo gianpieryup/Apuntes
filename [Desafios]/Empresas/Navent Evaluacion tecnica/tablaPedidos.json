@@ -1,0 +1,22 @@
+{
+    "pedidos": [
+        {
+            "id": 1,
+            "nombre": "Comida",
+            "monto": 1200,
+            "descuento": 20
+        },
+        {
+            "id": 2,
+            "nombre": "Bebidas XL",
+            "monto": "2000",
+            "descuento": "9"
+        },
+        {
+            "id": 3,
+            "nombre": "Papitas",
+            "monto": "120",
+            "descuento": "2"
+        }
+    ]
+}

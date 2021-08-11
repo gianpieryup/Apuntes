@@ -43,6 +43,16 @@ Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te s
 
 
 
+### Tomar Captura de pantallas en Windos
+
+````
+Shift + windos + s
+````
+
+
+
+
+
 **16Z90P Series**
 Ese era la serie del lg gram 16
 
