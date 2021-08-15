@@ -348,7 +348,7 @@ nombreDelLaApp arg1 arg2
 
 Y entonces en C# cual es el archivo principal? **RPTA **: nombreDeLaApp.exe (*OK, pero donde esta*)
 
-![ruta del ejecutable](C:\Users\HP\Desktop\GIANPIER\Apuntes C#\ruta del ejecutable.png)
+![ruta del ejecutable](ruta del ejecutable.png)
 
 #### Enum
 
