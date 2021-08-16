@@ -1,0 +1,71 @@
+******************************************************
+	Primero se declaran las funciones no despues del main
+
+#ifndef EJERCICIO4_H_	     Si no esta definido "El nombre"
+#define EJERCICIO4_H_	     Se define "El nombre"{
+
+#include <stdlib.h>
+#include <stdio.h>			Cuerpo
+#include <string.h>
+
+#endif /* EJERCICIO4_H_ */	     }-> Hasta aqui
+--------------------------------
+char cadena[10];
+cadena[i]="D"  // No es un caracter 'D'
+---------------------------------
+Ojo con el break del Swich, que sucede cuando no se implementa
+--------------------------------
+Para comparar strings usar 'strcmp'
+[NO] 	if(cadena1==cadena2)
+[SI]	if(strcmp(cadena1,cadena2)==0)
+
+Esto es un error muy común de los que programan en lenguajes de alto nivel. 
+No se puede comparar cadenas con el (==)
+--------------------------------
+
+char * st;//Hay que definir cuanto espacio ocupara de lo contrario 
+strcpy(st, "abc");//[Segmentation fault (core dumped)]
+// El puntero destino debe contener suficiente espacio para copiar sobre la zona de memoria a la que apunta, la cadena apuntada por origen
+---
+el strlen(..) devuelve
+la cantidad de caracteres SIN EL CARÁCTER NULO. Cuando copiamos con strcpy(..) copiamos también el ‘\0’,
+por eso debe agregarsele un +1 al size del malloc así entra el ‘\0’.
+---
+Forma correcta
+char * st=malloc(strlen("abc")+1);
+strcpy(st, "abc");  para que le agrege el '/0'
+
+--------------------------------
+<< No me funciona ese formato de scanf, para c++ / python si creo >>
+printf("Inserte un numero\n");
+scanf("%d", &x);//ME pide la referencia
+---------------------------------
+char* st = "Hello"
+char* st2=st;  // Se esta asignando su valor, no tienen la misma referencia
+la unica manera de cambiar su referencia es con el operador (&)
+
+int x = 4;
+int * z = x;   // z es referencia-a-int; x
+(*z) = (*z) * 4;     // z == 16, x == 16
+------------------------------------------
+Si no me identifica el pow de la lobreria (-lm)
+gcc Ejercicio4.c -lm -o ej4
+
+**************************************
+ERROR 2 ,estamos en el ejercicio 4
+**************************************
+char* cadena1="El Zumba";
+	char* cadena2="El Zumba";
+	if(strcmp(cadena1,cadena2)==0)
+		printf("Son iguales! :)\n");
+
+	char * st=malloc(strlen("abc")+1);
+	strcpy(st, "abc");
+
+	//char* cadena3=malloc(strlen(cadena1)); //Error 8 por el '/0'
+	char* cadena3=malloc(strlen(cadena1)+1);
+
+	strcpy(cadena3,cadena1);
+	// strcpy(cadena2,cadena3);//Claro aca hay error por que cadena2 ya esta definido no puedo cambiar su contenido por eso te tira su segmetnacion
+	if(strcmp(cadena2,cadena3)==0 )
+	printf("Genere 2 cadenas iguales!\n");// Ahora si es correcto dado que tienen el mismo contenido

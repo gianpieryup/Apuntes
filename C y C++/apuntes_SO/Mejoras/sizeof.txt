@@ -1,0 +1,5 @@
+Esto me dice el tamaño de un (int/char/...)
+Devuelve 4 (:v)
+
+NO usar para recorrer un array usar NULL como puntero
+con un while

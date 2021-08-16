@@ -1,0 +1,203 @@
+
+
+
+// rm -r -f carpeta
+sudo reboot
+(*) se puede copiar y pegar las contraseñas
+***************************************
+Una ves dentro cuando te pidan la contraseña no es utnso si no la de arriba
+
+// DEPLOY
+git clone https://github.com/sisoputnfrba/tp-2021-1c-S-quito-de-Oviedo.git
+
+// COMMONS
+git clone https://github.com/sisoputnfrba/so-commons-library.git
+cd so-commons-library (usa el TAB)
+sudo make install
+[sudo] password for utnso: "poner la de la VM, no utnso" 
+
+// EL MAPA (para MIRAM)
+git clone https://github.com/sisoputnfrba/so-nivel-gui-library/
+cd so-nivel-gui-library
+make install
+*****************************************
+
+
+// Entras al config
+cat discordiador.config
+nano discordiador.config
+Ctrl + o(vocal)/ luego enter
+Ctrl + x
+*************************************
+// Salir de la consola
+exit
+
+
+*************************************
+PRUEBA 1 | Estabilidad General
+
+INICIAR_PATOTA 3 ES3_Patota1.txt 9|9 0|0 5|5
+INICIAR_PATOTA 3 ES3_Patota2.txt 4|0 2|6 8|2
+INICIAR_PATOTA 3 ES3_Patota3.txt 2|3 5|8 5|3
+INICIAR_PATOTA 3 ES3_Patota4.txt 0|9 4|4 9|0
+INICIAR_PATOTA 3 ES3_Patota5.txt 0|2 9|6 3|5
+INICIAR_PLANIFICACION
+LISTAR_TRIPULANTES
+
+/*  less discordiador.log (no usar cat) para salir [q]
+NO olvidar que cuando pasan a READY piden 1 tarea
+[Esto se ve graficamente con un salto de linea totalmente en blanco]
+
+Las tareas de las patotas 1 y 2 tienen algunas bloq
+En cuyo paso pasaran a bloq o al final de la cola de READY
+
+Las tareas de las patotas 3(trip 7,8,9) y 4(trip 10,11,12) son todas no bloq
+CUANDO LLEGAN A READY 
+En fifo MONOPOLOZAN LA CPU hasta terminar
+por lo que en los dos procesadores habria una secuencia de :
+(7,8) termina el 7 , se elige el 9
+(8,9) termina el 8 , se elige el 10
+Asi sucesivamente
+*/
+
+***************************************
+PRUEBA 2 | Discordiador - CPU
+
+INICIAR_PATOTA 2 CPU_Patota1.txt 1|1
+INICIAR_PATOTA 1 CPU_Patota2.txt 1|0
+INICIAR_PLANIFICACION
+LISTAR_TRIPULANTES
+
+Esperar que transcurran 5 ciclos de  CPU.
+
+PAUSAR_PLANIFICACION
+INICIAR_PATOTA 1 CPU_Patota3.txt 0|1
+INICIAR_PLANIFICACION
+LISTAR_TRIPULANTES
+----------------------------------------------------------------
+Ambos se Lo vemos en el archivo del log general
+"No olvidar que los trip piden una tarea cuando lleguen a READY"
+En el caso de FIFO una vez que un tripulante empieza a ejecutar nunca debe dejar de estar en ejecución hasta que termine sus tareas (Se ven bien)
+
+Alternándose cada 3 ciclos de CPU : less discordiador.log
+
+
+
+
+
+
+***************************************
+Discordiador - E/S
+
+INICIAR_PATOTA 2 IO_Patota1.txt 1|1
+INICIAR_PATOTA 1 IO_Patota2.txt 1|0
+INICIAR_PATOTA 1 IO_Patota3.txt 0|1
+INICIAR_PLANIFICACION
+LISTAR_TRIPULANTES
+
+---------------------------------------
+En FIFO al llegar los tripulantes de la patota 1 a su tarea de E/S se van a encolar y van a generar que los tripulantes de las otras 2 patotas tengan que esperar.
+
+[ Tripulante 3 ] (2,1) => (2,2) | TAREA: GENERAR_BASURA - UBICACION: (2,2)
+[ Tripulante 2 ] Syscall realizada
+[ Procesador 0 ] Rafaga finalizada. Tripulante 2 ejecutado. 0 tareas hechas
+[ Procesador 0 ] Elije Tripulante 4 para ejecutar
+[ Tripulante 4 ] (0,1) => (1,1) | TAREA: ESCANEAR_MUESTRAS - UBICACION: (3,3)
+[ Tripulante 1 ] Tarea bloqueante GENERAR_OXIGENO. Tiempo restante: 7
+[ Tripulante 1 ] Comenzando Tarea bloqueante GENERAR_OXIGENO. Duracion: 7
+[ Tripulante 4 ] (1,1) => (2,1) | TAREA: ESCANEAR_MUESTRAS - UBICACION: (3,3)
+[ Tripulante 1 ] Tarea bloqueante GENERAR_OXIGENO. Tiempo restante: 6
+[ Tripulante 1 ] Comenzando Tarea bloqueante GENERAR_OXIGENO. Duracion: 6
+[ Tripulante 3 ] Syscall realizada
+[ Procesador 1 ] Rafaga finalizada. Tripulante 3 ejecutado. 0 tareas hechas
+[ Tripulante 4 ] (2,1) => (3,1) | TAREA: ESCANEAR_MUESTRAS - UBICACION: (3,3)
+[ Tripulante 1 ] Tarea bloqueante GENERAR_OXIGENO. Tiempo restante: 5
+[ Tripulante 1 ] Comenzando Tarea bloqueante GENERAR_OXIGENO. Duracion: 5
+[ Tripulante 4 ] (3,1) => (3,2) | TAREA: ESCANEAR_MUESTRAS - UBICACION: (3,3)
+[ Tripulante 1 ] Tarea bloqueante GENERAR_OXIGENO. Tiempo restante: 4
+
+"""  Notamos lo siguiente
+     El Trip 1 hace primero su syscall luego el Trip 2, por lo que el trip2 queda encolado esperando
+     a que termine el Trip 1 su E/S
+     Cuando el Trip 1 aun le falta 6 ciclos de su tarea, el Trip 3 hace su syscall y queda encolado despues
+     de Trip 2 que ya estaba antes y del Trip1 (los dos son de la patota 1)
+     Solo queda el Trip 4 en EXEC y el Trip 1 en E/S hasta que termine
+"""
+
+En RR debe llegar primero el tripulante de la patota 2(trip 3) a realizar su tarea de E/S antes que los tripulantes de la patota 1.
+cat discordiador.log | grep "Dispositivo"
+***************************************
+
+
+
+
+
+
+********************************************
+SEGMENTACION
+
+INICIAR_PATOTA 4 SEG_PatotaA.txt
+INICIAR_PATOTA 1 SEG_PatotaC.txt
+INICIAR_PLANIFICACION
+
+Una vez iniciada la planificación esperar 10 ciclos de CPU y ejecutar los siguientes comandos.
+
+PAUSAR_PLANIFICACION
+EXPULSAR_TRIPULANTE 1
+
+EXPULSAR_TRIPULANTE 2
+LISTAR_TRIPULANTES
+
+5 ciclos
+
+INICIAR_PATOTA 2 SEG_PatotaB.txt
+LISTAR_TRIPULANTES
+
+
+
+
+
+
+***************************************
+PAGINACION
+
+INICIAR_PATOTA 1 PAG_PatotaA.txt 1|1
+INICIAR_PATOTA 1 PAG_PatotaB.txt 3|3
+INICIAR_PATOTA 1 PAG_PatotaC.txt 5|5
+INICIAR_PLANIFICACION
+
+
+
+
+
+
+
+***************************************
+FILE SYSTEM
+
+INICIAR_PATOTA 3 FS_PatotaA.txt
+INICIAR_PATOTA 3 FS_PatotaB.txt
+INICIAR_PLANIFICACION
+
+OBTENER_BITACORA 1
+
+
+
+
+**************************************
+File System - Sabotajes
+
+INICIAR_PATOTA 1 FSCK_PatotaA.txt 0|0
+INICIAR_PATOTA 1 FSCK_PatotaB.txt 8|0
+INICIAR_PATOTA 1 FSCK_PatotaC.txt 8|8
+INICIAR_PATOTA 1 FSCK_PatotaD.txt 0|8
+INICIAR_PLANIFICACION
+
+
+
+CAMBIAR ****************BUGS***************************************
+free(paquete_recibido->stream);
+free(paquete_recibido);
+
+
+

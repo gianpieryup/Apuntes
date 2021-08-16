@@ -1,0 +1,16 @@
+De hecho, un consejo para el TP: les recomiendo ir jugando con los distintos niveles de log según la necesidad que tengan. Por ejemplo, pueden para el día a día codear en nivel LOG_LEVEL_DEBUG usando log_debug()s. Una vez que vean que lo que loguean es lo esperado ir pasando esos log_debug() a log_trace(), ya que si más adelante hacen un cambio que rompe algo anterior pueden elegir cambiar el nivel a LOG_LEVEL_TRACE y ver en detalle qué está pasando. Otra ventaja que tiene esto es que en la entrega pueden decidir subir el nivel a LOG_LEVEL_INFO y ocultar todos esos mensajes en una sola línea de código y sin tener que quitarlos.
+---------------------------
+Conclusión. Si no vas a modificar la cadena es más rápido y gasta menos memoria la alternativa del literal de cadena asignado a un puntero. Si vas a modificar la cadena debes usar el array.
+
+char* name = "Gerardo";
+
+char name[] = "Gerardo";
+
+****************************************************
+
+Para leer archivos
+#include <stdlib.h> 	//NO OLVIDAR EN C
+
+fgetc: lee caracter por caracter
+
+fgets: lee cadena caracteres. Hasta que lea un cambio de línea '\n' o un final de archivo EOF

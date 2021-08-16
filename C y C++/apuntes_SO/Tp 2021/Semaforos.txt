@@ -1,0 +1,22 @@
+******************  MUTEX  *******************************
+pthread_mutex_t mutex_compras; //Semaforo MUTEX
+pthread_mutex_init(&mutex_compras, NULL); //Los Mutex deben inicializarse siempre y solo una vez llamando a mutex_init
+pthread_mutex_lock(&mutex_compras);
+pthread_mutex_unlock(&mutex_compras); //Liberamos el Mutex
+**********************************************************
+
+******************  SEMAFORO  ***************************
+#include <semaphore.h>
+sem_t semImpresora;
+sem_init(&semImpresora, 0, 0); // El segundo parametro 0, significa que es compartido entre los hilos del proceso (poner como var. global) 
+// el tercer parametro es el valor inicial que tendra el semaforo
+sem_wait(&semImpresora);
+sem_post(&semImpresora); // increments (unlocks)
+*********************************************************
+
+
+
+
+
+
+

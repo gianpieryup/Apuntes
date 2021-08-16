@@ -1,0 +1,9 @@
+Para destruir una esstructura que tiene elementos (que contiene una lista)
+no olvidar destruir primero los elementos y luego la estructura
+----------------------
+void cliente_destroy(t_cliente* cliente) {
+	free(cliente->nombre);
+	free(cliente->apellido);
+	free(cliente);
+}
+Para limpiar una estructura se debe limpiar cada campo que tenga asignado memoria dinamica(osea punteros *)

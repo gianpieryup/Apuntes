@@ -1,0 +1,38 @@
+# Clonar rama en especifico
+git clone -b refactor-ram https://github.com/sisoputnfrba/tp-2021-1c-S-quito-de-Oviedo.git
+
+git clone -b deploy https://github.com/sisoputnfrba/tp-2021-1c-S-quito-de-Oviedo.git
+
+# Me dice en que rama estoy y muestra las que existen
+git branch -a
+
+# PULEAR UNA RAMA
+git pull origin discordiador
+
+# PUSHEAR
+git push origin discordiador
+
+--------------------------------------------
+# Me mueve a otra rama
+git checkout -b discordiador
+
+(-b) : es para decirle a git que es una branch
+
+# SI TE SALE LA CONSOLA
+Ctrl + X
+
+# Para ver los commits
+git log
+|-> para salir de esta vista presiona la letra "q" (quit)
+
+# Si a la hora de PUSHEAR te anda un texto enorme proba
+# OJO AL NOMBRE DE LA RAMA/ SI NO ES MASTER CAMBIAR A LA QUE CORRESPONDE
+# git push origin HEAD:discordiador --force
+# [ACTUALIZACION] force: ummm , esto es mala practica la de forcar algo en el futuro te va a romper (simbolo de peligro)
+# Si se hizo bien lo anterior de "mover a una rama" no deberias llegar aca
+
+# GITIGNORE
+no subirlo los ejecutables -> hacer un make clean antes de subir a git
+Si no te toma, es porque los archivos los subiste y despues los agregaste al .gitignore
+Para res debemos borrarlos y en el gitignore comentarlos
+Luego pushearlos y ahora descomentarlos en el gitignore y agregarlos en el protecto

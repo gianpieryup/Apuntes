@@ -1,0 +1,9 @@
+El archivo llamado 'make' vendria hacer el gestor de dependencias (como un archivo package.json en JS)
+
+Estan definidos scrips que se ejecutan
+make algo
+make coso
+
+Abrir el archivo y ver los scrips
+como era en JS: node run
+package.json > scripst

@@ -1,0 +1,8 @@
+EJERCICIO 2 
+
+strcpy(cadena2,cadena3);
+
+lo probe en eclipse e igual error
+
+EJERCICIO 5
+Me sale un error que no tengo idea dice no referenciado pero si esta include en el .h
