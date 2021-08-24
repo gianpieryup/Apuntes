@@ -74,6 +74,12 @@ Console.WriteLine("{0,-3} {1,-10}",10,1010);
 Esta clase tiene muchos methodos, como:
 Convert.ToInt32(Single); 
 Single ; numero flotante => int 32 bits
+
+// Ademas contamos con
+.ToByte()
+.ToInt16()
+.ToInt32()
+.ToInt64()
 ````
 
 ### La Clase Math
@@ -175,7 +181,7 @@ double b = 2;
 (*) Solo se puede definir como double
 ````
 
-**<span style='color:green'>Conversión implícita</span>**
+### <span style='color:green'>Conversión implícita</span>
 
 ````c#
 (*) total = 3/2.0; //El compilador detecta (entero /decimal) pero solo sabe dividir operandos identicos, ¿Que sucede?
@@ -186,7 +192,7 @@ double b = 2;
 double    		double
 ````
 
-<span style='color:green'>**Conversión explicita**</span>
+### <span style='color:green'>Conversión explicita</span>
 
 C# cuenta con el operador de conversión unario. Crea una copia temporal de punto flotante de "a". A esto se le llama  "conversión explicita"
 
@@ -249,7 +255,7 @@ while (num != -1)
     Console.WriteLine("Escribe un numero o -1 para salir");
     num = Convert.ToInt32(Console.ReadLine());
 }
-//Usamos Convert.ToInt32 por que nesecito un numero para comparar en el if
+//Usamos Convert.ToInt32 dado que el readline me lo deja como string ej: "45" y nesecito 45
 ````
 
 #### Bonus
@@ -277,10 +283,13 @@ Continue : Cuando la instrucción `continue` se ejecuta en un ciclo, omite las i
 ````c#
 int c = 5;
 Console.Write(c++);//imprime 5, despues incrementa
-------
-    
-int c = 5;
+------  
 Console.Write(++c);//Incrementa y despues imprime 6
+
+// MEMOTECNIA : DE IZQUIERDA A DERECHA
+int a = 1;
+int b = a++; -> (int b = a) ++ -> "Primero Asigno luego incremento a"
+int b = ++a; -> (int b = ++)a -> "NO puedo: Entonces primero incremento a"     
 ````
 
 

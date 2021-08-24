@@ -214,8 +214,7 @@ MUTABLE:
 """
 
 #LONGITUD
-len(x)
-2
+len(x)    # Rpta 2
 
 #LIST : como palabra reservada
 numberlist = list((1,2,3,4)) #list() solo recibe un argumento

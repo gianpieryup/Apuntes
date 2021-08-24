@@ -2,25 +2,31 @@
 
 Mis apuntes de distintas tecnologías
 
-### Problemas de Gestion en Git
-Si cuando puesheas te sale error de permiso usa
-- $ git push -u origin master
 
 
+### Mi teclado - Atajos
 
-El **cmder** esta originalmente en transparente pero no me gusta. Lo puedes cambiar en `Features` -> `Transparency`  Le pones el máximo a la barra para que sea Opaco
-
-### Mi teclado 
-
-#### Cambio a cursor barra
+##### Cambio a cursor barra
 
 ````
 [fn] + [ins| imp print]
 ````
 
-#### Sacar carácter (`)
+##### Sacar carácter (`)
 
 <kbd>Alt Gr</kbd> + <kbd>}</kbd>
+
+##### Tomar Captura de pantallas en Windows
+
+<kbd>**Windows**</kbd> + <kbd>Impr Pant</kbd>  sacaras una **captura de pantalla** que no se queda en el portapapeles, sino que en su lugar se guarda automáticamente en tu carpeta por defecto `C:\Users\GIANPIER\Pictures\Screenshots`
+
+**Alternativo** :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp</kbd> se guarda en `C:\Users\GIANPIER\Videos\Captures`
+
+
+
+##### Recorte de pantalla que se guarda en el portapapeles
+
+<kbd>Shift</kbd>  + <kbd>**Windows**</kbd> + <kbd>s</kbd> 
 
 
 
@@ -43,24 +49,8 @@ Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te s
 
 
 
-### Tomar Captura de pantallas en Windos
-
-````
-Shift + windos + s
-````
-
-
-
-
-
 **16Z90P Series**
 Ese era la serie del lg gram 16
-
-
-
-#### Acceso Rápido
-
-Para tomar captura de pantalla :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp</kbd> 
 
 
 
@@ -82,21 +72,21 @@ Abrir Extensiones
 
 
 
-## Cosas Utiles
-1. #### Abrir la terminal cmd desde una carpeta.
+## Cosas Útiles
+1. ##### Abrir la terminal cmd desde una carpeta.
 - escribe `cmd` en la ruta donde estas parado y presiona enter
-2. Comandos de Angular y NodeJS
+2. ##### Comandos de Angular y NodeJS
 - Iniciar Angular: `ng serve` 
 - Iniciar NodeJs: `nodemon npm start`
 3. #### Visual Studio
 - Tener mas de una carpeta en el mismo visual, Ir a `Inicio` -> Agregar carpeta de trabajo
-- Comentar lineas: `Crtl` + k + c
-- Decomentar lineas: `Crtl` + k + u
-4. Notepad++
-- Comentar lineas: `Crtl` + k
-5. Problemas mas usuales
+- Comentar líneas: `Crtl` + k + c
+- Des comentar líneas: `Crtl` + k + u
+4. ##### Notepad++
+- Comentar líneas: `Crtl` + k
+5. ##### Problemas mas usuales
 - Compilar en la ruta correcta y con el `cmd` correcto el de node
 - Tener el archivo `.env` en el backend y bien configurado
 
-6. Consola
+6. ##### Consola
 - Borrar los datos de la consola `cls`
