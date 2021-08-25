@@ -7,19 +7,45 @@ int[] arreglo;	//declarar un arreglo de enteros
 arreglo = new int[10]; // 10 elementos int
 // queda arreglo = [0,0,0,0,0,0,0,0,0,0];
 
-//Forma Alternativa
+// Lo mismo pero en una linea
+var[] number = new int[3];
+var numbers = new[] { 3, 7, 9, 2, 14, 6 };
+
+//Formas Alternativas
 int[] v = {10,20,30,40};
+var names = new string[3]{"Jack","John","Mary"};
 
 ¿Para recorrer un vector sin saber la longitud?
-1. Foreach
+1. foreach(var number in array_numbers)
 2. for(int i = 0; i < arreglo.Length;i++)
+    
+// ATENCION 
+    // EL foreach solo sirve a para recorrer elementos no puedo modificarlos
+    // para usar el for tradicional
 ````
 
 > TIP : Tratar de declarar una constante con nombre sin inicializarla es un error de compilacion
 
-### ArrayList
+##### La Clase Array
 
-Para que o que y cual es la diferencia con un `array` , bueno básicamente es un array que admite cualquier tipo de dato. Esta descontinuado pero es bueno saberlo para entender código viejo. Vemos mas adelante sobre lo que se usa hoy en día
+````c#
+var index = Array.IndexOf(numbers, 9); // DEvuelve el indice del elemento
+//Limpiar numeros quiere decir ponerlos en 0
+Array.Clear(numbers, 0, 2);// desde , hsta
+Array.Copy(numbers, another, 3); // copia los tres primeros en another
+Array.Sort(numbers); // ordena
+Array.Reverse(numbers); 
+````
+
+
+
+
+
+### Array vs List
+
+`Array: fixed size | List: dynamic size`
+
+Para que o que y cual es la diferencia con un `array` , <span style=" background:yellow;">bueno básicamente es un array que admite cualquier tipo de dato. Esta descontinuado pero es bueno saberlo para entender código viejo.</span> 
 
 ````c#
 //Para usarlo debemos tener la referencia 
@@ -33,6 +59,18 @@ Usado hoy en día para definir arreglos. Eso si con un solo tipo de dato
 
 ````c#
 List<int> lista2 = new Lista<int>();
+var numbers = new Lista<int>(); // ALTERNATIVO
+var numbers = new Lista<int>() {1,3,4,5};
+
+// METODOS
+.Add() // add 1 elemento
+.AddRange() // add una list
+.Remove(x) // remueve el elemento cuyo (valor== x)
+.RemoveAt()
+.IndexOf()// el primer indice en aparecer | "LastIndexOf" alreves
+.Contains()
+.Count() // size de la lista
+.Clear() // Borra todo
 ````
 
 #### Paso de arreglos y elementos de arreglos a los métodos
@@ -127,11 +165,19 @@ copiaA = [2,4,6] != A
 Cada fila tiene el mismo numero de columnas
 
 ````c#
-int [ , ] b = { {1,2}, {3,4}}
+int [ , ] b = { {1,2}, {3,4}};
+var matrix = new int[3,5]  // ALTERNATIVA ([,])
+{
+    { 1, 2, 3, 4, 5 },
+    { 6, 7, 8, 8, 10 },
+    { 11, 12, 13, 14, 15}
+}
 
 //Para acceder a cada elemento
 b[0,0] = 1      b[1,0] = 3
 b[0,1] = 2		b[1,1] = 4
+    
+
 ````
 
 #### Arreglos dentados
@@ -146,6 +192,13 @@ int [] [] dentado = { new int[] {1 ,2},
 dentado[0,0] = 1      dentado[1,0] = 3		dentado[2,0] = 4
 dentado[0,1] = 2							dentado[2,1] = 5
     										dentado[2,2] = 6
+    
+// ALTERNATIVO
+var array = new int[3][]; // Vemos la diferencia con el arreglo rectangular
+
+array[0] = new int[4];
+array[1] = new int[5];
+array[2] = new int[3];
 ````
 
 Declaraciones
@@ -180,7 +233,7 @@ public static double Promedio(params double[] numeros){
     foreach(double d in numeros){
         total+=d;
     }
-    return total;
+    return total;;;
 }
 
 //El param me abilita lo siguiente, muchos elementos
@@ -190,4 +243,27 @@ Console.WriteLine("EL promedio es {0}",Promedio(1.0,2.0,3.0,4.0));
 //Sin el 'params' tengo que pasarle un solo elemento (un array)
 Console.WriteLine("EL promedio es {0}", Promedio(new double[]{1.1,1.2}) );
 ````
+
+
+
+#### Date Time
+
+````c#
+var dateTime = new DateTime(2015, 1, 1);
+var now = DateTime.Now; // Fecha y Hora actual
+var todat = DateTime.Today;
+
+// El tipo de dato es inmutable |Hay metodos que Devuelve un "nuevo" DateTime
+var tomrrow = now.AddDays(1);
+
+CW(now.ToLongDateString());
+CW(now.ToShortDateString());
+CW(now.ToLongTimeString());
+CW(now.ToShortTimeString());
+CW(now.ToString()); // Podemos especificar formato en el parametro "yy-MM-dd"
+````
+
+
+
+
 

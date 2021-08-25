@@ -377,6 +377,7 @@ enum Day : nombreTipo {CONST1, CONST2, CONST3,...};
 
 ````c#
 Random num = new Random();//Tenemos una instancia
+// O bien | var random = new Random()
 
 //METODOS
 int dado = num.Next(1,7); //Un numero del 1 al 6
@@ -384,6 +385,9 @@ int dado = num.Next(6); //Deduce que empieza del (0), 0 al 5
 
 //Ejemplos: Multiplos de 3 mas 2
 int num = 2 + 3 * num.Next(5); //{2,5,8,11,14}
+
+// Casteo -> ASCII
+Console.Writeline((int)'a');
 ````
 
 
