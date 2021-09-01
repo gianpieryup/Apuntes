@@ -144,3 +144,96 @@ HAVING count(*) >= 8
 Basicamente: Es un **WHERE** en cada **Grupo**, en este caso se lee que Filtrare los grupos cuya cantidad de elementos sea mayor o igual a 8. <span style=" background:yellow;">Ahora que tengo solo los grupos que cumplen la condicion</span> , con las **funciones Agregadas** me devuelven un unico valor por **grupo**
 
 Si en la columna tenemos un `count()` 
+
+
+
+### JOIN
+
+Se divide en dos:
+
+````sql
+INNER JOIN
+-- El JOIN por defecto
+
+OUTER JOIN    -- : Conformado por
+- LEFT JOIN
+- RIGHT JOIN
+- FULL JOIN
+````
+
+
+
+##### INNER JOIN
+
+Se realiza un macheo de las filas de una tabla que coincidan a través de un atributo o combinación de atributos con filas de otras tabla.
+El **INNER JOIN** solo devolverá las filas que coincidan.
+
+````sql
+SELECT c.customer_num, fname,lname, order_num, order_date
+FROM customer c INNER JOIN orders o
+	ON(c.customer_num = o.customer_num)
+
+# INNER JOIN (clave compuesta)
+SELECT i.stock_num, i.manu_code
+FROM items i JOIN products p
+	ON (i.stock_num=p.stock_num and i.manu_code=p.manu_code)
+````
+
+(*) Cuando un atributo existe en mas de una tabla del **SELECT**, es obligatorio identificar de que tabla lo estamos tomando, utilizando el punto como separador (dot notation) tabla.columnao alias.columna.
+
+![ambi](ambi.png)
+
+Mas de dos tablas
+
+````sql
+SELECT i.stock_num, i.manu_code, unit_descr
+FROM items i 
+	JOIN products p ON (i.stock_num=p.stock_num and i.manu_code=p.manu_code)
+	JOIN units u ON (p.unit_code=u.unit_code)
+--  JOIN otra_tabla
+# Puedes pensarlo como que juntas 2 tablas y luego a esta union le quieres joinear otra tabla asi siempre lo puedes pensar de a 2
+````
+
+
+
+##### OUTER JOIN
+
+El Outerjoin, mostrara todas las filas de la tabla dominante macheen o no con la otra tabla.
+El Outerpuede ser **LEFT**. (tabla izquierda dominante), **RIGHT** (tabla derecha dominante) o **FULL** (ambas tablas dominantes)
+
+````sql
+SELECT c.customer_num
+FROM customer c 
+	LEFT JOIN orders o ON (c.customer_num=o.customer_num)
+-- Como el JOIN pero terminas con todas los registros de la tabla 'customer' aun que no hayan macheado con la otra tabla
+-- Probablemente por que el valor del campo que hace el JOIN lo tiene en NULL
+````
+
+
+
+##### JOIN AUTO REFERENCIADO (SELF REFERENCING JOIN)
+
+La tabla customer tiene un atricuto customer_num_referedBy, que nos indica quien fue el cliente que lo referencio.
+Podríamos armar una consulta que nos diga nombre y apellido del referido y de quien lo referencio.
+
+````sql
+select c2.lname + ', ' + c2.fname Padrino, c1.lname + ', ' + c1.fname Referido
+from customer c1
+join customer c2 on (c1.customer_num_referedBy=c2.customer_num)
+````
+
+
+
+#### PRODUCTO CARTESIANO
+
+El producto cartesiano es muy costoso para el motor de base de datos. En el caso que deban realizar alguno, deben tratar de achicar el working set lo máximo que puedan, proyectando solo las columnas que necesiten y condicionando con WHERE lo que pudiesen. **RECOMENDACIÓN NO LO UTILICEN**.
+
+````sql
+SELECT *
+FROM customers c, orders o
+/*	Clientes(12 cols) + Ordenes(10 cols) = 22 columnas
+	28 clientes * 23 ordenes =644 filas
+	Que pasaría si fuesen 1000 clientes con 100000 ordenes?
+*/
+````
+
