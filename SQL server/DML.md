@@ -349,5 +349,33 @@ WHERE c_estado = 1
 
 
 
+#### MERGE
 
+La sentencia MERGE se utiliza esencialmente para realizar procesamientos **batch** (migraciones, carga de datos, apareos, etc.) de tablas (La sintaxis y demás mirar en el PDF)
+
+**BASICAMENTE TENEMOS 2 TABLAS**, (**mergeFuente** → **mergeDestino**) las columnas de la fuente deben estar también en las destino(esta puede tener mas) notar el sentido (→)
+
+<span style=" background:yellow;">Muy importante las operaciones se hacen hacia la tabla **mergeDestino **</span>
+
+Usando las PK que deben ser igual nombre, tenemos 3 casos **(UPDATE, INSERT, DELETE)**
+
+![merge](merge.png)
+
+Usando la PK en los registros definimos
+
+| mergeFuente | mergeDestino | Operación    |
+| ----------- | :----------- | :----------- |
+| esta        | esta         | se actualiza |
+| esta        | no esta      | inserta      |
+| no esta     | esta         | se elimina   |
+
+Como resultado final así quedaría la tabla **mergeDestino**
+
+````sql
+SELECT * FROM mergeDestino
+codigo  nombre               direccion         estado   observacion
+  2     'Ricardo Ruben'		 'Paraguay 1888'   A        NULL
+  3     'Juan Jose Jacinto'	 'Paraguay 1888'   A        NULL
+  8     'Carola Sampietro'	 'Paraguay 1888'   A        NULL
+````
 
