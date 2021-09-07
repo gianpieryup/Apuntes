@@ -13,6 +13,37 @@ CREATE TABLE ordenes (
 );
 ````
 
+
+
+#### Secuencias
+
+Los generadores de **secuencias** proveen una serie de <u>números secuenciales</u>, especialmente usados en <span style=" background:yellow;">entornos multiusuarios para generar una números secuenciales y únicos</span>
+
+Los motores de base de datos proveen diferentes formas de implementar secuencias a través de:
+
+- Propiedades de una columna (SqlServer, Mysql, DB2)
+- Tipo de Dato de una columna (Informix, PostgreSQL)
+- Objeto Sequence(Oracle, Informix, PostgreSQL, DB2, SqlServer)
+
+Mirar el PDF, en este caso hablaremos específicamente de `SqlServer` 
+
+Al insertar una fila en dicha tabla, el motor va a buscar el próximo nro. del más alto existente en la tabla. Seria el **AUTO_INCREMENTAL** (En SQLserver **IDENTITY**)
+
+````sql
+CREATE TABLE ordenes(
+    N_orden int IDENTITY (1, 1), -- Primer valor 1, se incrementa de a 1
+    N_clienteintNULL ,
+    F_ordendatetimeNULL
+);
+
+INSERT INTO ordenes(n_cliente, f_orden) VALUES (114,'2020-03-03')
+-- Si el N_orden maximo era 25. El nuevo registro insertado tendra PK=26
+````
+
+<span style='color:red'>Cuidado con las secuencias, cuando requerimos números consecutivos sin huecos.</span>
+
+
+
 #### DEFINIR PK
 
 ````sql

@@ -81,22 +81,27 @@ Otros casos serian: Tener las tablas "Provincia" y "Ciudad" para calcular la ubi
 
 #### Constraints
 
-##### Integridad de Entidad
+##### <u>Integridad de Entidad</u>
 
-PRIMARY KEY CONSTRAINT: Puede estar compuesta por una o más columnas, y deberá representar unívocamente a cada fila de la tabla. No debe permitir valores nulos 
+<span style='color:blue'>PRIMARY KEY CONSTRAINT:</span> Puede estar compuesta por una o más columnas, y deberá representar unívocamente a cada fila de la tabla. No debe permitir valores nulos 
 
-##### Integridad Referencial
+##### <u>Integridad Referencial</u>
 
-FOREIGN KEY CONSTRAINT: Puede estar compuesta por una o más columnas, y estará referenciando a la PRIMARY KEY de otra tabla.
+<span style='color:blue'>FOREIGN KEY CONSTRAINT:</span> Puede estar compuesta por una o más columnas, y estará referenciando a la PRIMARY KEY de otra tabla.
 
-##### Integridad Semántica
+##### <u>Integridad Semántica</u>
 
-La integridad semántica es la que nos asegura que los datos que vamos a almacenar tengan una apropiada configuración y que respeten las restricciones definidas sobre los dominios o sobre los atributos.
-DATA TYPE
-DEFAULT : Por defecto NULL amenos que se especifique
+La integridad semántica es la que nos asegura que los datos que vamos a almacenar tengan una apropiada configuración y que respeten las restricciones definidas sobre los **dominios** o sobre los atributos.
+
+````sql
+DATA TYPE : INT, VARCHAR(20)
+DEFAULT : Por defecto NULL a enos que se especifique
 UNIQUE
-NOT NULL
-CHECK : ``c_estado in (1,2,3)`
+NOT NULL : Asegura que una coluna contenga un valor durante una operación de INSERT o UPDATE
+CHECK : c_estado in (1,2,3) Actúa tanto en el INSERT, como en el UPDATE.
+````
+
+<span style=" background:yellow;">Se considera el NULL como la ausencia de valor.</span>
 
 
 
@@ -117,7 +122,7 @@ CREATE ALTER DROP TRUNCATE
 **D<u>M</u>L : Lenguaje de <u>manipulación</u> de datos**
 
 ````sql
-SELECT INSERT UPDATE DELETE
+SELECT INSERT UPDATE DELETE MERGE
 ````
 
 **DCL : Lenguaje de <u>Control</u> de Datos**

@@ -9,6 +9,56 @@ HAVING condiciones sobre lo agrupado
 ORDER BY columnas clave de ordenamiento
 ````
 
+
+
+#### INSERT
+
+````sql
+-- Se inserta una sola fila en la tabla
+INSERT INTO ordenes (n_orden, n_cliente, f_orden) VALUES (117, 1O, '12-JAN-2013')
+-- Obviamente que las columnas no incluidas en el INSERT deben aceptar valores NULL o tener un DEFAULT definido.
+
+-- En caso que tenga todos los campos, podemos omitir especificar las columnas
+INSERT INTO ordenes VALUES (117, 10, '12-JAN-2013')
+-- EL motor de BD no aceptara datos erróneos, debido a que la cantidad de valores si difiere con la cantidad de columnas de la tabla.
+
+
+-- Se insertan multiples filas en la tabla
+INSERT INTO nom_tabla[(listade columnas)]
+SELECT…
+-- El select debe devolver una lista columnas similar a la que espera recibir el INSERT
+
+
+IDENTITY
+-- Al insertar una fila en una tabla con un atributo con la propiedad de IDENTITY, NO se debe incluir dicha columna en la lista de columnas, ni poner valor en la lista de valores.
+-- EJEMPLO
+TABLE empleados(
+	empleadoId INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(60),
+    CUIT BIGINT
+);
+INSERT INTO empleados (nombre, cuit) VALUES ('Pedrol',2569456213)
+````
+
+#### UPDATE
+
+````sql
+UPDATE nom_tabla
+SET columna=valor [, columna=valor…])
+[WHERE condiciones] -- CUIDADO si no se pone condición actualiza la TOTALIDAD DE LAS FILAS DE LA TABLA
+````
+
+#### DELETE
+
+````sql
+DELETE FROM nom_tabla
+[WHERE condiciones] -- CUIDADO si no se pone condición ELIMINA la TOTALIDAD DE LAS FILAS DE LA TABLA
+````
+
+<span style="color:red;">**WARNING**</span> : Cuidado con la **Integridad Referencial** resguardada por las PK y las FK.
+
+
+
 #### SELECT
 
 ````sql
@@ -42,8 +92,9 @@ ORDER BY 1
 ````sql
 SUM(columna)
 COUNT(*) 		# cuenta todas las filas de la tabla
-
 COUNT(columna)  # cuenta filas con dicha columna (NO NULA)
+-- La sentencia "SELECT COUNT(*)" puede retornar más filas que la sentencia "SELECT COUNT(nombre_columna)" *
+
 # Muestra la cantidad de Ordenes de Compra con fecha de pago No Nula
 SELECT COUNT(paid_date) FROM orders
 
@@ -236,4 +287,67 @@ FROM customers c, orders o
 	Que pasaría si fuesen 1000 clientes con 100000 ordenes?
 */
 ````
+
+
+
+### Tablas Temporales
+
+Son tablas creadas cuyos datos son de existencia temporal.
+No son registradas en las tablas del diccionario de datos.
+No es posible alterar tablas temporarias. Si eliminarlas y crear los índices temporales que necesite una aplicación.
+Las actualizaciones a una tabla temporal podrían no generar ningún log transaccional si así se configurara.
+
+#### Tipos de Tablas
+
+##### De Sesión (locales)
+
+Son visibles sólo para sus creadores durante la misma sesión (conexión) a una instancia del motor de BD. <span style=" background:yellow;">Las tablas temporales locales se eliminan cuando el usuario se desconecta o cuando decide eliminar la tabla durante la sesión.</span>
+
+##### Globales
+
+Las tablas temporales globales están visibles para cualquier usuario y sesión una vez creadas. Su eliminación depende del motor de base de datos que se utilice.
+
+
+
+#### Tipos de Creación
+
+##### Creación Explícita.
+
+Este tipo de creación se realizar mediante la instrucción <span style="color:blue;">**CREATE**</span>. De manera explícita se deberá crear la tabla indicando el nombre, sus campos, tipos de datos y restricciones.
+
+````sql
+CREATE TABLE #ordenes_pendientes( -- Notar el #
+    N_orden INTEGER,
+    N_cliente INTEGER,
+    F_orden DATE,
+    I_Total DECIMAL(15 , 2),
+    C_estado SMALLINT,
+) WITH NO LOG;
+
+-- Rellenar
+INSERT INTO #ordenes_Pendientes 
+SELECT * FROM ordenesWHERE c_estado= 1
+````
+
+##### Creación Implícita
+
+Se pueden crear tablas temporales a partir del resultado de una consulta SELECT.
+
+````sql
+-- Esto lo crea y lo rellena de datos
+SELECT *
+INTO #ordenes_Pendientes
+FROM ordenes
+WHERE c_estado = 1
+````
+
+<span style=" background:yellow;">Por qué utilizarlas?</span>
+
+- Como <u>almacenamiento intermedio</u> de **Consultas Muy Grandes**
+- Para <u>optimizar accesos a una consulta</u> varias veces en una aplicación
+- Para almacenar resultados intermedios en una aplicación (<u>para actualizar o impactar a tablas reales de la BD solo en el final del procedimiento</u>)
+
+
+
+
 
