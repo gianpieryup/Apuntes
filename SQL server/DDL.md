@@ -93,3 +93,76 @@ CREATE TABLE empleados (
 Lo que si permitirá es ingresar un nro. de jefe NULO.*/
 ````
 
+
+
+#### <u>VIEW</u>
+
+Nombre (o alias) que se le da a una query, esta query se **visualiza como una tabla** y cada vez que se consulta se (ejecuta la query)
+
+<span style=" background:yellow;">No contiene datos almacenados (No aloca espacio de almacenamiento.)</span>
+
+Las vistas se pueden utilizar para:
+Suministrar un nivel adicional de **seguridad** restringiendo el acceso a un conjunto predeterminado de filas o columnas de una tabla.
+Ocultar la complejidad de los datos. Simplificar sentencias al usuario.
+
+Una **view** depende de las tablas a las que se haga referencia en ella, si se elimina una tabla todas las **views** que dependen de ella se borraran o se pasará a estado **INVALIDO**, dependiendo del motor. Lo mismo para el caso de borrar una **view** de la cual depende otra **view**. (depende del motor de BD)
+
+Tener en cuenta ciertas **restricciones** para el caso de Actualizaciones:
+
+- Si en la tabla existieran <span style=" background:yellow;">campos que no permiten nulos </span>y en **la view no aparecen**, los **inserts** fallarían.
+
+- Si en la **view** no aparece la **primary key** los **inserts** podrían fallar.
+
+
+Con la opción **WITH CHECK OPTION**, se puede actualizar siempre y cuando el <span style=" background:yellow;">checkeo de la opción en el **where** sea verdadero</span>
+
+````sql
+CREATE VIEW V_clientes_california
+(codigo, apellido, nombre) -- Notar que se renombran los names de las columnas
+AS
+SELECT customer_num, lname, fname
+FROM customer
+WHERE state='CA'
+
+-- Podriamos INSERTAR (En la VISTA)
+INSERT INTO V_clientes_california
+VALUES (999,'Martin','Mihura','FL') -- Y LO INSERTARA SI NO hay problemas de integridad(NULL aceptable en los otros campos de la tabla customer)
+
+-- Si hacemos el SELECT count(*) de la V_clientes_california
+Notaremos que no aparece este nuevo regitro, RECORDEMOS que la vista es la query(en tiempo de ejecucion) esa que tiene un WHERE state='CA' y la que insertamos es de (state='FL')
+
+-- Hademos un Updatesobre el cliente 101 de California cambiando su estado a NewYork.
+Y te deja, obviamente no podemos verlo en la query porque tiene el WHERE
+
+-- Pero PARA
+Esto no es SEGURO, puedo Manipular(INSERT,DELETE,UPDATE) registros mediante la VIEW. que actualmente no pueden ser accedidos a traves de la vista.
+
+
+-- Aqui entra
+WITH CHECK OPTION : realiza un chequeo de integridad de los datos a insertar o modificar, los cuales deben cumplir con las condiciones del WHERE de la vista.
+
+CREATE VIEW V_clientes_california_WCK
+(codigo, apellido, nombre,estado)
+AS
+SELECT customer_num, lname, fname,state
+FROM customer
+WHERE state='CA'
+WITH CHECK OPTION
+
+-- Ahora cuando se quiera operar algo que no cumpla con el WHERE te saldra un mensaje de error: The attempted insert or update failed because the target view either specifies WITH CHECK OPTION
+````
+
+
+
+<img src="carpetaViews.png" alt="carpetaViews" style="zoom:48%;" />
+
+
+
+#### <u>SNAPSHOTS</u>
+
+Una FOTO de una TABLA en un determinado momento. Deben ser recalculadas o refrescadas cuando los datos de las tablas master cambian. <span style=" background:yellow;">Pueden ser refrescadas en forma manual, o a intervalos de tiempo definidos dependiendo el motor de BD.</span>
+
+Por lo general son tablas sumarizadas(con funciones agregadas) → para toma de decisión
+
+Se utilizan sobre todo en **Data Warehouse**, sistemas para soporte de toma de decisión
+
