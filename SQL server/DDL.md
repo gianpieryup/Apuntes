@@ -1,6 +1,6 @@
 ## Motor SQL Server
 
-#### CREAR TABLA
+#### CREATE
 
 ````sql
 CREATE TABLE ordenes (
@@ -11,6 +11,23 @@ CREATE TABLE ordenes (
 	F_alta_audit TIMESTAMP NULL ,
 	D_usuario VARCHAR(20) NULL 
 );
+````
+
+##### ALTER
+
+
+
+
+
+**DELETE**: Borra registros
+
+**DROP**: Borra la tabla(incluida la estructura), no queda nada
+
+**TRUNCATE**:  Vacía la tabla(borra todos los registros) y Resetea la tabla (resetea el auto-increment)
+
+````sql
+DROP TABLE name_table -- La tabla desaperece
+TRUNCATE TABLE name_tabla -- Aun existira la tabla
 ````
 
 
