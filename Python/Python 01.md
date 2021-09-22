@@ -141,6 +141,13 @@ nombre[8] = 'x'
 nombre = "Marianito"
 milista = list(nombre)
 milista[8] = 'x'
+
+#  Cómo formatear la moneda en Python
+amount = 123456.78
+currency = "${:,.2f}".format(amount)
+
+print(currency)
+OUTPUT> $123,456.78
 ````
 
 ### Imprimir variables de cadena de texto
@@ -276,6 +283,7 @@ y*2      # Sera distinto con un array, lista != array
 x[-1] #Igual que las cadenas de cadenas de texto
 11
 
+# "Persistencia" al pasar por parametro (Modificar elementos [SI], Reasignar [NO])
 ````
 
 #### Matriz
