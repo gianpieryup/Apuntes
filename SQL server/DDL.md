@@ -15,11 +15,18 @@ CREATE TABLE ordenes (
 
 ##### ALTER
 
+Considerar que pueden variar la sintaxis por motor **(\**)**
+
+```sql
+ALTER TABLE Customers
+ADD Email varchar(255); # Agregar una columna
+DROP COLUMN Email; # Borrar una columna
+ALTER COLUMN column_name datatype; # Modificar una columna (**)
+```
 
 
 
-
-**DELETE**: Borra registros
+**DELETE**: Borra solo registros (-> no limpia el IDENTITY)
 
 **DROP**: Borra la tabla(incluida la estructura), no queda nada
 
@@ -58,6 +65,15 @@ INSERT INTO ordenes(n_cliente, f_orden) VALUES (114,'2020-03-03')
 ````
 
 <span style='color:red'>Cuidado con las secuencias, cuando requerimos números consecutivos sin huecos.</span>
+
+```sql
+-- Puedo averiguar los parametros del IDENTITY desde la consola
+SELECT IDENT_SEED('name_table')
+SELECT IDENT_INCR('name_table')
+-- Puedes activar/desactar el identitiy con 1 comando de consola
+```
+
+
 
 
 
@@ -182,4 +198,142 @@ Una FOTO de una TABLA en un determinado momento. Deben ser recalculadas o refres
 Por lo general son tablas sumarizadas(con funciones agregadas) → para toma de decisión
 
 Se utilizan sobre todo en **Data Warehouse**, sistemas para soporte de toma de decisión
+
+
+
+#### <u>INDICES</u>
+
+Los índices son estructuras opcionales asociadas a una tabla.
+La función de los índices es la de **permitir un acceso más rápido a los datos de una tabla**, se pueden crear distintos tipos de índices **sobre uno o más campos.**
+
+Los índices son lógica y físicamente independientes de los datos en la tabla asociada. <span style=" background:yellow;">Se puede crear o borrar un índice en cualquier momento sin afectar a las tablas base o a otros índices.</span>
+
+
+
+#### TIPOS DE INDICES
+
+Indices B Tree
+
+Indices B Tree +
+
+Analogo al anterior con la diferencia de que tienen punteros entre nodos del mismo nivel
+
+
+
+##### CARACTERÍSTICAS DIFERENCIADORAS PARA LOS ÍNDICES
+
+**Unique**: Índice de clave única. Sólo admite una fila por clave.
+**Duplicado**: Permite múltiples filas para una misma clave.
+**Simple**: La clave está integrada por una sola columna.
+**Compuesto**: La clave se compone de varias columnas.
+						Las principales funciones de un índice compuesto son:
+						Facilitar múltiples joins entre columnas
+						Incrementar la unicidad del valor de los índices
+
+```sql
+CREATE INDEX ix_sample
+on sample_table (a,b,c); -- Esto significa
+-- A igualdad de valores de a ordena por b, 
+-- A igualdad de valores de [a,b] ordena por c
+```
+
+(>>) EJ la PK seria del tipo UNIQUE mientras que si solo quiero **acceder mas rapido a un campo** que puede tener duplicados, no tendria problemas
+
+##### <u>BENEFICIOS DE LA UTILIZACIÓN DE INDICES</u>
+
+- Se le provee al sistema mejor perfomanceal equipo ya que no debe hacer lecturas secuenciales sino accede a través de los índices
+- Asegura únicos valores para las filas almacenadas
+-  <span style=" background:yellow;">cCuando las columnas que intervienen en un JOIN tienen índices</span> se le da mejor perfomancesi el sistema logra recuperar los datos a través de ellas
+- Asegura el cumplimientode contraints y reglas de negocio. **Primary key, foreign keys, unique values**
+
+
+
+##### <u>COSTO DE LA UTILIZACIÓN DE INDICES (Desventajas)</u>
+
+**COSTO DE ESPACIO DE DISCO**
+El primer costo asociado es el espacio que ocupa en disco, que en algunos casos suele ser mayor al que ocupan los datos
+
+**COSTO DE PROCESAMIENTO Y MANTENIMIENTO**
+El segundo costo es el de procesamiento, hay que tener en cuenta que <span style=" background:yellow;">cada vez que una fila es insertada o modificada o borrada, el índice debe estar bloqueado, con lo cual el sistema deberá recorrer y actualizar los distintos índices</span>
+
+
+
+##### GUIA RESUMEN CUANDO DEBERIAMOS INDEXAR
+
+Indexar columnas que intervienen en Joins
+Indexar las columnas donde frecuentemente se realizan filtros
+Indexar columnas que son frecuentemente usadas en orders by
+
+**Evitar duplicación de índices**
+	Sobre todo en columnas con pocos valores diferentes Ej: Sexo, Estado Civil, Etc.
+
+**Verificar que el tamaño de índice debería ser pequeño comparado con la fila**
+Tratar sobre todo en crear índices sobre columnas cuya longitud de atributo sea pequeña
+No crear índices sobre tablas con poca cantidad de filas, no olvidar que siempre se recupera de a páginas. De esta manera evitaríamos que el sistema lea el árbol de índices
+
+**Limitar la cantidad de índices en tablas que son actualizadas frecuentemente**
+•Porque sobre estas tablas se estarán ejecutando Selects extras
+
+**Tratar de usar índices compuestos para incrementar los valores únicos**
+Tener en cuenta que si una o más columnas intervienen en un índice compuesto el optimizador podría decidir acceder a través de ese índice aunque sea solo para la búsqueda de los datos de una columna, esto se denomina “partial key search”
+
+**Usando cluster index se agiliza la recuperación de filas**
+
+Uno de los principales objetivos de la Optimización de bases de datos es reducir la entrada/salida de disco. Reorganizando aquellas tablas que lo necesiten, se obtendría como resultado que las filas serían almacenadas en bloques contiguos, con lo cual facilitaría el acceso y reduciría la cantidad de accesos ya que recuperaría en menos páginas los mismos datos.
+
+##### CONSTRUCCIÓN DE ÍNDICES EN PARALELO
+
+Medio que lo crea por partes (arma subarboles y luego los junta)
+
+##### Motor SQL SERVER
+
+SqlServer utiliza una estructura de ArbolB+.
+Máxima cantidad de campos para la clave de un índice compuesto: 16.
+
+```sql
+-- Creación de un índice único y simple:
+CREATE UNIQUE INDEX ix1_ordenes ON ordenes(n_orden);
+
+-- Creación de Indice duplicado y compuesto.
+CREATE INDEX ix2_ordenes ON ordenes (n_cliente, f_orden);
+-- Notar que el quitamos la opcion UNIQUE (con esto se banca duplicados)
+-- (n,f) pueden aparecer mas de una ves
+-- (n,f) los campos en orden que quiero se guarden los datos
+
+-- Creación de Indice clustered
+CREATE CLUSTERED INDEX ix3_ordenes ON ordenes(N_orden);
+```
+
+##### Manejo del Load Factor
+
+**FILLFACTOR**–Porcentaje de cada página del índice a ser dejado como espacio libre en su creación.
+Por ej. Si el **FILLFACTOR**=20, <span style=" background:yellow;">en la creación del índice</span> se ocupará hasta el 80% de cada
+nodo.
+
+(Osea que en cada nodo hoja al mometno de crearlo deja 20% de las filas libres)
+
+Ahora no te conviene mucho si el campo del indice te vienen valores cercanos ej (100,101,102,103) porque tendrias mas hojas y encima con filas libres
+
+```sql
+CREATE UNIQUE INDEX ix1_ordenes ON ordenes(N_orden)
+WITH FILLFACTOR = 20;
+```
+
+
+
+##### MOTOR SQL SERVER
+
+Indices Clustered
+
+![image-20210926170240867](C:\Users\GIANPIER\AppData\Roaming\Typora\typora-user-images\image-20210926170240867.png)
+
+Hace que en la hoja tenga el dato posta y no la posicion a la tabla de datos
+
+**Y Oracle? que usa?** Usa las **IOT**
+
+Tablas organizadas por indice, y muy parecido a los Cluster de SQL server, quiza adicionando punteros entre nodos hojas
+
+
+
+
 

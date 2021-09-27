@@ -379,3 +379,32 @@ codigo  nombre               direccion         estado   observacion
   8     'Carola Sampietro'	 'Paraguay 1888'   A        NULL
 ````
 
+
+
+### SUBQUERY
+
+```sql
+INSERT INTO closed_orders
+SELECT * FROM orders
+WHERE paid_dateIS NOT null
+-- No olvidar que debe coincidir las estructuras de los valores a insertar con la estrucutra de la tabla
+```
+
+Es fundamental que el select devuelva las mismas filas y en el mismo orden las columnas que la tabla destino.
+
+```sql
+DELETE FROM customer
+WHERE customer_num NOT IN
+	(SELECT DISTINCT customer_num FROM cust_calls) AND 
+	  customer_num NOT IN
+	(SELECT DISTINCT customer_num FROM orders) AND 
+	  customer_numNOT IN
+	(SELECT DISTINCT customer_num_referedBy 
+     FROM customer c2
+  	 WHERE customer_num_referedBy IS NOT NULL)
+```
+
+Utilizando **tres subqueries** como condiciones del DELETE, podríamos borrar todos los clientes de la Tabla customer, que no posean ordenes de compra asociadas y que no hayan referenciado a otro cliente y que no tengan llamados telefónicos
+
+Este ejemplo de subquery en delete : emula no borrar las que tengan referencia como FK dado que si lo permitiera me daria error.
+
