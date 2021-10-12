@@ -308,7 +308,8 @@ dataframe[dataframe['c2'] > 15]
 dataframe > 20
 
 /*--------- Elejir Filas --------*/
-#Seleccionar por indice(OJO el loc no olvidar)
+En los DataFrames de Pandas existen diferentes formas de seleccionar los registros de las filas y columnas. Siendo dos de las más importantes iloc y loc. La primera permite seleccionar los elementos en base a la posición, mientras que la segunda permite seleccionar mediante etiquetas o declaraciones condicionales. Esta entrada en un tutorial en el que se explicaran los fundamentos para seleccionar filas y columnas en Pandas con iloc y loc
+
 dataframe.loc['i3'] # Agregando .values quita los indices quedando un array
     c1    10
     c2    11
@@ -318,6 +319,11 @@ dataframe.loc['i3'] # Agregando .values quita los indices quedando un array
 dataframe.loc['i3']['c4']
 
 # La ventaja de iloc es que puedo usar numeros, para identificar los indices. Como los indices pueden ser alfanumericos, facilita la escritura de codigo
+
+# CON ILOC encaso que el dataframe
+df.iloc[0] # Primera fila
+df.iloc[1] # Segunda fila
+df.iloc[-1] # Última fila
 ````
 
 #### Operaciones
