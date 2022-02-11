@@ -28,6 +28,12 @@ Mis apuntes de distintas tecnologías
 
 <kbd>Shift</kbd>  + <kbd>**Windows**</kbd> + <kbd>s</kbd> 
 
+Además todas las capturas que hagas se guardan en
+
+```
+C:\Users\GIANPIER\AppData\Roaming\Typora\typora-user-images
+```
+
 
 
 ### XAMPP
