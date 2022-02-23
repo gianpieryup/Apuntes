@@ -383,6 +383,8 @@ codigo  nombre               direccion         estado   observacion
 
 ### SUBQUERY
 
+##### SUB INSERT
+
 ```sql
 INSERT INTO closed_orders
 SELECT * FROM orders
@@ -391,6 +393,8 @@ WHERE paid_dateIS NOT null
 ```
 
 Es fundamental que el select devuelva las mismas filas y en el mismo orden las columnas que la tabla destino.
+
+##### SUB DELETE
 
 ```sql
 DELETE FROM customer
@@ -407,4 +411,64 @@ WHERE customer_num NOT IN
 Utilizando **tres subqueries** como condiciones del DELETE, podríamos borrar todos los clientes de la Tabla customer, que no posean ordenes de compra asociadas y que no hayan referenciado a otro cliente y que no tengan llamados telefónicos
 
 Este ejemplo de subquery en delete : emula no borrar las que tengan referencia como FK dado que si lo permitiera me daria error.
+
+##### SUB UPDATE
+
+````sql
+UPDATE clientes
+SET state = (SELECT state FROM state WHERE..)--(*)
+WHERE customer_num =101
+--(*) El subquery puede retornar solo una única columna y fila. O sea un valor escalar. En este caso por que esta comparando (=)
+````
+
+**Subquery en Lista de columnas**: Queda como un constante
+
+**Subqueryen el FROM** : Para usarla como una tabla para usar o JOINEAR
+
+**Subqueryen el WHERE** : in (subquery con >=1 filas) OR | = (subquery con =1 fila)
+
+**Subquery CORRELACIONADO**
+
+````sql
+SELECT customer_num, lname, fname
+FROM customer c
+where NOT EXISTS (SELECT order_num 
+                  FROM orders o 
+                  WHERE o.customer_num = c.customer_num)
+````
+
+La consulta devuelve los clientes que para los que no existen ordenes de compra. Pero tiene la peor performance
+
+Podemos mejorarlo con
+
+````sql
+where customer_num NOT IN (SELECT DISTINCT customer_num FROM orders)
+````
+
+Tambien usando JOIN y GROUP BY podemos mejorarla
+
+
+
+#### Operadores Multi Select
+
+•UNION (A ∪ B)
+
+La cantidad de campos en cada consulta debe corresponderse.
+Los campos en igual posición deben tener el mismo tipo de datos.
+La clausula ORDER BY va al final del ultimo SELECT.
+<span style=" background:yellow;">En el caso de filas con idénticos valores solo deja una de las dos.</span>
+
+La tabla de salida toma los nombres de columnas del primer SELECT
+
+UNION **ALL** : la clausula ALL, mantiene todos los registros incluyendo filas iguales
+
+•INTERSECT (A ∩ B)
+
+Mismas restricciones del UNION.
+Devuelve las filas que están en ambas consultas.
+
+•EXCEPT (A - B)
+
+Mismas restricciones del UNION.
+Devuelve las filas del Primer SELECT que no están en la intersección con el Segundo SELECT.
 

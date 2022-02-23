@@ -79,9 +79,9 @@ Utilizar los **logs transaccionales** para retornar el motor de base de datos a 
 
 Foco en la ejecución de **Transacciones**
 
-- **A**tomicidad: **BLOQUE TRY** (Se ejecuta completa o no se ejecuta)
+- **A**tomicidad: **BLOQUE TRY** (Serie de pasos donde se ejecuta completa o ninguna se ejecuta)
 - **C**onsistencia: <span style=" background:yellow;">La BD parte y va hacia un estado consistente por cada transacción</span>
-- **I**solation(Aislamiento): Las Transacción por separado, de manera concurrente no se pueden chocar(como si tuvieran <u>semáforos</u>)
+- **I**solation(Aislamiento): Esto asegura que la realización de dos transacciones sobre la misma información sean independientes y no generen ningún tipo de error. 
 - **D**urabilidad: **COMMIT** → el dato dura eternamente, hasta que le tire un DELETE u algo parecido
 
 
