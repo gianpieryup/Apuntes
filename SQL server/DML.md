@@ -10,6 +10,15 @@ ORDER BY columnas clave de ordenamiento
 ````
 
 
+Obtener los 3 primeros
+````sql
+-- SQL Server
+SELECT TOP 3 *
+-- IMPALA
+SELECT ... LIMIT 3
+-- ORACLE
+SELECT ... FETCH FIRST 3 ROWS ONLY;
+````
 
 #### INSERT
 
@@ -92,7 +101,7 @@ ORDER BY 1
 ````sql
 SUM(columna)
 COUNT(*) 		# cuenta todas las filas de la tabla
-COUNT(columna)  # cuenta filas con dicha columna (NO NULA)
+COUNT(columna)  # cuenta solo las filas cuyo valor de 'columna' sea (NO NULLO)
 -- La sentencia "SELECT COUNT(*)" puede retornar más filas que la sentencia "SELECT COUNT(nombre_columna)" *
 
 # Muestra la cantidad de Ordenes de Compra con fecha de pago No Nula

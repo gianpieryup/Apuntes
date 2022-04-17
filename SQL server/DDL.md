@@ -243,7 +243,7 @@ on sample_table (a,b,c); -- Esto significa
 
 - Se le provee al sistema mejor perfomanceal equipo ya que no debe hacer lecturas secuenciales sino accede a través de los índices
 - Asegura únicos valores para las filas almacenadas
--  <span style=" background:yellow;">cCuando las columnas que intervienen en un JOIN tienen índices</span> se le da mejor perfomancesi el sistema logra recuperar los datos a través de ellas
+-  <span style=" background:yellow;">Cuando las columnas que intervienen en un JOIN tienen índices</span> se le da mejor perfomancesi el sistema logra recuperar los datos a través de ellas
 - Asegura el cumplimientode contraints y reglas de negocio. **Primary key, foreign keys, unique values**
 
 

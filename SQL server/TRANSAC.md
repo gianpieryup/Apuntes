@@ -80,9 +80,27 @@ Utilizar los **logs transaccionales** para retornar el motor de base de datos a 
 Foco en la ejecución de **Transacciones**
 
 - **A**tomicidad: **BLOQUE TRY** (Serie de pasos donde se ejecuta completa o ninguna se ejecuta)
-- **C**onsistencia: <span style=" background:yellow;">La BD parte y va hacia un estado consistente por cada transacción</span>
+- **C**onsistencia: <span style=" background:yellow;">La BD parte y va hacia un estado consistente por cada transacción</span>  (\*)
 - **I**solation(Aislamiento): Esto asegura que la realización de dos transacciones sobre la misma información sean independientes y no generen ningún tipo de error. 
 - **D**urabilidad: **COMMIT** → el dato dura eternamente, hasta que le tire un DELETE u algo parecido
 
 
+
+#### EJEMPLO ACID
+
+Transacción para transferir $1000 de la cuenta X a la cuenta Y:
+
+1. leer (X)
+2. X = X –1000
+3. escribir (X)
+4. Listo)
+5. Y = Y + 1000
+6. escribir (Y)
+
+- **Requisito de atomicidad**: si la transacción falla después del paso 3 y antes del paso 6, el sistema debe asegurarse de que sus actualizaciones no se reflejen en la base de datos, de lo contrario, se producirá una incoherencia.
+- **Requisito de coherencia**: la suma de X e Y no cambia con la ejecución de la transacción.
+- **Requisito de Aislamiento**: si entre los pasos 3 y 6, se permite que otra transacción acceda a la base de datos parcialmente actualizada, verá una base de datos inconsistente (la suma X + Y será menor de lo que debería ser).
+  1. El aislamiento se puede garantizar de manera trivial ejecutando transacciones en serie, es decir, una tras otra.
+  2. Sin embargo, la ejecución de múltiples transacciones al mismo tiempo tiene beneficios significativos, como veremos más adelante.
+- **Requisito de durabilidad**: una vez que se notifica al usuario que la transacción se ha completado (es decir, se ha realizado la transferencia de $1000), las actualizaciones de la base de datos por parte de la transacción deben persistir a pesar de las fallas.
 
