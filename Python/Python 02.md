@@ -378,7 +378,7 @@ frame.pack() #mostrar por pantalla
 
 # creamos el componente LABEL (etiqueta) [span en HTML]
 texto = "Hola Mundo"
-etiqueta = tkinter.label(raiz,text:texto) #texto
+etiqueta = tkinter.Label(raiz,text=texto) #texto
 #Color/fondo/tipografia,tamaño
 etiqueta.config(fg="green",bg="lightgrey",font=("Cortana",30))
 etiqueta.pack() #mostrar por pantalla
