@@ -54,7 +54,7 @@ En **C:\\** crear :card_index_dividers: llamada **data**, dentro crear :card_ind
 Necesitamos dos consolas:
 
 1. *mongod* : Esta terminal se quedara corriendo ( no la cierres ), espera peticiones ("seria nuestro servidor de base de datos")
-2. *mongo* : Esta terminal es nuestra <span style='color:red'>**Instancia**</span>. Aquí podemos mandar sentencias (create database, etc).
+2. *mongo o mongosh* : Esta terminal es nuestra <span style='color:red'>**Instancia**</span>. Aquí podemos mandar sentencias (create database, etc).
 
 >Tip : en la consola de mongo, podemos limpiar la pantalla con el comando **cls**
 
@@ -93,13 +93,25 @@ local 	0.000GB
 
 > Te olvidaste de los comandos:    > db.help()    te da una descripción
 
-#### Crear o pararme en una Base de datos
 
+#### Levantar Mongo mas especificamente
+Por default guarda en una ruta data/bd
+Debe existir esa ruta si no da error. 
+````javascript
+> mongod --port 27627 --dbpath C:\mdb\Prueba2 --logpath c:\mdb\mongo\Pru2.log
+````
+Tambien podemos poner la ruta que queramos:  `--dbpath`
+
+Si no pongo  los logs lo mandan a pantalla: `--logpath`
+
+
+
+#### Crear o pararme en una Base de datos
 ````javascript
 > use nombreDatabase
 ````
 
-> TIP : Mongo no crea una base si no le insertas al menos un valor
+> TIP : Mongo no crea una base si no le insertas al menos un documento en alguna collection
 
 #### Borrar una Base de Datos
 
@@ -170,25 +182,32 @@ Como *mongo* guarda los datos?, bueno transforma el formato `json` a `bson` un f
 Una característica de *mongo* es que sus datos no tienen que tener la misma estructura a diferencia de SQL
 
 ### Funciones
-
+Forma General:   `db.products.find({WHERE},{SELECT})`  . El find es buscar
 ````javascript
 // Los productos que tengan en la propiedad "name" el valor "mouse"
-> db.products.find({name: "mouse"}) //es igual con o sin (") en la propiedad no en el valor.
 // "mouse" puede estar en un array y te lo busca si esta ejemplo: {name : ["mouse","logited"]}
+> db.products.find({name: "mouse"})
 
-// Cada restricion más, es una coma más
+// La coma, es un AND para concatenar mas condiciones
 > db.products.find({name: "mouse", cant:23 })
 
-// El primero dato que cumpla las restricciones
+// El 'primero documento' que cumpla las restricciones
 > db.products.findOne({name: "mouse", cant:23 })
 
 // SELECT en mongo
 /* db.products.findOne({restricciones},{los campos})
 Para esto ultimo ponlos de la siguiente forma
 "atributo" : 1  /si quieres verlo
-"atributo" : 0  /si no quieres verlo  */
-> db.products.find({name: "mouse", cant:23 },{"name": 1,"descripcion" : 1})
+"atributo" : 0  /si no quieres verlo  
 
+*) Si no especificas el 0 para el '_id' siempre te lo retornara
+**) Aunque existan documentos sin los campos 'name' o 'descripcion' si cumplen la condicion estaran, porque recordemos eso es un SELECT y ya paso por el WHERE.
+Incluso de no contener ningun campo del select(quedaria el _id), pero incluso si ponemos '_id':0 seguiran apareciendo como documento vacio {} */
+> db.products.find({name: "mouse", cant:23 },{"name": 1,"descripcion" : 1})
+````
+<img src="joga_find.png" alt="joga_find" style="zoom:45%;" />
+
+````javascript
 // ORDER BY
 // sort({atributo : 1}) ordena por atributo en forma ASC y -1 en forma DESC
 > db.products.findOne({name: "mouse"}).sort({name :1})
@@ -213,6 +232,13 @@ respuesta: paulo, patric
 db.users.find({name: /ro$/}) //like '%ro'
 respuesta: pedro
 
+
+// Me traigo una imagen
+docum=db.ordenes.findOne() 
+// Se puede modificar en memoria pero no en disco
+docum._id=1111
+// Hasta que lo inserte
+docum.Write()
 ````
 
 
@@ -220,13 +246,23 @@ respuesta: pedro
 ### Actualización de registros
 
 ````javascript
-> db.products.update({condicion},{valor a modificar})
-// OJASO REEMPLAZA TODO EL DOCUMENTO ,TODO no solo el price
-> db.products.update({"name": "mouse"},{"price": 99 })
+>   db.collection.update(query, update, options)
+/*  El 'update' original solo modifica uno, el primero que cumpla la query/condicion. 
+    Para tomar todos los que coincidan se usa el flag: en 'options' ->  {multi:true} 
+    En las ultimas actualizaciones de mongo añadieron los updates especificos: 'updateOne' y 'updateMany'
+*/
 
-// Como hago para no cambiar todo el document
-> db.products.update({"name": "mouse"},{$set: {"descripcion" : "un gran equipo"}})  // .{upsert : true}
-// si agregamos eso al final, si no existe lo crea
+// OJASO: REEMPLAZA TODO EL DOCUMENTO ,TODO no solo el price
+> db.products.update({"name": "mouse"},{"price": 99 })
+// Actualmente esta deprecandose a partir de cierta version de mongo y no te salta error, te pide explicitamente que pongas el $set
+
+
+// Como hago para no cambiar todo el document, esto solo cambia el valor del campo "descripcion"
+> db.products.update({"name": "mouse"},{$set: {"descripcion" : "un gran equipo"}})  
+// Si no encuentra el campo "descripcion" lo crea en todos los documentos que cumplieron esa condicion
+// Si ya existe, solo modifica, los que cumplen la condicion	
+
+
 
 //Incrementar un valor numerico
 > db.products.update({"name": "mouse"},{$inc : {"price" : 0.01}})
@@ -285,7 +321,11 @@ db.coleccion.find(
 			{precio : {$gte : 30}}
 		]
 	}
-)    
+)
+
+
+// Me traen todos los documentos que no tienen el campo 'estatus' y los que lo tienen con valor distinto a 'A'
+db.coleccion.find({estatus : {$not : 'A'}})
 ````
 
 ### Cursores
