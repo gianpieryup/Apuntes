@@ -185,8 +185,36 @@ Una característica de *mongo* es que sus datos no tienen que tener la misma est
 Forma General:   `db.products.find({WHERE},{SELECT})`  . El find es buscar
 ````javascript
 // Los productos que tengan en la propiedad "name" el valor "mouse"
-// "mouse" puede estar en un array y te lo busca si esta ejemplo: {name : ["mouse","logited"]}
 > db.products.find({name: "mouse"})
+````
+
+### ARRAY - LISTA
+````javascript
+// Consultar una matriz para un elemento
+// "mouse" puede estar en un array y te lo busca si esta ejemplo: {'name' : ["mouse","logited"]}
+// Devuelve los documentos que tienen "mouse" como elemento de la lista 'name'
+> db.products.find({name: "mouse"})
+
+
+// Coincidir con una matriz
+// El siguiente ejemplo consulta todos los documentos donde el tags valor del campo es una matriz con exactamente dos elementos, "red"y "blank", en el orden especificado:
+db.inventory.find( { tags: ["red", "blank"] } )
+
+// Si, en cambio, desea encontrar una matriz que contenga tanto los elementos "red"como "blank", sin tener en cuenta el orden u otros elementos de la matriz, utilice el $alloperador
+db.inventory.find( { tags: { $all: ["red", "blank"] } } )
+
+// Agregar un elemento a un array
+db.inventory.update({},{ $push: { deportes: 'GOLF' } })
+
+// Agregar elementos a un array
+db.inventory.update({},{ $push: { deportes: {$each: ['GOLF','TENNIS']}}})
+
+// Eliminar elementos de un array
+db.inventory.update({},{ $pull: { deportes: 'RUGBY'}})
+````
+
+````javascript
+// hicimos un Salto pór los arrays ahora continuamos
 
 // La coma, es un AND para concatenar mas condiciones
 > db.products.find({name: "mouse", cant:23 })
@@ -330,19 +358,15 @@ db.coleccion.find({estatus : {$not : 'A'}})
 
 ### Cursores
 
-````javascript
-Cursores
 Un cursor es una conexión con el servidor que permanece abierta, y que permite iterar sobre los resultados de una consulta, de forma que estos se devuelvan poco a poco. Por defecto un cursor en la shell (si no se asigna a una variable), devuelve 20 elementos. Si nuestra intención fuera recorrer todos los resultados que nos devuelve un cursor, podríamos usar un script parecido a este:
-
+````javascript
 var miCursor = db.genbetadev.find();
     
 while (miCursor.hasNext()){
-        printjson(miCursor.next());
+  socio = miCursor.next();
+  print("Nro: "+socio.nro_socio+" Ape. y Nom: "+socio.apellido+" "+socio.nombre);
 };  
 ````
-
-
-
 
 
 ## Funciones con JavaScript
@@ -362,13 +386,12 @@ Venimos usando la consola `cmd` *mongo* ahora usaremos compas una GUI para usarl
 1. Dejar corriendo en el `cmd` mongod.
 2. Abrir Compas e ingresar *Fill in connection ...*
 
-![compas 001](compas 001.png)
+![compas 001](compas_001.png)
 
 Darle a **connect**
 
-![compas 002](compas 002.png)
+![compas 002](compas_002.png)
 
 > Si hay algún error dale enter a *mongod*, para aceptar la conexión, cuando lo hice no fue necesario
 
 Existe otros GUI para mongo como : `robomongo` robo 3t, `mongo buster` 
-
