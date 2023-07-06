@@ -1,5 +1,26 @@
 ## Entornos Virtuales
 
+### ANACONDA
+
+Si necesitas desplegar con alguna version de python especifica algun entorno te sugiero usar conda
+
+El entorno virtual se crea en la ruta donde esta anaconda
+
+> Mi Compu: En mi caso uso el entorno (base) de conda como mi python local, entonces cualquier pip install que haga se guardara en como dependencia de la env (base)
+
+
+Aqui estan todos los comandos
+
+https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx
+
+
+
+
+
+
+
+### PYTHON
+
 Para trabajar con entornos virtuales debemos descargar la siguiente dependencia
 ````
 pip install virtualenv

@@ -1,4 +1,4 @@
-<img src="mongo logo.jpg" alt="mongo logo" style="zoom:30%;" />
+<center><img src="mongo logo.jpg" alt="mongo logo" style="zoom:10%;" /></center>
 
 # Introducción a Mongo DB 
 
