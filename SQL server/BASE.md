@@ -29,7 +29,6 @@ Entidad, Atributos, Atributos multivaluados, Instancia de una entidad, Relacione
 - Reducir la redundancia de datos, y por lo tanto, las inconsistencias.
 - Facilitar el mantenimiento de los datos.
 - Evitar anomalías en la manipulación de datos.
-- Evitar anomalías en la manipulación de datos.
 
 Cada forma normal introduce restricciones nuevas, donde *la primera restricción que aplica es cumplir la forma normal anterior.*
 
