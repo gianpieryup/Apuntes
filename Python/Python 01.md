@@ -1,16 +1,16 @@
 # Introducción a Python
 
-Que es Python, su nombre viene de un comediante. De propósito general, **multiparadigma** ,de **tipado dinámico** , open source
+De propósito general, **multiparadigma** ,de **tipado dinámico** , open source
 
-*Lenguaje compilado* : Es aquel que requiere de un `compilador` ósea transforma mi `.h` a `.exe` el cual mi computadora entiende. Ejemplos `Java, C, C++, C#,..`
-
-*Lenguaje interpretado* : Toma el archivo y traduce línea por línea a lenguaje maquina. Ejemplos `PHP, Ruby, Python`
+- *Lenguaje compilado* : Es aquel que requiere de un `compilador` ósea transforma mi `.h` a `.exe` el cual mi computadora entiende. Ejemplos `Java, C, C++, C#,..`
+- *Lenguaje interpretado* : Toma el archivo y traduce línea por línea a lenguaje maquina. Ejemplos `PHP, Ruby, Python`
 
 `Python` usa ambos , pero eso depende de que procesos
 
 ### Ejecutar un programa en Python
 
-1. Si tienes Python instalado, como lo se ? . En la terminal poner   `python --version`
+1. Si tienes Python instalado, como lo se ? En la terminal poner   `python --version`
+   
    Por consola: Escribir  `python`  +  <kbd> Enter </kbd> . Te quedara un símbolo.
 
    > *>>>*  'Aquí puedes escribir código python'
@@ -23,24 +23,59 @@ Que es Python, su nombre viene de un comediante. De propósito general, **multip
 
    > *>* python archivo.py
 
-3. Usando **Anaconda** / Júpiter Notebook
 
-#### Buenas Practicas
 
-En Python existe los PEP's, Mejoras de propuestas de Python, de los cuales
-al momento de codificar nos interesa PEP8.
-PEP8 Es una guía de codificación, la cual nos permite escribir código
-Python de una manera, mucho más legible y de forma consistente, a
-través de ciertas "reglas" y recomendaciones. Por ejemplo, en la guía
-podemos encontrar
+### Buenas Practicas
+
+En Python existe los PEP's, Mejoras de propuestas de Python, de los cuales al momento de codificar nos interesa PEP8.
+PEP8 Es una guía de codificación, la cual nos permite escribir código Python de una manera, mucho más legible y de forma consistente, a través de ciertas "reglas" y recomendaciones. Por ejemplo, en la guía podemos encontrar
 
 - utilizar espacios sobre tabs.
-- utilizar la nomenclatura de **snake case** para nombrar variables.
+- utilizar la nomenclatura de **snake case** para nombrar variables. (**ej:** una_palabra_muy_larga)
 - utilizar palabras en mayúsculas para las constantes.
+- Para las clases : MiClaseConNombreMuyLargo
 
- **snake case** : una_palabra_muy_larga
 
-Para las clases : MiClaseConNombreMuyLargo
+
+## INDICE
+<!-- TOC -->
+
+- [Variables y Números](#variables-y-n%C3%BAmeros)
+    - [Conversión de Tipo de dato](#conversi%C3%B3n-de-tipo-de-dato)
+    - [Cadena de Texto](#cadena-de-texto)
+    - [Funciones de cadenas](#funciones-de-cadenas)
+    - [Imprimir variables de cadena de texto](#imprimir-variables-de-cadena-de-texto)
+    - [Entrada texto por teclado](#entrada-texto-por-teclado)
+    - [Operadores](#operadores)
+    - [Fechas](#fechas)
+- [Colección de datos](#colecci%C3%B3n-de-datos)
+    - [Listas:](#listas)
+    - [Matriz](#matriz)
+    - [Pilas](#pilas)
+    - [Tuplas](#tuplas)
+    - [Conjuntos](#conjuntos)
+    - [Diccionario](#diccionario)
+- [Bucles y Condiciones](#bucles-y-condiciones)
+    - [None](#none)
+    - [if-else](#if-else)
+    - [No podía faltar el if ternario](#no-pod%C3%ADa-faltar-el-if-ternario)
+    - [Bucles](#bucles)
+        - [BONUS](#bonus)
+- [Clases objetos y Funciones](#clases-objetos-y-funciones)
+    - [Clases](#clases)
+        - [Herencia](#herencia)
+        - [Sobre escritura de métodos](#sobre-escritura-de-m%C3%A9todos)
+        - [La clase Object](#la-clase-object)
+    - [Funciones](#funciones)
+         - [Cantidad indefinida de Parámetros](#cantidad-indefinida-de-par%C3%A1metros)
+        - [Como terminar una función](#como-terminar-una-funci%C3%B3n)
+            - [Alcance de las variables](#alcance-de-las-variables)
+            - [Función Lambda](#funci%C3%B3n-lambda)
+        - [Funciones Anidadas](#funciones-anidadas)
+        - [Closures](#closures)
+        - [Decoradores](#decoradores)
+    - [Generadores](#generadores)
+<!-- /TOC -->
 
 ## Variables y Números
 
@@ -65,15 +100,10 @@ float
 
 > a + b  # Como en C# convierte implicitamente (a) de (int -> float)
 float
-```
 
-**BONUS**
-
-````python
 #ASIGNACION MULTIPLE
 a , b, c = 10, "Juan", "Pedro"
-````
-
+```
 
 
 ## Conversión de Tipo de dato
@@ -200,7 +230,26 @@ var1 is var2
 true
 ````
 
+### Fechas
 
+````python
+#Es necesario importar las depencendias necesarias
+from datetime import date, datetime, timedelta
+
+# Día actual: 2023-11-06
+today = date.today()
+# Fecha actual: 2023-11-06 01:27:45.918486
+now = datetime.now()
+# Definir mi fecha
+my_date = datetime(2023, 10, 28, 9)
+
+# OPERACIONES CON FECHAS
+# Sumar dos días a la fecha actual: 2023-11-08 01:29:41.098619
+new_date = now + timedelta(days=2)
+
+# Castear con un formato a tipo string
+format = now.strftime('Día :%d, Mes: %m, Año: %Y, Hora: %H')
+````
 
 ### Colección de datos
 
