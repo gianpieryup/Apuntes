@@ -2,6 +2,9 @@
 
 Mis apuntes de distintas tecnologías
 
+### Paginas Utiles
+
+- [Emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) : Pagina de emojis en markdown
 
 
 ### Mi teclado - Atajos
