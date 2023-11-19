@@ -371,7 +371,9 @@ Como una estructura de datos una Pila - LIFO
 
 #### Tuplas
 
-Una colección de elementos *inmutables* (<span style="background:yellow;">**no se pueden alterar**</span>) .Son mas rápidas para la búsqueda de elementos
+Una colección de elementos *inmutables* (<span style="background:yellow;">**no se pueden alterar**</span>).
+
+Son mas rápidas para la búsqueda de elementos
 
 ````python
 x = (1,2,3,4,5,6,7,8,9)
@@ -382,6 +384,8 @@ sub = x[:9:2] #los primeros 9 elementos de a 2 por 2
 tupla = (1,2,3,4)
 # Para que esta asignacion funcione deben tener igual cantidad de variables
 a, b, c, d = tupla # la tupla tiene 4 elementos
+# O bien si solo te importa ciertas posiciones
+a, b, _, _ = tupla
 
 tupla = (1,2,3,4,5,6)
 a, b, c, *d = tupla

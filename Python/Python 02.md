@@ -3,19 +3,23 @@
 Es un fichero que tiene funciones que luego las importo en mi archivo original.
 
 ````python
-# modulo.py
+# Archivo: modulo.py
 def saludar(nombre):
+    """Documentación de nuestra funcion"""
 	print("Hola " + nombre)
 
 class Persona:
+    """Documentación de nuestra clase"""
     def __init__(self,nombre):
-        self.nombre = nomre
+        """Documentación de nuestro método"""
+        self.nombre = nombre
 ----------------------------
-# Mi fichero
+
 # Importar todas las funciones y clases del fichero 'modulo'
 import modulo
 modulo.saludar("Jorge")
 usuarioP = modulo.Persona("Pedro")
+
 
 # Importar solo una funcion o clase del fichero 'modulo'
 from modulo import saludar
@@ -23,7 +27,7 @@ saludar("Jorge")
 #Puedo simplificar, si quiero multiples
 from modulo import (suma,resta,mul)
 
---#Puedo importar todos con la misma forma
+#Puedo importar todos con la misma forma
 from modulo import *
 
 #opcional renombrar la funcion
