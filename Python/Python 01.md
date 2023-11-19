@@ -213,6 +213,8 @@ print(nombre, "tiene",edad,"años")
 
 ### Operadores
 
+Diferencia importante entre el operador `(== y is)`
+
 ````python
 resto(%), potencia(**) , cociente (//)
 
@@ -223,11 +225,22 @@ resto(%), potencia(**) , cociente (//)
 
 (and, or, not)
 
-#para comparar objetos: 'is'
-var1 = [1,3]
-var2 = [1,3]
-var1 is var2
-true
+----------------------------
+a = [1,2,3]
+b = [1,2,3]
+
+a == b  # True
+
+a is b  # False
+
+# En este casa obtenemos False; Esto se debe a que con == compararemos que dos valores sean iguales y con is compareremos que dos objetos sean iguales, cosas completamente diferentes
+
+# Si imprimimos el id de cada objeto, observaremos que son valores completamente diferentes, con lo cual concluimos que son dos objetos diferentes
+
+>>> id(a)
+2459807112128
+>>> id(b)
+2459807129024
 ````
 
 ### Fechas
