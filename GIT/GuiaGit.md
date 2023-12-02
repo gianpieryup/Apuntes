@@ -1,4 +1,7 @@
-<p align="center"><img src="gitlogo.jpg" width="200px"/></p>
+<div align="center">
+	<code><img width="100" src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" alt="Git" title="Git"/></code>
+</div>
+
 
 ## Comandos Básicos
 
