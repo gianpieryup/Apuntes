@@ -1,50 +1,35 @@
 # Apuntes
 
-Mis apuntes de distintas tecnologías
+Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to play.
 
 ### Paginas Utiles
 
 - [Emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) : Pagina de emojis en markdown
 - [icons-readme](https://github.com/marwin1991/profile-technology-icons/blob/main/README.md) : Pagina de icones de los logos de programacion
 
+## Mi teclado - Atajos
 
-### Mi teclado - Atajos
+- Modo del cursor: Que sea un palito (<kbd>**Fn**</kbd> + <kbd>[Ins| ImpPrint]</kbd>)
+- Sacar carácter <kbd>`</kbd> : Presionar dos veces la Combinacion (<kbd>**Alt Gr**</kbd> + <kbd>}</kbd>)
+- Tomar Screenchot (<kbd>**Windows**</kbd> + <kbd>Impr Pant</kbd>). Esto se guarda en la carpeta de Imagenes
+- Tomar captura de pantalla (<kbd>**Shift**</kbd> + <kbd>**Windows**</kbd> + <kbd>S</kbd>) se guarda en el portapapeles
+- Abrir la terminal cmd desde cualquier folder: Escribe `cmd` en la ruta donde estas parado y presiona enter
 
-##### Cambio a cursor barra
+## VSCode
 
-````
-[fn] + [ins| imp print]
-````
-
-##### Sacar carácter (`)
-
-<kbd>Alt Gr</kbd> + <kbd>}</kbd>
-
-##### Tomar Captura de pantallas en Windows
-
-<kbd>**Windows**</kbd> + <kbd>Impr Pant</kbd>  sacaras una **captura de pantalla** que no se queda en el portapapeles, sino que en su lugar se guarda automáticamente en tu carpeta por defecto `C:\Users\GIANPIER\Pictures\Screenshots`
-
-**Alternativo** :  <kbd>Windows</kbd> + <kbd>alt</kbd> + <kbd>Imp</kbd> se guarda en `C:\Users\GIANPIER\Videos\Captures`
-
-
-
-##### Recorte de pantalla que se guarda en el portapapeles
-
-<kbd>Shift</kbd>  + <kbd>**Windows**</kbd> + <kbd>s</kbd> 
-
-Además todas las capturas que hagas se guardan en
-
-```
-C:\Users\GIANPIER\AppData\Roaming\Typora\typora-user-images
-```
-
-
-
-### XAMPP
-
-http://localhost/phpmyadmin/
-
-
+- Para ir a **configuraciones** de VSCODE tenemos dos alternativas:
+    - `Ctrl + ,`
+    - Archivo > Preferencias > Configuracion
+- Si quieres usar la ruedita del mouse: Config(`Ctrl + ,`) ===> En el buscador `zoom` , aceptar la palomita
+- Para abrir nuestro repositorio en VSCODE ONLINE en el propio navegador, cambiar el (.com) => (.dev)
+- Ajustar el Zoom en VScode: Ctrl + (-/+) , Ctrl + 0 Reinicia el zoom original, 
+- Varias pestañas, puedes ver todas desplazandote con la barrita delgada:
+    - Tambien puedes fijar pestañas: Click derecho > **Pin/Anclar**
+    - Si quieres ver todas, Config(`Ctrl + ,`) ===> En el buscado `wrap tabs` , aceptar la palomita
+- Tener mas de una carpeta en el mismo visual, Ir a `Inicio` -> Agregar carpeta de trabajo
+- Seleccionar un trozo de lineas: 
+    - Comentar líneas: `Crtl` + `K` + `C`
+    - Des-comentar líneas: `Crtl` + `K` + `U`
 
 ### Tu computadora
 
@@ -55,48 +40,12 @@ Habrás notado que en tu carpeta `C/` existen dos carpetas
 
 Sucede mucho algunos programas te piden que sean de `64 o de 32` ,una forma de saberlo es fijándose en que carpeta de las 2 antes mencionadas esta instalada
 
-Otra forma, si es una aplicación, es ver  `ayuda`  / `Acerca De Google`  y te saldrá información de la App, como versión , tipo , arquitectura ,etc
-
-
-
-**16Z90P Series**
-Ese era la serie del lg gram 16
-
-
-
 ### Convención del lenguaje de Programación
 
 Como recuerdo que `true = 0` y que  `false = 1` .La **mnemotecnia** papa
 
 ````javascript
-/Solo debo recordar los Naturales:
+Solo debo recordar los Naturales:
 1 es Natural => True
 0 es Natural => False
 ````
-
-Abrir Extensiones
-
-````
-.tif -> Visualizador de fotos de Windox el antiguo
-````
-
-
-
-## Cosas Útiles
-1. ##### Abrir la terminal cmd desde una carpeta.
-- escribe `cmd` en la ruta donde estas parado y presiona enter
-2. ##### Comandos de Angular y NodeJS
-- Iniciar Angular: `ng serve` 
-- Iniciar NodeJs: `nodemon npm start`
-3. #### Visual Studio
-- Tener mas de una carpeta en el mismo visual, Ir a `Inicio` -> Agregar carpeta de trabajo
-- Comentar líneas: `Crtl` + k + c
-- Des comentar líneas: `Crtl` + k + u
-4. ##### Notepad++
-- Comentar líneas: `Crtl` + k
-5. ##### Problemas mas usuales
-- Compilar en la ruta correcta y con el `cmd` correcto el de node
-- Tener el archivo `.env` en el backend y bien configurado
-
-6. ##### Consola
-- Borrar los datos de la consola `cls`

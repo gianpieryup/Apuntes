@@ -63,7 +63,7 @@ virtualenv mi_vm
 
 Se creara la carpeta `mi_vm` con los siguientes archivos
 
-![env](env.png)
+![env](img/env.png)
 
 
 ##### Activar el entorno virtuale
@@ -75,12 +75,12 @@ En la misma ruta donde esta la carpeta `mi_vm` (no dentro de esta) tipear
 
 Ej de un entorno llamada `yolotp`
 
-![env2](env2.png)
+![env2](img/env2.png)
 
 
 Ahora estas por el cmd en un entorno nuevo, juega con la consola para verificar que no siges en tu computadora :)
 
-![env3](env3.png)
+![env3](img/env3.png)
 
 ##### Apagar el entorno virtual
 

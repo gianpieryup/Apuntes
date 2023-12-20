@@ -4,6 +4,8 @@ Lo primero de todo es instalar XAMPP que contiene PHP y mas
 
 ### Rutas mas Usadas
 
+- RUTA: http://localhost/phpmyadmin/
+
 ![Apache y MySQL](Apache-MySQL.png)
 
 
