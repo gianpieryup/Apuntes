@@ -1,6 +1,6 @@
 create table mojito(
 color varchar(20),
-tamaño int
+size_mojito int
 )
 
 commit;

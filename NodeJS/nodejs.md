@@ -1,8 +1,9 @@
-<img src="node-logo.png" alt="node-logo" style="zoom:50%;" />
+<div align="center">
+	<img width="200" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/>
+</div>
 
+NodeJS es un entorno de ejecución de JavaScript . Compila código JavaScript
 
-
-- NodeJS es un entorno de ejecución de JavaScript . Compila código JavaScript
 - Tu maquina no reconoce el lenguaje JavaScript solo ejecuta programas
 - Resolvió la problemática de las conexiones concurrentes, antes (con JAVA, PHP,.. ) si se conectaban 10000 usuarios a tu pagina era mucho. Se creaba un hilo por cada conexión de usuario y se caía la pagina.
 - Crear conexiones de manera asíncrona

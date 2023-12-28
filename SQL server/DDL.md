@@ -318,22 +318,3 @@ Ahora no te conviene mucho si el campo del indice te vienen valores cercanos ej 
 CREATE UNIQUE INDEX ix1_ordenes ON ordenes(N_orden)
 WITH FILLFACTOR = 20;
 ```
-
-
-
-##### MOTOR SQL SERVER
-
-Indices Clustered
-
-![image-20210926170240867](C:\Users\GIANPIER\AppData\Roaming\Typora\typora-user-images\image-20210926170240867.png)
-
-Hace que en la hoja tenga el dato posta y no la posicion a la tabla de datos
-
-**Y Oracle? que usa?** Usa las **IOT**
-
-Tablas organizadas por indice, y muy parecido a los Cluster de SQL server, quiza adicionando punteros entre nodos hojas
-
-
-
-
-

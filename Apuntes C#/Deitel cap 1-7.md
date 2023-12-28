@@ -1,4 +1,6 @@
-<img src="logo-c-sharp.png" alt="logo-c-sharp" style="zoom:20%;" />
+<div align="center">
+	<img width="200" src="https://user-images.githubusercontent.com/25181517/121405384-444d7300-c95d-11eb-959f-913020d3bf90.png" alt="C#" title="C#"/>
+</div>
 
 # Como programar en C# (Deitel)
 

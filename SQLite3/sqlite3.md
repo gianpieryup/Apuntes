@@ -1,4 +1,6 @@
-<img src="SQLite370.svg.png" alt="SQLite370.svg" style="zoom:30%;" />
+<div align="center">
+	<img width="150" src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/82df4543-236b-4e45-9604-5434e3faab17" alt="SQLite" title="SQLite"/>
+</div>
 
 Una base de datos minimalista , o sea  `una base de datos es un arhivo` .
 

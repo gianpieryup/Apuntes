@@ -1,5 +1,6 @@
-<img src="ts logo.png" alt="ts logo" style="zoom:80%;" />
-
+<div align="center">
+	<img width="100" src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="TypeScript" title="TypeScript"/>
+</div>
 
 
 Un lenguaje superconjunto de JavaScript
