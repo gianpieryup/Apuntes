@@ -4,8 +4,10 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
 
 ### Paginas Utiles
 
+- [Documentacion-readme](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) : Pagina Readme en Github.
 - [Emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) : Pagina de emojis en markdown
 - [icons-readme](https://github.com/marwin1991/profile-technology-icons/blob/main/README.md) : Pagina de icones de los logos de programacion
+
 
 ## Mi teclado - Atajos
 
