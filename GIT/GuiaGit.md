@@ -2,6 +2,18 @@
 	<code><img width="100" src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" alt="Git" title="Git"/></code>
 </div>
 
+## INDICE
+<!-- TOC -->
+
+- [Comandos Básicos](#Comandos-Básicos)
+    - [Git Stash](#Git-Stash)
+
+<!-- /TOC -->
+
+
+
+
+
 
 ## Comandos Básicos
 
@@ -51,6 +63,21 @@ git config --global user.name gianpieryup
 ````shell
 git push
 ````
+
+
+#### Git Stash
+El comando git stash almacena temporalmente (o guarda en un stash) los cambios que hayas efectuado en el código en el que estás trabajando para que puedas trabajar en otra cosa y, más tarde, regresar y volver a aplicar los cambios más tarde. Guardar los cambios en stashes resulta práctico si tienes que cambiar rápidamente de contexto y ponerte con otra cosa, pero estás en medio de un cambio en el código y no lo tienes todo listo para confirmar los cambios.
+
+[>> Documentacion](https://www.atlassian.com/es/git/tutorials/saving-changes/git-stash)
+
+
+```python
+# Coge los cambios sin confirmar (tanto los que están preparados como los que no), los guarda aparte para usarlos más adelante y, acto seguido, los deshace en el código en el que estás trabajando.
+git stash
+
+# Puedes volver a aplicar los cambios de un stash mediante el comando
+git stash pop
+```
 
 
 
