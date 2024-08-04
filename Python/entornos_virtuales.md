@@ -9,35 +9,28 @@ El entorno virtual se crea en la ruta donde esta anaconda
 > Mi Compu: En mi caso uso el entorno (base) de conda como mi python local, entonces cualquier pip install que haga se guardara en como dependencia de la env (base)
 
 
-Aqui estan todos los comandos
-
-https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx
+Aqui estan todos los comandos [Link](https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx)
 
 
 
-1. SI quieres usar python pero tambien spyder
-Lo que debes hacer es instalar conda que incluye pyhton
-Asi que no instales pyhton (de lo contrario tendras 2 versiones, que pueden llegar a generarte conflicto)
+### El proceso de instalacion
 
-******
-EL proceso de instalacion
-Lo mas importante es que lo instales para todos los usuarios/
-que sea en la carpeta C no en la C:/Users/Name_user
-Basicamente es mas facil que tus cosas esten directamente en C:
-Y te ayuda un poco con el path
-******
+Lo mas importante es que lo instales para todos los usuarios que sea en la carpeta C:/ no en la C:/Users/Name_user
 
-Una vez instalado el anaconda
-Ahora tenemos python tambien pero si quiero tenerlo en el PATH
+Basicamente es mas facil que tus cosas esten directamente en C:/ te ayuda un poco con el path
 
-2. Tratar de poner en el orden de las variables de entorno lo mas arriba posible, si no algo rompe
+Una vez instalado el anaconda -> Ahora tenemos python tambien pero si quiero tenerlo en el **PATH**
+
+Tratar de poner en el orden de las variables de entorno lo mas arriba posible, si no algo rompe
+
 - C:\Users\GIANPIER\anaconda3
 - C:\Users\GIANPIER\anaconda3\Scripts
 - C:\Users\GIANPIER\anaconda3\Library\bin
 
-> [UPDATE: 09/12/2021 | La ruta ya no existe]  C:\Users\GIANPIER\anaconda3\Library\usr\bin
+> [!TIP]
+> UPDATE: 09/12/2021 | La ruta ya no existe C:\Users\GIANPIER\anaconda3\Library\usr\bin
 
-
+<br>
 
 ### PYTHON
 
@@ -82,10 +75,26 @@ Ahora estas por el cmd en un entorno nuevo, juega con la consola para verificar 
 
 ![env3](img/env3.png)
 
-##### Apagar el entorno virtual
 
-````
-deactivate
-````
+```shell
+# Apagar el entorno virutal
+$ deactivate
+```
 
 
+## Requirements
+
+Podemos exportar todos los nombres de las dependencias que usa un entorno en una lista, especificamente en un archivo.txt con cada version de cada libreria que estemos usando. [LINK](https://note.nkmk.me/en/python-pip-install-requirements/#install-packages-with-pip-and-requirementstxt)
+
+Esto sirve para que si alguien quiera replicar el entorno, le pasemos el archivo.txt y que con un `pip install` se descargue todo.
+
+```shell
+# Muestra los paquetes y sus versiones instaladas en el entorno actual
+$ pip freeze
+
+# Guardar la salida de `pip freeze` en un archivo.
+$ pip freeze > requirements.txt
+
+# Instala todos los paquetes del archivo txt
+$ pip install -r requirements.txt
+```

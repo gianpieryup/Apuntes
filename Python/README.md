@@ -13,46 +13,10 @@ import sys
 print(os.path.dirname(sys.executable))
 ```
 
+## INDICE
+<!-- TOC -->
 
-
-Para tu computadora, abre la terminal
-
-````shell
-`Instalar numpy`
-$ pip install numpy
-
-`Instalar pandas`
-$ pip install pandas
-````
-
-
-
-### Formato de Salida
-
-````python
-#Si {0:3} Se justifica hacia la derecha empezando 3 espacios
-
-1|2|3|
-------
-    1
-    2
-   12
-  231
-
-
-#Si {0} Se justifica hacia la izquierda desde el lugar inicial
-
-1
-123
-12
-123
-66666
-````
-
-
-
-### Switch en Python
-
-No existe la palabra clave `switch`  
-
-
+- [Python 01](Python%2001.md)
+- [Python 02](Python%2002.md)
+- [Python 03](Python%2003.md)
+- [entornos_virtuales](entornos_virtuales.md)

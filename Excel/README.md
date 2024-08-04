@@ -1,14 +1,34 @@
 # EXCEL
 
-Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos. Para buscar,Filtrar por condición, SUM, AVG
+Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos. 
 
+## INDICE
+<!-- TOC -->
+
+- [Funciones](#funciones)
+    - [BUSCARV](#buscarv)
+    - [BUSCARX o XLOOKUP](#buscarx-o-xlookup)
+	- [SI](#si)
+
+<!-- /TOC -->
+
+
+
+
+## Funciones
+
+Para buscar,filtrar por condición, SUM, AVG
 
 
 ### BUSCARV
 
-**Buscar V** (*Valor*), busca un valor en una tabla
+Busca un valor en una tabla
 
-![BUSCARV](BUSCARV.png)
+```shell
+BUSCARV(valor_buscado; matriz_tabla; indicador_columnas; [rango])
+```
+
+![BUSCARV](img/BUSCARV.png)
 
 Recordar que :
 
@@ -18,48 +38,33 @@ BUSCARV("Torrez", ..)
 BUSCARV(B3,B2:E7, ..)
 			|->	La Tabla
 BUSCARV(B3,  B2:E7, 2 , ..)
-					|->	La columna del return de la Tabla anterior
+					|->	La columna del return de la Tabla
 ````
 
-<span style="background:yellow;">Si hay mas de un resultado en la búsqueda devuelve el primero</span>
+Si hay mas de un resultado en la búsqueda devuelve el primero
 
+
+### BUSCARX o XLOOKUP
+
+Algo que no se menciono es que el primer valor cuando es un cuadro, a medida que cambio el valor de ese cuadro se cambia el resultado
+
+Ademas, la diferencia con **BUSCARV** es que puedo devolver mas de un dato de la fila encontrada.
+
+En este caso devolvi "Nombre de empleado" y "Departamento"
+
+![BUSCAR X](img/BUSCAR%20X.jpg)
 
 
 ### SI
 
-Como el IF de programación :
+Como el IF de programación : La comparacion es con `'='` no con `'=='`
 
-![IF BUSCARV](IF BUSCARV.png)
+![IF BUSCARV](img/IF%20BUSCARV.png)
 
-````javascript
-La comparacion es con '=' no con '=='
-````
+
 
 
 
 ### FECHAS
 
-![FECHAS](FECHAS.png)
-
-
-
-### BUSCARX o XLOOKUP
-
-![BUSCAR X](C:\Users\HP\Desktop\Apuntes\Excel\BUSCAR X.jpg)
-
-````javascript
-Algo que no se menciono es que el primer valor cuando es un cuadro, a medida que cambio el valor de ese cuadro se cambia el resultado
-
-Ademas, la diferencia con BUSCARV es que puedo devolver mas de un dato de la fila encontrada.
-
-En este caso devolvi "Nombre de empleado" y "Departamento"
-````
-
-
-
-### CAMBIAR
-
-````
-=CAMBIAR(Valor que debe cambiarse, Valor con el que coincidirá)
-````
-
+![FECHAS](img/FECHAS.png)

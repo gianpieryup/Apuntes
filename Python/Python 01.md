@@ -40,7 +40,7 @@ PEP8 Es una guía de codificación, la cual nos permite escribir código Python 
 ## INDICE
 <!-- TOC -->
 
-- [Variables y Números](#variables-y-n%C3%BAmeros)
+- [Cadenas Variables y Números](#cadenas-variables-y-n%C3%BAmeros)
     - [Conversión de Tipo de dato](#conversi%C3%B3n-de-tipo-de-dato)
     - [Cadena de Texto](#cadena-de-texto)
     - [Funciones de cadenas](#funciones-de-cadenas)
@@ -77,7 +77,7 @@ PEP8 Es una guía de codificación, la cual nos permite escribir código Python 
     - [Generadores](#generadores)
 <!-- /TOC -->
 
-## Variables y Números
+## Cadenas Variables y Números
 
 Sensible a mayúsculas para declarar variables.
 
@@ -184,12 +184,33 @@ OUTPUT> $123,456.78
 
 ````python
 nombre = 'Julio'
-print("hola"+nombre)
+print("hola" + nombre)
 
-print("Hola {}, feliz {}",format(nombre,"cumple"))
+print("Hola {}, feliz {}".format(nombre,"cumple"))
 
-res = 10/3
-print("acotado : {r}",format(r=res))
+
+# Por defecto {} se justifica hacia la "izquierda" desde el lugar inicial
+print("Jus izq : {r}".format(r=10))
+print("Jus izq : {r}".format(r=200))
+print("Jus izq : {r}".format(r=3000))
+
+# Jus izq : 10
+# Jus izq : 200
+# Jus izq : 3000
+
+
+
+# Si agregamos los : -> {0:4} se justifica hacia la "derecha" empezando 3 espacios
+print("Jus der : {r:4}".format(r=10))
+print("Jus der : {r:4}".format(r=200))
+print("Jus der : {r:4}".format(r=3000))
+
+# Jus der :   10
+# Jus der :  200
+# Jus der : 3000
+
+
+
 
 #Un entero y 3 numeros decimales
 print("acotado : {r:1.3f}",format(r=res)) 
