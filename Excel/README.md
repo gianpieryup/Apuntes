@@ -4,13 +4,25 @@ Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos.
 
 ## INDICE
 <!-- TOC -->
-
+- [Exportar](#exportar)
 - [Funciones](#funciones)
     - [BUSCARV](#buscarv)
     - [BUSCARX o XLOOKUP](#buscarx-o-xlookup)
 	- [SI](#si)
 
 <!-- /TOC -->
+
+
+## Exportar
+
+Para exportar tu Excel a un PDF, a veces sale cortado. Seguir los pasos
+1. Ir a la seccion ``Vista``
+2. ``Ver salto de Pagina``
+3. Arrastrar la delimitacion entre la Pag1 y Pag2
+4. `Ver Normal`
+5. Exportar -> Pdf
+
+
 
 
 

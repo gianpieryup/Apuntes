@@ -6,7 +6,7 @@
 <!-- TOC -->
 
 - [Comandos Básicos](#Comandos-Básicos)
-    - [Git Stash](#Git-Stash)
+    - [Git Stash](#git-stash)
 
 <!-- /TOC -->
 
@@ -66,7 +66,7 @@ git push
 
 
 #### Git Stash
-El comando git stash almacena temporalmente (o guarda en un stash) los cambios que hayas efectuado en el código en el que estás trabajando para que puedas trabajar en otra cosa y, más tarde, regresar y volver a aplicar los cambios más tarde. Guardar los cambios en stashes resulta práctico si tienes que cambiar rápidamente de contexto y ponerte con otra cosa, pero estás en medio de un cambio en el código y no lo tienes todo listo para confirmar los cambios.
+El comando git stash almacena temporalmente (**guarda en un stash**) los cambios que hayas efectuado en el código en el que estás trabajando, para que puedas trabajar en otra cosa y, más tarde, regresar y volver a aplicar los cambios más tarde. Guardar los cambios en stashes resulta práctico si tienes que cambiar rápidamente de contexto y ponerte con otra cosa, pero estás en medio de un cambio en el código y no lo tienes todo listo para confirmar los cambios.
 
 [>> Documentacion](https://www.atlassian.com/es/git/tutorials/saving-changes/git-stash)
 

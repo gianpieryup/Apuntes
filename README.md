@@ -34,16 +34,35 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
     - Comentar líneas: `Crtl` + `K` + `C`
     - Des-comentar líneas: `Crtl` + `K` + `U`
 
-### Tu computadora
+### Mi Laptod
+
+#### WiFi
+
+Por alguna razon el wifi de mi computadora no funciona fuera de casa.
+- Ya actualize el controlador, pero quisa tunearon mi compu con alguna config.
+
+Una opcion que encontre ``pasarle el internet`` a travez del ``cable USB`` de mi celular.
+
+
+#### Carpetas
 
 Habrás notado que en tu carpeta `C/` existen dos carpetas
 
-1. Archivos de Programa ó Program Files :: Acá están todos tus programas que sean en (64 bits)
-2. Archivos de Programa (x86) ó Program Files (x86) :: Acá están todos tus programas que sean en (32 bits)
+- ``Archivos de Programa`` ó ``Program File``s :: Acá están todos tus programas que sean en (64 bits)
+- ``Archivos de Programa (x86)`` ó ``Program Files (x86)`` :: Acá están todos tus programas que sean en (32 bits)
 
 Sucede mucho algunos programas te piden que sean de `64 o de 32` ,una forma de saberlo es fijándose en que carpeta de las 2 antes mencionadas esta instalada
 
-### Convención del lenguaje de Programación
+### OBS Studio
+
+Para grabar siempre tenia cortado mi captura y ahora me di cuenta que se puede mover el cuadrito del centro y centrar para que tome bien. Para dejarlo exacto solo debes ir a Archivo > Ajustes > Video > En los dos primeros resolucion 2560 x 1600.
+
+Ya con eso vas a poder alargar y centrar la imagen para que quede perfecto: Bueno aqui ya es solo Iniciar Grabacion y Finalizarla
+
+
+### TIPS
+
+Convención del lenguaje de Programación
 
 Como recuerdo que `true = 0` y que  `false = 1` .La **mnemotecnia** papa
 
