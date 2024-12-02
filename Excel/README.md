@@ -23,7 +23,10 @@ Para exportar tu Excel a un PDF, a veces sale cortado. Seguir los pasos
 5. Exportar -> Pdf
 
 
-
+Otra opcion puede ser:
+1. Imprimir
+2. Orientacion Vertical o Horizontal
+3. Jugar con el Ajuste, para que entre todo en una sola pagina
 
 
 
