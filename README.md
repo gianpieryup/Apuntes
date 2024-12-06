@@ -20,19 +20,22 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
 
 ## VSCode
 
+- Seleccionar un trozo de lineas: 
+    - Comentar líneas: `Crtl` + `K` + `C`
+    - Des-comentar líneas: `Crtl` + `K` + `U`
+- Ajuste de texto (**Wrap**): `Crtl` + `Z`
 - Para ir a **configuraciones** de VSCODE tenemos dos alternativas:
     - `Ctrl + ,`
     - Archivo > Preferencias > Configuracion
-- Si quieres usar la ruedita del mouse: Config(`Ctrl + ,`) ===> En el buscador `zoom` , aceptar la palomita
+- Si quieres usar la ruedita del mouse: 
+    - Config(`Ctrl + ,`) > En el buscador `zoom` , aceptar la palomita
 - Para abrir nuestro repositorio en VSCODE ONLINE en el propio navegador, cambiar el (.com) => (.dev)
 - Ajustar el Zoom en VScode: Ctrl + (-/+) , Ctrl + 0 Reinicia el zoom original, 
 - Varias pestañas, puedes ver todas desplazandote con la barrita delgada:
     - Tambien puedes fijar pestañas: Click derecho > **Pin/Anclar**
     - Si quieres ver todas, Config(`Ctrl + ,`) ===> En el buscado `wrap tabs` , aceptar la palomita
 - Tener mas de una carpeta en el mismo visual, Ir a `Inicio` -> Agregar carpeta de trabajo
-- Seleccionar un trozo de lineas: 
-    - Comentar líneas: `Crtl` + `K` + `C`
-    - Des-comentar líneas: `Crtl` + `K` + `U`
+
 
 ### Mi Laptod
 
