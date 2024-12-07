@@ -209,14 +209,18 @@ print("Jus der : {r:4}".format(r=3000))
 # Jus der :  200
 # Jus der : 3000
 
-
-
-
 #Un entero y 3 numeros decimales
 print("acotado : {r:1.3f}",format(r=res)) 
 
-#python 3.6 + como en js con (``)
+#python > 3.6 se puede embeber las variables:
 print(f"Hola {nombre} como esta la familia")
+
+In [1]: txt1 = "izquierda"
+In [2]: txt2 = "centrado"
+In [3]: txt3 = "derecha"
+In [4]: print("||{:<15}||{:^15}||{:>15}||".format(txt1, txt2, txt3))
+               ||izquierda      ||   centrado    ||        derecha||
+
 ````
 
 ### Entrada texto por teclado
