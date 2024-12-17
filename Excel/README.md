@@ -2,6 +2,50 @@
 
 Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos. 
 
+
+
+
+## TIPS
+
+- Para fijar una celda en Excel, se puede utilizar la ``tecla [F4]``. Esta tecla permite cambiar entre los **tipos de referencia**, como las ***relativas***, ***absolutas*** y ***mixtas***  (el simbolito $)
+- Para que todas las columnas se ajusten al ancho del contenido:
+	1. Selecciona todo la hoja
+	2. Parate en la cabezera y entre cualquier par de divicion de columnas, ej entre B y C y doble click
+- Con la ``tecla [Alt]`` te permite ver las teclas de atajo rapido (son esos **cuadritos negros**), para salir vuelve a usar la  ``tecla [Alt]``
+
+
+### Tablas Dinamicas
+
+1. Elegir cualquier celda dentro de la tabla
+2. **Insertar** > Tabla Dinamica
+3. Se salta un cuadro con las opciones
+	- Seleccionar una tabla o rango: Aqui vemos que lo infirio, pero tambien se puede seleccionar
+	- Elija donde se va a colocar la tabla dinamica:
+		- Nueva hoja de calculo
+		- Hoja de calculo existente: Te pedira que selecciones algun cuadro
+
+Tenemos a la derecha: **Campos de tabla dinamica**
+
+<div style="display: flex; gap: 20px;">
+  <div style="flex: 1;">
+    <h3>Campos de tabla dinamica</h3>
+    <img width="300" src="img/Tabla_dinamica.png" title="Tabla_dinamica"/>
+  </div>
+  <div style="flex: 1;">
+    <h3>Secciones</h3>
+	<h4>Campos</h4>
+    <p>Lista de todas los campos, estos se pueden arrastrar en la siguiente seccion</p>
+	<h4>Columnas</h4>
+	<p>Me sirve mirarlo como un equivalente a realizar GROUP BY en SQL</p>
+		<li><b>Filtro:</b> Te aparece arriba un drowpout para filtrar</li>
+		<li><b>Columnas:</b> Abre los valores de este campo a nivel <b>Columnas</b>, tambien hay jerarquias.
+		<li><b>Filas:</b> Abre los valores de este campo a nivel <b>Fila</b>
+		<li><b>Valores:</b> Por defecto el campo arrastrado es la suma en funcion de lo que haya en Columnas y Filas , se puede modiciar</li>
+  </div>
+</div>
+
+
+
 ## INDICE
 <!-- TOC -->
 - [Exportar](#exportar)

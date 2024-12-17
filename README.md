@@ -8,6 +8,7 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
 - [Emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) : Pagina de emojis en markdown
 - [icons-readme](https://github.com/marwin1991/profile-technology-icons/blob/main/README.md) : Pagina de icones de los logos de programacion
 - [skill-icons](https://github.com/tandpfun/skill-icons/tree/main) : Repo con Icons de Tecnologia
+- [chartDB](https://chartdb.io/) : Para hacer nuestros diagramas DER
 
 
 ## Mi teclado - Atajos
