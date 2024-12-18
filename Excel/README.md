@@ -14,6 +14,21 @@ Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos.
 - Con la ``tecla [Alt]`` te permite ver las teclas de atajo rapido (son esos **cuadritos negros**), para salir vuelve a usar la  ``tecla [Alt]``
 
 
+### Tabla
+
+Ya tengo datos, pero si quiero ordenar o filtrar? Necesito tener una tabla propiamente dicha en excel. Que es lo mismo pero ahora la primera fila se convierte en la cabecera, donde cada cabecera tendra un pequeño botom para filtrar y demas opciones.
+
+Bueno eso se logra realizando lo siguientes pasos:
+
+1. Seleccione una celda con datos.(cualquiera con data)
+2. Seleccione ``Inicio`` > Dar formato como tabla.
+3. Elija un estilo para la tabla.(osea el colorcito)
+4. En el cuadro de diálogo ``Crear tabla``, establezca el rango de celdas.(casi siempre lo intuye bien)
+5. Marque la opción La tabla tiene encabezados si procede.
+
+Ya con una tabla propiamente dicha, si seleccionas cualquiera de sus celda, aparecera una seccion **Diseño de la Tabla** dondre podremos editar el formato y diseño de la tabla.
+
+
 ### Tablas Dinamicas
 
 1. Elegir cualquier celda dentro de la tabla
