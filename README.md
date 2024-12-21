@@ -18,6 +18,7 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
 - Tomar Screenchot (<kbd>**Windows**</kbd> + <kbd>Impr Pant</kbd>). Esto se guarda en la carpeta de Imagenes
 - Tomar captura de pantalla (<kbd>**Shift**</kbd> + <kbd>**Windows**</kbd> + <kbd>S</kbd>) se guarda en el portapapeles
 - Abrir la terminal cmd desde cualquier folder: Escribe `cmd` en la ruta donde estas parado y presiona enter
+- En Windows 11, puedes descargar el programa ``Terminal`` que es un gestor de consolas con personalizacion. Yo lo tengo y se ve mas bonito. Para aumentarle cosas como la mostrar en que rama de GIT estoy en el promt, seguir las intrucciones de un video de youtube `How to Display Git Branch Name in PowerShell Prompt`
 
 ## VSCode
 
