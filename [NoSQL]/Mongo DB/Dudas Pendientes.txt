@@ -1,9 +1,0 @@
-Fechas en mongo db
-cuando pongo 'new Date()' Sale la hora de hoy todo ok
-Bueno es UTC como lo guarda mongo eso no me preocupa
-
-Lo raro y lo que me modifica todo (que creo yo algo debe estar mal) en javascript
-es que new Date(2020,2,1) lo guarda un mes despues
-osea como (20202/3/1) y alli eso esta mal por que cuando lo comparo con la fecha
-de hoy debo quitarle el mes extra siempre y varia cuando es (mes de 31 y 30)
-mas aun no es exacto
