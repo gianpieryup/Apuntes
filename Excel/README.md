@@ -4,7 +4,6 @@ Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos.
 
 
 
-
 ## TIPS
 
 - Para fijar una celda en Excel, se puede utilizar la ``tecla [F4]``. Esta tecla permite cambiar entre los **tipos de referencia**, como las ***relativas***, ***absolutas*** y ***mixtas***  (el simbolito $)

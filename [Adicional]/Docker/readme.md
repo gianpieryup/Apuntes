@@ -169,3 +169,10 @@ const app = express()
 mongoose.connect('mongodb://nico:password@monguito:27017/miapp?authSource=admin')
 
 ```
+
+
+Docker Compose
+
+Basicamente es un archivo .YML que me permite definir una lista de contenederos y sus depedendecias.
+
+Y con solo un comando se descarga y despliega todo(como si fuera el package.json en JS)

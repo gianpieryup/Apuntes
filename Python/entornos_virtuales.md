@@ -1,19 +1,24 @@
 ## Entornos Virtuales
 
+Para administrar estos espacios, tenemos dos opciones.
+- **Anaconda** : Puedes elegir la version de python que desees.
+- **Virtual Env** : La version de python sera la misma que la instalada (base)
+
+
 ### ANACONDA
 
-Si necesitas desplegar con alguna version de python especifica algun entorno te sugiero usar conda
+Si necesitas desplegar un entorno con alguna version de python especifica te sugiero usar Anaconda
 
-El entorno virtual se crea en la ruta donde esta anaconda
+El entorno virtual se crea en la ruta donde esta anaconda.
 
-> Mi Compu: En mi caso uso el entorno (base) de conda como mi python local, entonces cualquier pip install que haga se guardara en como dependencia de la env (base)
-
-
-Aqui estan todos los comandos [Link](https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx)
+> Mi Compu: En mi caso uso por defecto el entorno (base) de conda, como mi python local. Entonces cualquier pip install que haga se guardara en como dependencia de la *env* (base)
 
 
-
-### El proceso de instalacion
+Aqui estan todos los comandos [Link](https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx) 
+\
+\
+\
+**Instalar Anaconda**
 
 Lo mas importante es que lo instales para todos los usuarios que sea en la carpeta C:/ no en la C:/Users/Name_user
 
@@ -27,25 +32,22 @@ Tratar de poner en el orden de las variables de entorno lo mas arriba posible, s
 - C:\Users\GIANPIER\anaconda3\Scripts
 - C:\Users\GIANPIER\anaconda3\Library\bin
 
-> [!TIP]
-> UPDATE: 09/12/2021 | La ruta ya no existe C:\Users\GIANPIER\anaconda3\Library\usr\bin
 
-<br>
 
-### PYTHON
+### Virtual Env
 
 Para trabajar con entornos virtuales debemos descargar la siguiente dependencia
-````
+````sh
 pip install virtualenv
 ````
 
 Veras todas las dependencias que instalaste en tu compu
-````
+````sh
 pip freeze
 ````
 
 
-##### Crear el entorno virtual
+#### Crear el entorno virtual
 
 OJO: Este entorno tendra la misma version de python que tiene la compu(osea la base)
 
