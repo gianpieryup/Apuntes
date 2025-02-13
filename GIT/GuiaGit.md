@@ -258,4 +258,21 @@ Esto lo que hace es dejarlo en un area de preparacion(**Cambios "staged"**), la 
 
 En el Textbox, escribes tu msj de commit y le das a Confirmar.
 
-Esto commitea y pushea
+Esto commitea todo lo que hata en **"staged"**
+
+<img src="img/004.png" width="400">
+
+
+### GIT PUSH
+
+Ya esta commiteado los cambios, darle a pushear.
+
+Podemos ver como se actualiza el flujo de commits, el mio local (**@master**) contra la nube (**@origin/master**)
+
+<img src="img/005.png" width="400">
+<img src="img/006.png" width="400">
+
+### GIT PULL
+
+<img src="img/007.png" width="400">
+<img src="img/008.png" width="400">
