@@ -227,11 +227,35 @@ $ git checkout login
 
 
 
+## VsCode
+
+Usando Git desde VsCode
+
+### GIT STATUS
+
+Vemos una seccion de **CAMBIOS** , con todos los archivos que sufrieron alguna modificacion.
+Si presionas cualquiera de estos archivos te mostrara la diferencia entre las version original y la modificada 
+
+<img src="img/001.png" width="400">
+
+- *Simbolo Estado* (**M** : Modificacion, **U** : Nuevo Archivo)
+- *Simbolo Archivo* : Abre el archivo.
+- *Flecha en Reversa* : Descartar las modificaciones (**Se perderan**)
 
 
+### GIT ADD
+
+Le damos al simbolito de MAS a cada archivo especifico o si necesitas todos en la seccion de arriba.
+
+<img src="img/002.png" width="600">
+
+Esto lo que hace es dejarlo en un area de preparacion(**Cambios "staged"**), la cual puedes volver a quitar con el boton menos
+
+<img src="img/003.png" width="400">
 
 
+### GIT COMMIT
 
+En el Textbox, escribes tu msj de commit y le das a Confirmar.
 
-
-
+Esto commitea y pushea
