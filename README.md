@@ -14,6 +14,7 @@ Mis apuntes de distintas tecnología y a quien desee usarlos, uselos. Es free to
 
 ## Mi teclado - Atajos
 
+- No te funciona el click derecha del pad de la laptod : Presiona con *dos dedos* al mismo tiempo :)
 - Modo del cursor: Que sea un palito (<kbd>**Fn**</kbd> + <kbd>[Ins| ImpPrint]</kbd>)
 - Sacar carácter <kbd>`</kbd> : Presionar dos veces la Combinacion (<kbd>**Alt Gr**</kbd> + <kbd>}</kbd>)
 - Tomar Screenchot (<kbd>**Windows**</kbd> + <kbd>Impr Pant</kbd>). Esto se guarda en la carpeta de Imagenes
