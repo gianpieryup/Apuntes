@@ -14,8 +14,19 @@ Se crean estas VM en carpetas, las cuales se encuentran en la ruta por defecto
 C:\Users\GIANPIER\VirtualBox VMs
 ```
 
+## Tips
 
-## Centos
+Modo escalado : `Ctrl + C`
+
+## Guest Aditions
+
+Hay que instalar esto para poder compartir archivos entre la compu local y la VM.
+
+
+
+### Ubunto
+
+### Centos
 
 1. CentOS Linux (descontinuado en 2021)
     - CentOS Linux clásico (por ejemplo, CentOS 7 u 8)

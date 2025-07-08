@@ -67,6 +67,10 @@ Para grabar siempre tenia cortado mi captura y ahora me di cuenta que se puede m
 Ya con eso vas a poder alargar y centrar la imagen para que quede perfecto: Bueno aqui ya es solo Iniciar Grabacion y Finalizarla
 
 
+### VLC
+
+Shift + IZQ y Shift + DERECHA para atrasar o adelantar 5 segundos.
+
 ### TIPS
 
 Convención del lenguaje de Programación

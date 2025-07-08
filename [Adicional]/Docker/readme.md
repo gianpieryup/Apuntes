@@ -25,6 +25,13 @@ Recuerde que para usar Docker debe abrir Docker Desktop y dejarlo abierto.
 Asegurese de que no este pausado, abajo debe decir **Engine Running**. Ahora si abra si CMD y podra usar los comandos del CLI.
 
 
+Puedes verificar la instalacion de docker con el comando:
+```sh
+> docker --version
+Docker version 27.3.1, build ce12230
+```
+
+
 ## Imagenes
 
 Todas se descargan de la pagina web ``Docker Hub``, especificamente el comando de la imagen a descargar.

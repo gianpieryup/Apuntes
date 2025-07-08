@@ -62,11 +62,11 @@ Un parametro extra, para que nuestras aplicaciones externas puedan acceder al co
 
 Para conectarme a travez de Dbeaver, le doy a conexion nueva:
 
-![alt text](001.png)
+![alt text](img/001.png)
 
 Rellenando los campos.
 
-![alt text](002.png)
+![alt text](img/002.png)
 
 Y ya esta, puedo usar tanto el CLI de Dbeaver o el de CMD ambos te retornaran lo mismo
 
