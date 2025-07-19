@@ -14,5 +14,5 @@ $ docker run --name test -d -p 8080:80 nginx:lastest
 - `--name` : el alias del container
 - `-d` : (modo deteach) para que no nos bloquee la consola
 - `-p p1:p2` : para que todo el trafico de mi *puerto de mi compu* `p1`, hacia el *puerto del contenedor* `p2`
-- `nginx:lastest` nombre de la **imagen**, si no la encuentra en la maquina la descarga de **Docker Hub**
+- `nginx:lastest` nombre de la **imagen**:[version], si no la encuentra en la maquina la descarga de **Docker Hub**
 

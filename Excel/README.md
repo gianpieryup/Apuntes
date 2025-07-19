@@ -11,6 +11,7 @@ Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos.
 	1. Selecciona todo la hoja
 	2. Parate en la cabezera y entre cualquier par de divicion de columnas, ej entre B y C y doble click
 - Con la ``tecla [Alt]`` te permite ver las teclas de atajo rapido (son esos **cuadritos negros**), para salir vuelve a usar la  ``tecla [Alt]``
+- ``Ctrl + Shift + abajo ``: para seleccionar desde una celda hasta la ultima celda que tenga contenido
 
 
 ### Tabla
