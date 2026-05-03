@@ -14,6 +14,12 @@ Dado que recuerdo SQL mas que Excel, y como hay una relación entre ellos.
 - ``Ctrl + Shift + abajo ``: para seleccionar desde una celda hasta la ultima celda que tenga contenido
 
 
+### Estilos ⚙️
+
+En EXCEL: Formato de Celdas para que en excel lo negativo este entre parentesis y rojo.
+
+> #,##0;[Rojo](#,##0);-;
+
 ### Tabla
 
 Ya tengo datos, pero si quiero ordenar o filtrar? Necesito tener una tabla propiamente dicha en excel. Que es lo mismo pero ahora la primera fila se convierte en la cabecera, donde cada cabecera tendra un pequeño botom para filtrar y demas opciones.
