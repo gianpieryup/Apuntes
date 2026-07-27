@@ -52,7 +52,16 @@ Un **Workflow** (o Playbook) es un flujo de trabajo estructurado paso a paso que
 
 
 
-## 4. MCP (Model Context Protocol)
+## 4. Memorias
+
+Las **Memorias** permiten proporcionar contexto específico al agente **durante una sesión**.
+
+- **Duración:** Solo viven en la sesión actual, a diferencia de los **Rules** que son persistentes en el repositorio.
+- **Propósito:** Compartir información temporal, contexto del proyecto actual, o instrucciones específicas para la sesión.
+- **Uso típico:** Detalles sobre la tarea actual, preferencias momentáneas, o contexto que no necesita ser permanente.
+
+
+## 5. MCP (Model Context Protocol)
 
 El **MCP** es un protocolo de comunicación que permite conectar el agente con servidores externos, como Notion, GitHub, entre otros.
 
