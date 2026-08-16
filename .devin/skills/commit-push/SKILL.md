@@ -1,5 +1,12 @@
 # Commit and Push Changes
 
+---
+## Permissions
+- exec: true
+- read: true
+- edit: true
+---
+
 Este skill automatiza el proceso de hacer commit y push de todos los cambios del repositorio con un mensaje descriptivo.
 
 ## Pasos a seguir:
@@ -27,9 +34,19 @@ Este skill automatiza el proceso de hacer commit y push de todos los cambios del
 
 4. **Hacer commit:**
    - Ejecuta `git commit -m "<mensaje descriptivo>"` con el mensaje generado.
+   - Para PowerShell, usa múltiples parámetros `-m` si necesitas incluir detalles adicionales:
+     ```
+     git commit -m "tipo: descripción breve" -m "- detalle adicional 1" -m "- detalle adicional 2"
+     ```
 
 5. **Hacer push:**
    - Ejecuta `git push` para enviar los cambios al repositorio remoto.
+
+## Configuración de permisos:
+Este skill requiere las siguientes herramientas sin autorización humana:
+- `exec`: Para ejecutar comandos git (git status, git add, git commit, git push)
+- `read`: Para leer el archivo de skill si es necesario
+- `edit`: Para actualizar este archivo de skill
 
 ## Ejemplo de uso:
 - Invocar este skill cuando hayas terminado de trabajar en una tarea y quieras guardar y compartir tus cambios.
