@@ -4,7 +4,9 @@
 
 Al desplegar el menú de tres puntos en la sesión de Cascade, verás el siguiente cuadro de opciones:
 
-![acciones.png](img/acciones.png)
+![acciones.png](img/devin-acciones.png)
+
+
 
 - Configure Rules
 - Configure Skills
@@ -12,8 +14,19 @@ Al desplegar el menú de tres puntos en la sesión de Cascade, verás el siguien
 - Edit Memories
 - MCPs
 
+---
+
+## Aggression
+
+En Devin-Settings: Tenemos varias opciones, entre ellas la Aggression.
+
+Cuanto mas agresivo mas demora, pero da mejores resultados.
+ Igualmente todo depende de la utilidad, si tienes bien definidos tus rules, quiza no necesitas poner a trabajar tanto la IA, si no que siga tus instrucciones
+
+<img src="img/devin-aggression.png" alt="aggression.png" width="400">
 
 
+---
 
 ## 1. Rules
 
