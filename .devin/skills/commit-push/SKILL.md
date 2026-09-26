@@ -48,6 +48,8 @@ Este skill requiere las siguientes herramientas sin autorización humana:
 - `read`: Para leer el archivo de skill si es necesario
 - `edit`: Para actualizar este archivo de skill
 
+**Nota:** Los comandos git están configurados para auto-aprobación en `.devin/config.json` a nivel de proyecto.
+
 ## Ejemplo de uso:
 - Invocar este skill cuando hayas terminado de trabajar en una tarea y quieras guardar y compartir tus cambios.
 - El skill analizará automáticamente los cambios y creará un mensaje apropiado.

@@ -97,3 +97,85 @@ El **MCP** es un protocolo de comunicación que permite conectar el agente con s
   }
 }
 ```
+
+---
+
+## 6. WebHooks
+
+Un **WebHook** es un mecanismo de notificación automática que permite a una aplicación enviar datos en tiempo real a otra aplicación cuando ocurre un evento específico.
+
+### Definición
+
+Un WebHook es básicamente una "devolución de llamada HTTP" (HTTP callback). En lugar de que una aplicación tenga que preguntar constantemente a otra si hay novedades (polling), la segunda aplicación "avisa" a la primera enviando una petición HTTP POST a una URL predefinida cuando algo importante sucede.
+
+### Características principales
+
+- **URL de destino:** La aplicación que recibe las notificaciones debe exponer una URL pública donde el webhook envíe los datos
+- **Eventos específicos:** Los webhooks se configuran para dispararse ante eventos concretos (ej. nuevo usuario, pago completado, error en el sistema)
+- **Formato de datos:** Generalmente envían datos en formato JSON con información sobre el evento
+- **Seguridad:** A menudo usan tokens o firmas digitales para verificar la autenticidad del webhook
+
+### Ejemplo práctico
+
+**Escenario:** Tienda online que notifica a un sistema de contabilidad cuando se realiza una venta
+
+1. **Configuración:** La tienda online se configura para enviar webhooks a `https://contabilidad.ejemplo.com/api/ventas`
+2. **Evento:** Un cliente realiza una compra de $100
+3. **Webhook:** La tienda envía automáticamente:
+
+```json
+POST https://contabilidad.ejemplo.com/api/ventas
+Content-Type: application/json
+X-Webhook-Secret: mi-secreto-seguro
+
+{
+  "evento": "venta_completada",
+  "venta_id": "12345",
+  "monto": 100.00,
+  "cliente": "juan@example.com",
+  "productos": [
+    {"id": "prod1", "cantidad": 2, "precio": 50.00}
+  ],
+  "timestamp": "2026-09-26T10:30:00Z"
+}
+```
+
+4. **Procesamiento:** El sistema de contabilidad recibe la notificación, verifica la firma con el secreto, y registra automáticamente la venta en sus libros.
+
+### Usos comunes
+
+- **GitHub/GitLab:** Notificaciones cuando se crea un pull request, se mergea código, etc.
+- **Stripe/PayPal:** Notificaciones de pagos, reembolsos, suscripciones
+- **Slack/Discord:** Integraciones que publican mensajes cuando ocurren eventos
+- **CI/CD:** Disparar builds cuando se hace push a un repositorio
+
+---
+
+## 7. Hooks de Devin vs WebHooks
+
+Es importante distinguir entre **WebHooks** (el concepto general de integración web) y los **Hooks de Devin** (mecanismo específico de configuración del agente):
+
+### WebHooks (Concepto general)
+- **Definición:** Mecanismo de notificación HTTP entre aplicaciones web
+- **Propósito:** Integración entre servicios externos diferentes
+- **Ubicación:** Configuración en servicios web (GitHub, Stripe, etc.)
+- **Ejecución:** Se disparan cuando ocurren eventos en aplicaciones externas
+- **Ejemplo:** GitHub envía un webhook a tu servidor cuando alguien hace push
+
+### Hooks de Devin (Configuración del agente)
+- **Definición:** Scripts o comandos que se ejecutan en respuesta a eventos del ciclo de vida del agente
+- **Propósito:** Controlar y personalizar el comportamiento de Devin durante una sesión
+- **Ubicación:** Archivos de configuración en `.devin/hooks.v1.json` o similar
+- **Ejecución:** Se disparan cuando Devin usa herramientas, inicia sesión, etc.
+- **Ejemplo:** Ejecutar un script de validación antes de que Devin ejecute un comando de shell
+
+### Diferencias clave
+
+| Aspecto | WebHooks | Hooks de Devin |
+|---------|----------|----------------|
+| **Ámbito** | Integración entre aplicaciones web | Control del comportamiento del agente |
+| **Comunicación** | HTTP (internet) | Ejecución local de comandos |
+| **Eventos** | Eventos de aplicaciones externas | Eventos del ciclo de vida del agente |
+| **Configuración** | En servicios web externos | En archivos de configuración del proyecto |
+| **Uso típico** | Notificaciones entre servicios | Políticas, validaciones, logging |
+
