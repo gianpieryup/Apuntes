@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitecturas de Comunicación Backend-Frontend</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Tema oscuro Dracula -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css" id="theme">
+    
+    <style>
+        /* Estilos personalizados para mejorar la visualización de los diagramas */
+        .reveal .mermaid {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .reveal h2 {
+            color: #ff79c6; /* Rosa del tema Dracula */
+        }
+        .reveal p {
+            font-size: 0.8em;
+            text-align: left;
+        }
+        .reveal .analogia {
+            background-color: rgba(189, 147, 249, 0.1);
+            border-left: 5px solid #bd93f9;
+            padding: 15px;
+            border-radius: 5px;
+            font-style: italic;
+            font-size: 0.75em;
+            margin-bottom: 20px;
+        }
+        .reveal ul {
+            font-size: 0.75em;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Diapositiva 1: Título -->
+            <section>
+                <h1>Arquitecturas de Comunicación</h1>
+                <h3>(Cliente - Servidor)</h3>
+                <p style="text-align: center; margin-top: 50px;">REST API, Short Polling, Long Polling, WebSockets y SSE</p>
+                <p style="text-align: center; font-size: 0.6em; opacity: 0.7;">Usa las flechas del teclado para navegar</p>
+            </section>
+
+            <!-- Diapositiva 2: REST API -->
+            <section>
+                <h2>1. REST API</h2>
+                <div class="analogia">
+                    🍔 <strong>Analogía:</strong> Pedir comida rápida. Pides, te dan la comida y te vas. Si quieres más, tienes que volver a formarte y hacer la fila de nuevo.
+                </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        C->>S: Petición (¡Quiero una hamburguesa!)
+                        Note over S: Prepara la orden
+                        S-->>C: Respuesta (Aquí tienes)
+                </div>
+            </section>
+
+            <!-- Diapositiva 3: Short Polling -->
+            <section>
+                <h2>2. Short Polling</h2>
+                <div class="analogia">
+                    🚗 <strong>Analogía:</strong> El niño en el auto preguntando "¿Ya llegamos?" cada 10 segundos. El padre responde "No" muchas veces hasta que al final dice "Sí". Mucho esfuerzo desperdiciado.
+                </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        C->>S: Petición: ¿Hay datos? (t=0s)
+                        S-->>C: Respuesta: No.
+                        C->>S: Petición: ¿Hay datos? (t=10s)
+                        S-->>C: Respuesta: No.
+                        C->>S: Petición: ¿Hay datos? (t=20s)
+                        S-->>C: Respuesta: ¡Sí, toma los datos!
+                </div>
+            </section>
+
+            <!-- Diapositiva 4: Long Polling -->
+            <section>
+                <h2>3. Long Polling</h2>
+                <div class="analogia">
+                    🤫 <strong>Analogía:</strong> El niño pregunta "¿Ya llegamos?" y el padre se queda en completo silencio por horas. Solo habla cuando finalmente llegan y dice "Sí". Inmediatamente, el niño vuelve a preguntar.
+                </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        C->>S: Petición HTTP (¿Hay datos?)
+                        Note over S: Servidor espera en silencio...
+                        Note over S: ¡Aparecen nuevos datos!
+                        S-->>C: Respuesta con los datos
+                        C->>S: Inicia nueva petición inmediata
+                        Note over S: Servidor vuelve a esperar...
+                </div>
+            </section>
+
+            <!-- Diapositiva 5: WebSockets -->
+            <section>
+                <h2>4. WebSockets</h2>
+                <div class="analogia">
+                    📞 <strong>Analogía:</strong> Una llamada telefónica bidireccional. Ambos están conectados en línea abierta y pueden hablar o interrumpirse en cualquier momento.
+                </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        C->>S: Handshake (Inicia Llamada)
+                        S-->>C: Conectado
+                        Note over C,S: Conexión abierta bidireccional
+                        S->>C: "Hola, te mando datos en vivo"
+                        C->>S: "Recibido, yo te mando mis acciones"
+                        S->>C: "Otra actualización instantánea"
+                </div>
+            </section>
+
+            <!-- Diapositiva 6: Server-Sent Events (SSE) -->
+            <section>
+                <h2>5. Server-Sent Events (SSE)</h2>
+                <div class="analogia">
+                    📻 <strong>Analogía:</strong> Escuchar la radio. Sintonizas la estación (te conectas) y solo te dedicas a escuchar lo que el locutor (servidor) transmite.
+                </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        C->>S: Conectar (Sintonizar estación)
+                        S-->>C: Conectado
+                        Note over S: Servidor transmitiendo...
+                        S->>C: Evento (Noticia 1)
+                        S->>C: Evento (Canción 2)
+                        S->>C: Evento (Alerta 3)
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    
+    <!-- Mermaid.js Module -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        
+        // Inicializar Reveal
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide' // none/fade/slide/convex/concave/zoom
+        });
+
+        // Configurar e inicializar Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'arial'
+        });
+
+        // Re-renderizar diagramas si es necesario al cambiar de diapositiva
+        // (A veces los diagramas en diapositivas ocultas no calculan bien su tamaño)
+        Reveal.on('slidechanged', event => {
+            // Un pequeño truco para asegurar que los diagramas se vean bien
+            window.dispatchEvent(new Event('resize'));
+        });
+    </script>
+</body>
+</html>
