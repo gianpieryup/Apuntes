@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Conceptos Básicos de IA</title>
+    
+    <!-- Importación de Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Tema oscuro Dracula -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css" id="theme">
+    
+    <style>
+        /* Forzar la fuente Inter en toda la presentación */
+        body, .reveal {
+            font-family: 'Inter', sans-serif !important;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 800 !important;
+            color: #ff79c6; /* Rosa del tema Dracula */
+            text-transform: none;
+            margin-bottom: 5px; /* Reducido al mínimo */
+        }
+        
+        .reveal h3 {
+            font-size: 0.9em;
+            color: #8be9fd; /* Cyan del tema Dracula */
+            font-weight: 600 !important;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .reveal p, .reveal ul, .reveal li {
+            text-align: left;
+            font-size: 0.85em;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        /* Estilos personalizados de la presentación */
+        .analogia {
+            background-color: rgba(189, 147, 249, 0.15);
+            border-left: 5px solid #bd93f9;
+            padding: 10px 15px; 
+            border-radius: 0 10px 10px 0;
+            font-size: 0.75em !important;
+            font-style: italic;
+            margin-top: 5px; /* Reducido al mínimo */
+            text-align: left;
+        }
+
+        .analogia strong {
+            color: #50fa7b; /* Verde Dracula */
+            font-style: normal;
+        }
+
+        /* Utilidad para dividir columnas */
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Reducido */
+            margin-top: 5px; /* Reducido */
+        }
+        
+        .reveal h3 {
+            font-size: 0.9em;
+            color: #8be9fd; /* Cyan del tema Dracula */
+            font-weight: 600 !important;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .reveal p, .reveal ul, .reveal li {
+            text-align: left;
+            font-size: 0.85em;
+            line-height: 1.3; /* Reducido de 1.4 */
+            margin-bottom: 10px;
+        }
+
+        /* Estilos personalizados de la presentación */
+        .analogia {
+            background-color: rgba(189, 147, 249, 0.15);
+            border-left: 5px solid #bd93f9;
+            padding: 10px 15px; /* Reducido para ahorrar espacio */
+            border-radius: 0 10px 10px 0;
+            font-size: 0.75em !important;
+            font-style: italic;
+            margin-top: 10px; /* Reducido */
+            text-align: left;
+        }
+
+        .analogia strong {
+            color: #50fa7b; /* Verde Dracula */
+            font-style: normal;
+        }
+
+        /* Utilidad para dividir columnas */
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Reducido de 30px */
+            margin-top: 10px; /* Reducido de 20px */
+        }
+        
+        .reveal h3 {
+            font-size: 0.9em;
+            color: #8be9fd; /* Cyan del tema Dracula */
+            font-weight: 600 !important;
+        }
+
+        .reveal p, .reveal ul, .reveal li {
+            text-align: left;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        /* Estilos personalizados de la presentación */
+        .analogia {
+            background-color: rgba(189, 147, 249, 0.15);
+            border-left: 5px solid #bd93f9;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.75em !important;
+            font-style: italic;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .analogia strong {
+            color: #50fa7b; /* Verde Dracula */
+            font-style: normal;
+        }
+
+        /* Utilidad para dividir columnas */
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .split-text {
+            flex: 1.2;
+        }
+        .split-image {
+            flex: 0.8;
+            text-align: center;
+        }
+        
+        /* Imágenes */
+        .custom-img {
+            border-radius: 12px;
+            max-height: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            object-fit: contain;
+            width: 100%;
+        }
+        
+        /* Contenedor del Agente */
+        .agent-container {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 15px;
+            margin-top: 15px; 
+            background: rgba(40, 42, 54, 0.9); 
+            padding: 20px 15px; /* Reducido para que entre en pantallas pequeñas */
+            border-radius: 15px; 
+            border: 1px solid #6272a4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        .agent-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center; 
+            width: 28%;
+        }
+        
+        .agent-item img {
+            border-radius: 50%;
+            height: 140px; 
+            width: 140px;
+            object-fit: cover; 
+            border: 3px solid #bd93f9;
+            box-shadow: 0 0 15px rgba(189,147,249,0.5);
+            background: #282a36;
+        }
+
+        .agent-item p {
+            font-size: 0.75em; 
+            margin-top: 20px; 
+            text-align: center; 
+            line-height: 1.3;
+        }
+        
+        .agent-arrow {
+            color: #50fa7b; 
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 30px; /* Para alinear con las imágenes, restando el texto */
+        }
+
+        /* Utilidad para dibujos HTML */
+        .html-drawing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(40, 42, 54, 0.9);
+            border-radius: 12px;
+            padding: 10px; /* Reducido */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            height: 100%;
+            min-height: 140px; /* Reducido */
+        }
+        .html-drawing .emoji { font-size: 50px; margin-bottom: 0; } /* Reducido */
+        .html-drawing h4 { margin: 0; font-size: 1.1em; }
+        
+        .agent-item .html-drawing {
+            min-height: 120px;
+            width: 120px;
+            padding: 10px;
+            border-radius: 50%;
+            justify-content: center;
+        }
+        .agent-item .html-drawing .emoji { font-size: 50px; margin: 0; }
+
+        /* Prevención de desbordamiento (overflow) - Corrección barras */
+        .reveal .slides section {
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Título -->
+            <section>
+                <h1 style="font-size: 2.5em;">Conceptos Básicos de IA</h1>
+                <p style="text-align: center; font-size: 1.2em; color: #f8f8f2;">Entendiendo las piezas del rompecabezas</p>
+                <p style="text-align: center; margin-top: 50px; font-size: 0.7em; color: #6272a4;">Usa las flechas del teclado para navegar</p>
+            </section>
+
+            <!-- Slide 2: La Fórmula -->
+            <section>
+                <h2>La Ecuación Fundamental</h2>
+                <div style="background: rgba(40,42,54,0.8); border: 2px dashed #ff79c6; padding: 40px; border-radius: 15px; margin-top: 40px;">
+                    <h1 style="text-align: center; margin: 0; font-size: 2.5em; color: #f8f8f2;">
+                        Agente = <span style="color: #8be9fd;">Modelo</span> + <span style="color: #50fa7b;">Arnés</span>
+                    </h1>
+                </div>
+                <p style="text-align: center; margin-top: 30px; font-size: 1em; color: #f1fa8c;">
+                    El secreto detrás de la inteligencia artificial autónoma.
+                </p>
+            </section>
+
+            <!-- Slide 3: El Modelo -->
+            <section>
+                <h2>1. El Modelo (LLM / Cerebro)</h2>
+                <div class="split-layout">
+                    <div class="split-text">
+                        <h3 style="margin-top: 0;">⭐ Ejemplos Populares:</h3>
+                        <ul>
+                            <li><strong>GPT-4o</strong> (OpenAI)</li>
+                            <li><strong>Claude 3.5 Sonnet</strong> (Anthropic)</li>
+                            <li><strong>DeepSeek V3 / R1</strong> (DeepSeek)</li>
+                        </ul>
+
+                        <div class="analogia">
+                            🧠 <strong>Analogía:</strong> Es como un <strong>cerebro súper inteligente en un frasco</strong>. Lo sabe todo, pero está encerrado. No tiene manos para actuar ni ojos para ver tu pantalla.
+                        </div>
+                    </div>
+                    <div class="split-image">
+                        <!-- Dibujo HTML 100% nativo -->
+                        <div class="html-drawing" style="border: 3px solid #8be9fd;">
+                            <div class="emoji">🧠</div>
+                            <h4 style="color: #8be9fd;">El Cerebro<br>(Modelo)</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: El Arnés -->
+            <section>
+                <h2>2. El Arnés (Harness / Manos)</h2>
+                <div class="split-layout">
+                    <div class="split-text">
+                        <h3 style="margin-top: 0;">⭐ Ejemplos Populares:</h3>
+                        <ul>
+                            <li><strong>DeepSeek Harness</strong> (Código)</li>
+                            <li><strong>LangChain / LlamaIndex</strong> (Frameworks)</li>
+                            <li><strong>MCP</strong> (Protocolo de contexto)</li>
+                        </ul>
+
+                        <div class="analogia">
+                            🦾 <strong>Analogía:</strong> Es el <strong>traje robótico</strong> (cuerpo y sentidos). Le presta manos y ojos al cerebro para que pueda hacer clics, leer y escribir.
+                        </div>
+                    </div>
+                    <div class="split-image">
+                        <!-- Dibujo HTML 100% nativo -->
+                        <div class="html-drawing" style="border: 3px solid #50fa7b;">
+                            <div class="emoji">🦾</div>
+                            <h4 style="color: #50fa7b;">El Arnés<br>(Manos)</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: El Agente (Concepto) -->
+            <section>
+                <h2>3. El Agente (El Sistema)</h2>
+                <p style="text-align: center; font-size: 1.1em; margin-top: 40px;">
+                    Es el sistema completo trabajando de forma autónoma hasta cumplir un objetivo complejo.
+                </p>
+                
+                <div class="analogia" style="border-left-color: #ffb86c; background-color: rgba(255, 184, 108, 0.15); margin-top: 50px; font-size: 0.9em !important; padding: 30px;">
+                    🤖 <strong>Analogía:</strong> Es el <strong>empleado perfecto</strong>. Le dices "Investiga a estos clientes", y él mismo piensa <em>(Modelo)</em>, abre el navegador, lee sus webs y guarda el reporte <em>(Arnés)</em> de forma totalmente automática.
+                </div>
+            </section>
+
+            <!-- Slide 6: El Agente (Flujo Completo Diagrama) -->
+            <section>
+                <h2>3. El Agente (Flujo)</h2>
+                
+                <!-- Diagrama Visual con Dibujos HTML -->
+                <div class="agent-container">
+                    
+                    <!-- 1. Modelo -->
+                    <div class="agent-item">
+                        <div class="html-drawing" style="border: 3px solid #8be9fd; box-shadow: 0 0 15px rgba(139,233,253,0.5);">
+                            <div class="emoji">🧠</div>
+                        </div>
+                        <p><strong>1. El Cerebro</strong><br>(Piensa y Decide)</p>
+                    </div>
+                    
+                    <div class="agent-arrow">⇄</div>
+                    
+                    <!-- 2. Arnés -->
+                    <div class="agent-item">
+                        <div class="html-drawing" style="border: 3px solid #50fa7b; box-shadow: 0 0 15px rgba(80,250,123,0.5);">
+                            <div class="emoji">🦾</div>
+                        </div>
+                        <p><strong>2. El Arnés</strong><br>(Ejecuta la acción)</p>
+                    </div>
+                    
+                    <div class="agent-arrow">⇄</div>
+                    
+                    <!-- 3. Mundo Real -->
+                    <div class="agent-item">
+                        <div class="html-drawing" style="border: 3px solid #ffb86c; box-shadow: 0 0 15px rgba(255,184,108,0.5); background: transparent;">
+                            <div class="emoji" style="text-shadow: 0 0 20px rgba(255,184,108,0.6);">🌍</div>
+                        </div>
+                        <p><strong>3. Mundo Real</strong><br>(Webs, APIs, Archivos)</p>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: false, // Desactivado para evitar errores en la vista previa del entorno
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RAG en la Práctica</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Tema oscuro Dracula -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css" id="theme">
+    
+    <style>
+        /* Clase personalizada solicitada */
+        .analogia {
+            background: rgba(189, 147, 249, 0.2);
+            border-left: 4px solid #bd93f9;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-style: italic;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        /* Ajustes visuales para Reveal.js y Mermaid */
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: #ff79c6; /* Rosa del tema Dracula */
+        }
+        .reveal p, .reveal ul {
+            text-align: left;
+            font-size: 0.85em;
+        }
+        .reveal .mermaid {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Diapositiva 1 -->
+            <section>
+                <h1>RAG en la Práctica</h1>
+                <h3>Next.js, PG Vector y OpenRouter</h3>
+                <p style="text-align: center; margin-top: 50px; font-size: 0.7em; opacity: 0.7;">
+                    Usa las flechas del teclado para navegar
+                </p>
+            </section>
+
+            <!-- Diapositiva 2 -->
+            <section>
+                <h2>¿Qué es RAG?</h2>
+                <p><strong>Retrieval-Augmented Generation</strong> es una técnica que mejora las respuestas de la Inteligencia Artificial conectándola a tus propias bases de datos o documentos antes de generar una respuesta.</p>
+                <div class="analogia">
+                    🧠 Analogía: Es como un examen a libro abierto. En lugar de pedirle a la IA que memorice todo internet, le damos nuestros propios apuntes (documentos) para que lea y responda basándose estrictamente en ellos.
+                </div>
+            </section>
+
+            <!-- Diapositiva 3 -->
+            <section>
+                <h2>Stack Tecnológico</h2>
+                <ul>
+                    <li><strong>Next.js:</strong> Framework para React que permite tener el Frontend y el Backend unificados en un solo proyecto.</li>
+                    <li><strong>PostgreSQL:</strong> Base de datos relacional robusta.</li>
+                    <li><strong>PG Vector:</strong> Una extensión de Postgres para almacenar y buscar vectores de alta dimensión.</li>
+                    <li><strong>OpenRouter:</strong> Un gateway (puerta de enlace) para consumir modelos de IA (como DeepSeek, OpenAI, etc.) mediante una única API.</li>
+                </ul>
+            </section>
+
+            <!-- Diapositiva 4 -->
+            <section>
+                <h2>Flujo 1: Extracción (OCR)</h2>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant C as Cliente
+                        participant S as Servidor
+                        participant M as Modelo de Visión
+                        C->>S: Sube PDF (factura/documento)
+                        S->>M: Envía documento (a través de OpenRouter)
+                        Note over M: Procesa OCR y estructura
+                        M-->>S: Devuelve JSON estructurado
+                        S-->>C: Muestra datos procesados
+                </div>
+                <div class="analogia">
+                    📄 Analogía: Contratar a un asistente para que mire una pila de facturas en papel y transcriba los datos a una tabla de Excel.
+                </div>
+            </section>
+
+            <!-- Diapositiva 5 -->
+            <section>
+                <h2>Flujo 2: Embeddings y PG Vector</h2>
+                <p>El texto de los documentos extraídos se convierte en <strong>vectores numéricos</strong> (embeddings) que representan su significado y se guardan en PG Vector.</p>
+                <div class="analogia">
+                    📚 Analogía: Una biblioteca espacial. En lugar de ordenar los libros alfabéticamente, los ordenamos por 'significado'. Así, los textos sobre 'perros' y 'lobos' terminan en estantes muy cercanos, haciendo fácil encontrarlos por contexto.
+                </div>
+            </section>
+
+            <!-- Diapositiva 6 -->
+            <section>
+                <h2>Búsqueda Semántica vs SQL</h2>
+                <div class="mermaid">
+                    graph TD
+                        A[Pregunta del Usuario] --> B{¿Es un cálculo o total?}
+                        B -- Sí --> C[Consulta SQL <br> rápido y exacto]
+                        B -- No --> D[Búsqueda Semántica <br> con Embeddings]
+                </div>
+                <div class="analogia">
+                    🧮 Analogía: Si te pregunto '¿cuánto es 2+2?', usas la calculadora (SQL). Si te pregunto '¿de qué trata este contrato?', lo lees y me haces un resumen (Semántica).
+                </div>
+            </section>
+
+            <!-- Diapositiva 7 -->
+            <section>
+                <h2>Despliegue Asistido (MCP)</h2>
+                <p>Uso de herramientas como <strong>Cynote</strong> y el <strong>Model Context Protocol (MCP)</strong> para conectar el editor de código (Cursor/Claude) directamente con la infraestructura en la nube, permitiendo despliegues guiados por IA.</p>
+                <div class="analogia">
+                    🏗️ Analogía: Es como tener un capataz de obra en tu chat. Le dices 'construye la casa' (despliega la app) y él coordina a los obreros y los servidores sin que tengas que mover un dedo en la consola.
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    
+    <!-- Mermaid.js Module -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        
+        // Inicializar Reveal
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'fade' // Efecto de transición limpio
+        });
+
+        // Configurar e inicializar Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'Inter, Arial, sans-serif'
+        });
+
+        // Asegurar que Mermaid se redibuje al cambiar de diapositiva (solución para gráficos ocultos)
+        Reveal.on('slidechanged', event => {
+            window.dispatchEvent(new Event('resize'));
+        });
+    </script>
+</body>
+</html>
