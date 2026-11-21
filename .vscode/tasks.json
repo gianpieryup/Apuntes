@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Bridge",
+            "type": "shell",
+            "command": "powershell.exe",
+            "args": ["-Command", "cd 'C:\\Users\\GIANPIER\\Desktop\\Apuntes\\6-IA-Automatizacion'; python saludos.py"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": false,
+                "echo": true,
+                "showReuseMessage": false,
+                "clear": false,
+                "close": false
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "icon": {
+                "id": "python",
+                "color": "terminal.ansiYellow"
+            },
+            "detail": "Ejecuta el script saludos.py en una terminal nueva",
+            "isBackground": false
+        }
+    ]
+}
